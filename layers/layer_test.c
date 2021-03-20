@@ -101,6 +101,7 @@ int main(){
         input_array_dense,
         output_array_dense,
         0,
+        SOFTMAX_ACTIVATION,
         1,
         INPUT_LENGTH_DENSE_LAYER_TEST,
         OUTPUT_LENTH_DENSE_LAYER_TEST);
