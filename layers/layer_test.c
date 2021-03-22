@@ -7,27 +7,57 @@
 
 #define DIM 5
 
+//Input Layer
+#define IMG_WIDTH 150
+#define IMG_HEIGHT 50
+
+//Layers (turn on if required)
+#define CONV_1_LAYER
+// #define BATCH_NORM_1_LAYER
+// #define MAX_POOL_1_LAYER
+// #define CONV_2_LAYER
+// #define BATCH_NORM_2_LAYER
+// #define MAX_POOL_2_LAYER
+// #define CONV_3_LAYER
+// #define BATCH_NORM_3_LAYER
+// #define MAX_POOL_3_LAYER
+// #define DENSE_1_LAYER
+// #define DENSE_2_LAYER
+
+
+/* Layer Setup */
+//Conv layer params
+// int kernel_size = 2;
+// int num_filters = 1;
+// int num_weights_biases = num_filters*kernel_size*kernel_size + num_filters;
+// int32_t weights_biases[10] = {1,1,1,1,1,1,1,1,1,0};
+// int32_t input_arr[DIM*DIM] = {1,1,2,4,5,5,6,7,8,3,3,2,1,0,7,1,2,3,4,8,4,6,5,9,4};
+// int32_t output_arr[DIM*DIM];
+// int32_t output_arr_2[3*3];
+
+// Dense Layer Params
+// input to dense layer is flattened
+float input_array_dense[INPUT_LENGTH_DENSE_LAYER_TEST] = { 1,2,3,4 };
+float output_array_dense[OUTPUT_LENTH_DENSE_LAYER_TEST] = {0};
+float weights_biases_test[10] = { 1,1,1,1,1,1,1,1,1,0 };
+
+/* Input Image */
+float input_image[150*50];
+
 int main(){
 	
-	//Conv layer params
-    int kernel_size = 2;
-    int num_filters = 1;
-    int num_weights_biases = num_filters*kernel_size*kernel_size + num_filters;
-    int32_t weights_biases[10] = {1,1,1,1,1,1,1,1,1,0};
-    int32_t input_arr[DIM*DIM] = {1,1,2,4,5,5,6,7,8,3,3,2,1,0,7,1,2,3,4,8,4,6,5,9,4};
-    int32_t output_arr[DIM*DIM];
-    int32_t output_arr_2[3*3];
+    int i,j;
 	
-    // Dense Layer Params
-    // input to dense layer is flattened
-    float input_array_dense[INPUT_LENGTH_DENSE_LAYER_TEST] = { 1,2,3,4 };
-    float output_array_dense[OUTPUT_LENTH_DENSE_LAYER_TEST] = {0};
-    float weights_biases_test[10] = { 1,1,1,1,1,1,1,1,1,0 };
+	/* Conv Layer 1 */
+    #ifdef CONV_1_LAYER
+	printf("\n**************************************** Beginning Conv 1 Layer Testing ****************************************\n");
 	
-    //First conv layer
-    conv_layer(weights_biases,         	  // global memory pointer
-				input_arr, 				  // where to get inputs
-				output_arr,				  // where to store outputs
+	float conv_1_out[CONV1_OUTPUT_X*CONV1_OUTPUT_Y];
+	extern float conv2d_1[];
+	
+    conv_layer(conv2d_1,         	  	  // global memory pointer
+				input_image, 			  // where to get inputs
+				conv_1_out,				  // where to store outputs
 				0, 						  // offset for biases, weights
                 1,            			  // batch size
                 CONV1_NUM_FILTERS,        // number of filters
@@ -37,62 +67,117 @@ int main(){
                 CONV1_OUTPUT_X,           // input width
                 CONV1_OUTPUT_Y,           // input height
                 CONV1_STRIDE,             // stride
-                CONV1_KERNEL);            // kernel size
-    
-    int i,j;
+                CONV1_KERNEL);            // kernel size   
 	
-	printf("\n**************************************** Beginning Conv Layer Testing ****************************************\n");
+	printf("\n**************************************** End Conv 1 Layer Testing ****************************************\n");
+	#endif
 	
-    printf("Kernel array:\n");
-    for(i = 0; i < CONV1_KERNEL; i++){
-        for (j = 0; j < CONV1_KERNEL; j++){
-            printf("%d ", weights_biases[j+ CONV1_KERNEL*i]);  
-        }
-        printf("\n");
-    }
+	/* Batch Norm Layer 1 */
+	#ifdef BATCH_NORM_1_LAYER
+	printf("\n**************************************** Beginning Batch Norm 1 Layer Testing ****************************************\n");
+	float batch_norm_1_out[CONV1_OUTPUT_X*CONV1_OUTPUT_Y];
+	extern float batch_normalization_1[];
+
+	batch_norm(batch_normalization_1,   // global memory pointer (stores params)
+					conv_1_out, 		// where to get inputs
+					batch_norm_1_out,	// where to store outputs
+					0, 					// offset for biases, weights
+					1,            		// number of batches
+					CONV1_NUM_FILTERS,  // number of inputs (number of outputs from previous conv layer)
+					CONV1_OUTPUT_X,     // input width
+					CONV1_OUTPUT_Y)     // input height
 	
-    printf("Input array:\n");
-    for(i = 0; i < DIM; i++){
-        for (j = 0; j < DIM; j++){
-            printf("%d ", input_arr[j+ DIM*i]);  
-        }
-        printf("\n");
-    }
+	printf("\n**************************************** End Batch Norm 1 Layer Testing ****************************************\n");
+	#endif
+	
+	/* Max Pool Layer 1 */
+	#ifdef MAX_POOL_1_LAYER
+	printf("\n**************************************** Beginning Max Pool 1 Layer Testing ****************************************\n");
+	float max_pool_1_out[MAX_POOL_1_OUTPUT_X*MAX_POOL_1_OUTPUT_Y];
+	
+	max_pool(batch_norm_1_out, 			  // where to get inputs
+				max_pool_1_out,			  // where to store outputs
+                1,           			  // number of outputs (todo - need to double check)
+                MAX_POOL_1_OUTPUT_X,      // output width
+                MAX_POOL_1_OUTPUT_Y,      // output height
+                BATCH_NORM_1_OUTPUT_X,    // input width
+                BATCH_NORM_1_OUTPUT_Y);   // input height
+	
+	printf("\n**************************************** End Max Pool 1 Layer Testing ****************************************\n");
+	#endif
+	
+	/* Conv Layer 2 */
+	#ifdef CONV_2_LAYER
+	printf("\n**************************************** Beginning Conv 2 Layer Testing ****************************************\n");
+
+	//Create output array
+	float conv_2_out[CONV2_OUTPUT_X*CONV2_OUTPUT_Y];
+	
+    conv_layer(weights_biases,         	  // global memory pointer
+				batch_norm_out_1, 				  // where to get inputs
+				conv_2_out,				  // where to store outputs
+				0, 						  // offset for biases, weights
+                1,            			  // batch size
+                CONV2_NUM_FILTERS,        // number of filters
+                CONV2_OUTPUT_X,           // output width
+                CONV2_OUTPUT_Y,           // output height
+                CONV1_NUM_FILTERS,         // number of inputs 
+                CONV2_OUTPUT_X,           // input width
+                CONV2_OUTPUT_Y,           // input height
+                CONV2_STRIDE,             // stride
+                CONV2_KERNEL);            // kernel size   
+
+	printf("\n**************************************** End Conv 2 Layer Testing ****************************************\n");
+	#endif
+	
+    // printf("Kernel array:\n");
+    // for(i = 0; i < CONV1_KERNEL; i++){
+        // for (j = 0; j < CONV1_KERNEL; j++){
+            // printf("%d ", weights_biases[j+ CONV1_KERNEL*i]);  
+        // }
+        // printf("\n");
+    // }
+	
+    // printf("Input array:\n");
+    // for(i = 0; i < DIM; i++){
+        // for (j = 0; j < DIM; j++){
+            // printf("%d ", input_arr[j+ DIM*i]);  
+        // }
+        // printf("\n");
+    // }
     
-    printf("Output array:\n");
-    for(i = 0; i < DIM; i++){
-        for (j = 0; j < DIM; j++){
-            printf("%d ", output_arr[j+ DIM*i]);  
-        }
-        printf("\n");
-    }
+    // printf("Output array:\n");
+    // for(i = 0; i < DIM; i++){
+        // for (j = 0; j < DIM; j++){
+            // printf("%d ", output_arr[j+ DIM*i]);  
+        // }
+        // printf("\n");
+    // }
     
-    max_pool(output_arr, 		// where to get inputs
-    			output_arr_2,		// where to store outputs
-                1,           // number of outputs
-                3,           // output width
-                3,           // output height
-                5,           // input width
-                5);           // input height    
+    // max_pool(output_arr, 		// where to get inputs
+    			// output_arr_2,		// where to store outputs
+                // 1,           // number of outputs
+                // 3,           // output width
+                // 3,           // output height
+                // 5,           // input width
+                // 5);           // input height    
  
-    printf("Output array 2:\n");
-    for(i = 0; i < 3; i++){
-        for (j = 0; j < 3; j++){
-            printf("%d ", output_arr_2[j+ 3*i]);  
-        }
-        printf("\n");
-    }   
+    // printf("Output array 2:\n");
+    // for(i = 0; i < 3; i++){
+        // for (j = 0; j < 3; j++){
+            // printf("%d ", output_arr_2[j+ 3*i]);  
+        // }
+        // printf("\n");
+    // }   
     
-    // dense layer test output
-	
-	printf("\n**************************************** End Conv Layer Testing ****************************************\n");
 
     printf("**************************************** Beginning Dense Layer Testing ****************************************\n");
 
+	// dense layer test output
     printf("Kernel array for dense layer test:\n");
     for (i = 0; i < CONV1_KERNEL; i++) {
         for (j = 0; j < CONV1_KERNEL; j++) {
-            printf("%d ", weights_biases[j + CONV1_KERNEL * i]);
+            printf("%d ", weights_biases_test[j + CONV1_KERNEL * i]);
         }
         printf("\n");
     }

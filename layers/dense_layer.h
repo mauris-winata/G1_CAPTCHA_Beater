@@ -4,7 +4,7 @@
 #include <float.h>
 #include <stdint.h>
 #include <math.h>
-#include "conv_layer.h"
+#include "max_pool_layer.h"
 
 // dense layer types
 typedef enum

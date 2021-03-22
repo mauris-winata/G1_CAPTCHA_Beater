@@ -4,9 +4,9 @@
 #include "batch_norm_layer.h"
 #include <stdint.h>
 
-void conv_layer(int32_t * mem,         // global memory pointer
-				int32_t * input, 		// where to get inputs
-				int32_t * output,		// where to store outputs
+void conv_layer(float * mem,         // global memory pointer
+				float * input, 		// where to get inputs
+				float * output,		// where to store outputs
 				int offset, 			// offset for biases, weights
                 // int input_offset,       // offset of inputs
                 // int output_offset,      // offset of outputs
@@ -38,9 +38,9 @@ void conv_layer(int32_t * mem,         // global memory pointer
 // #pragma HLS INTERFACE s_axilite port=return bundle=CTRL_BUS
  
   int num_weights = id*od*k*k;
-  int num_biases = od;
-  int num_input = b*id*ix*iy;
-  int num_output = b*od*ox*oy;
+  // int num_biases = od;
+  // int num_input = b*id*ix*iy;
+  // int num_output = b*od*ox*oy;
   
   //Calculating padding required
   // int left_pad;
@@ -67,7 +67,7 @@ void conv_layer(int32_t * mem,         // global memory pointer
         for (int o_x = 0; o_x < ox; o_x++)
         {
           // Set bias
-		   uint32_t bias = mem[offset/sizeof(uint32_t) + num_weights + o_d]; //one bias per filter
+		   float bias = mem[offset/sizeof(float) + num_weights + o_d]; //one bias per filter
            float output_element = bias;
 
           // Weighted Sum:
@@ -87,10 +87,10 @@ void conv_layer(int32_t * mem,         // global memory pointer
                 if (i_x < 0) continue;
                 if (i_x > ix - 1) continue;
 				//access the input array; offset is: batch + current input + row + column
-				uint32_t input_val = input[b_*id*ix*iy + i_d*ix*iy + i_y*ix + i_x];
+				float input_val = input[b_*id*ix*iy + i_d*ix*iy + i_y*ix + i_x];
 				
 				//access the weights/bias array; offset is: + row + column
-				uint32_t weight = mem[offset/sizeof(uint32_t) + o_d*k*k + iiy*k + iix];
+				float weight = mem[offset/sizeof(float) + o_d*k*k + iiy*k + iix];
                 output_element += input_val*weight;                                  
               }
             }
