@@ -7,11 +7,11 @@
 
 #define DIM 5
 
-//Input Layer
+/* Input Image */
 #define IMG_WIDTH 150
 #define IMG_HEIGHT 50
 
-//Layers (turn on if required)
+/* Layers (turn on if required) */
 #define CONV_1_LAYER
 // #define BATCH_NORM_1_LAYER
 // #define MAX_POOL_1_LAYER
@@ -42,24 +42,32 @@ float output_array_dense[OUTPUT_LENTH_DENSE_LAYER_TEST] = {0};
 float weights_biases_test[10] = { 1,1,1,1,1,1,1,1,1,0 };
 
 /* Input Image */
-float input_image[150*50];
+extern float input_image[];
+float temp_input_image[150*50] = {0};
 
 int main(){
 	
     int i,j;
+	FILE *results;
+	results = fopen("Outputs/results.txt","w+");
+	
+	if(results == NULL){
+	  printf("Error! Can't Open File! \n");   
+	  return(1);             
+	}
 	
 	/* Conv Layer 1 */
     #ifdef CONV_1_LAYER
 	printf("\n**************************************** Beginning Conv 1 Layer Testing ****************************************\n");
 	
-	float conv_1_out[CONV1_OUTPUT_X*CONV1_OUTPUT_Y];
+	float conv_1_out[CONV1_OUTPUT_X*CONV1_OUTPUT_Y*CONV1_NUM_FILTERS*CONV1_BATCHES];
 	extern float conv2d_1[];
 	
     conv_layer(conv2d_1,         	  	  // global memory pointer
-				input_image, 			  // where to get inputs
+				input_image, 		  // where to get inputs
 				conv_1_out,				  // where to store outputs
 				0, 						  // offset for biases, weights
-                1,            			  // batch size
+                CONV1_BATCHES,            // batch size
                 CONV1_NUM_FILTERS,        // number of filters
                 CONV1_OUTPUT_X,           // output width
                 CONV1_OUTPUT_Y,           // output height
@@ -69,13 +77,18 @@ int main(){
                 CONV1_STRIDE,             // stride
                 CONV1_KERNEL);            // kernel size   
 	
+	for (i = 0; i < CONV1_OUTPUT_X*CONV1_OUTPUT_Y*CONV1_NUM_FILTERS*CONV1_BATCHES; i++){
+		fprintf(results, "%f ", conv_1_out[i]);
+	}
+	fprintf(results, "\n");
+	
 	printf("\n**************************************** End Conv 1 Layer Testing ****************************************\n");
 	#endif
 	
 	/* Batch Norm Layer 1 */
 	#ifdef BATCH_NORM_1_LAYER
 	printf("\n**************************************** Beginning Batch Norm 1 Layer Testing ****************************************\n");
-	float batch_norm_1_out[CONV1_OUTPUT_X*CONV1_OUTPUT_Y];
+	float batch_norm_1_out[CONV1_OUTPUT_X*CONV1_OUTPUT_Y*CONV1_NUM_FILTERS*CONV1_BATCHES];
 	extern float batch_normalization_1[];
 
 	batch_norm(batch_normalization_1,   // global memory pointer (stores params)
@@ -93,7 +106,7 @@ int main(){
 	/* Max Pool Layer 1 */
 	#ifdef MAX_POOL_1_LAYER
 	printf("\n**************************************** Beginning Max Pool 1 Layer Testing ****************************************\n");
-	float max_pool_1_out[MAX_POOL_1_OUTPUT_X*MAX_POOL_1_OUTPUT_Y];
+	float max_pool_1_out[MAX_POOL_1_OUTPUT_X*MAX_POOL_1_OUTPUT_Y*CONV1_NUM_FILTERS*CONV1_BATCHES];
 	
 	max_pool(batch_norm_1_out, 			  // where to get inputs
 				max_pool_1_out,			  // where to store outputs
@@ -208,7 +221,7 @@ int main(){
 
     printf("\n**************************************** Finishing Dense Layer Testing ****************************************\n");
     
-    printf("Hello World");
-
+	fclose(results);
+	
     return 0;
 }

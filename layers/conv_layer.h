@@ -5,6 +5,7 @@
 
 //Conv 1 Params
 #define CONV1_KERNEL 3
+#define CONV1_BATCHES 1
 #define CONV1_INPUT_X 150
 #define CONV1_INPUT_Y 50
 #define CONV1_OUTPUT_X 150
