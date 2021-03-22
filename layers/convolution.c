@@ -1,6 +1,7 @@
 // #include <algorithm>
 #include <float.h>
-#include "layer_defs.h"
+#include "conv_layer.h"
+#include "batch_norm_layer.h"
 #include <stdint.h>
 
 void conv_layer(int32_t * mem,         // global memory pointer

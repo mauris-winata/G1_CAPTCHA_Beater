@@ -1,6 +1,9 @@
 // #include <algorithm>
 #include <float.h>
-#include "layer_defs.h"
+#include <stdint.h>
+#include "conv_layer.h"
+#include "batch_norm_layer.h"
+#include "max_pool_layer.h"
 #include <stdint.h>
 
 

@@ -1,11 +1,15 @@
 #include <stdio.h>
 #include <stdint.h>
-#include "layer_defs.h"
+#include "conv_layer.h"
 #include "dense_layer.h"
+#include "max_pool_layer.h"
+#include "batch_norm_layer.h"
 
 #define DIM 5
 
 int main(){
+	
+	//Conv layer params
     int kernel_size = 2;
     int num_filters = 1;
     int num_weights_biases = num_filters*kernel_size*kernel_size + num_filters;
@@ -13,12 +17,13 @@ int main(){
     int32_t input_arr[DIM*DIM] = {1,1,2,4,5,5,6,7,8,3,3,2,1,0,7,1,2,3,4,8,4,6,5,9,4};
     int32_t output_arr[DIM*DIM];
     int32_t output_arr_2[3*3];
-
-    // inputs and outputs to verify the dense layer
+	
+    // Dense Layer Params
     // input to dense layer is flattened
     float input_array_dense[INPUT_LENGTH_DENSE_LAYER_TEST] = { 1,2,3,4 };
     float output_array_dense[OUTPUT_LENTH_DENSE_LAYER_TEST] = {0};
     float weights_biases_test[10] = { 1,1,1,1,1,1,1,1,1,0 };
+	
     //First conv layer
     conv_layer(weights_biases,         	  // global memory pointer
 				input_arr, 				  // where to get inputs
@@ -35,6 +40,8 @@ int main(){
                 CONV1_KERNEL);            // kernel size
     
     int i,j;
+	
+	printf("\n**************************************** Beginning Conv Layer Testing ****************************************\n");
 	
     printf("Kernel array:\n");
     for(i = 0; i < CONV1_KERNEL; i++){
@@ -77,6 +84,8 @@ int main(){
     }   
     
     // dense layer test output
+	
+	printf("\n**************************************** End Conv Layer Testing ****************************************\n");
 
     printf("**************************************** Beginning Dense Layer Testing ****************************************\n");
 

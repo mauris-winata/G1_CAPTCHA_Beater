@@ -1,2 +1,2 @@
 all:
-	gcc -Wall -o layer_test *.c
+	gcc -Wall -o layer_test *.c -lm
