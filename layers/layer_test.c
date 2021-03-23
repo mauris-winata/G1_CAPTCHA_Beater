@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdint.h>
-#include "conv_layer.h"
-#include "dense_layer.h"
-#include "max_pool_layer.h"
-#include "batch_norm_layer.h"
-#include "shared.h"
-#include "convolution_test.h"
+#include "conv/conv_layer.h"
+#include "dense/dense_layer.h"
+#include "max_pool/max_pool_layer.h"
+#include "batch_norm/batch_norm_layer.h"
+#include "util/shared.h"
+#include "util/data_structs.h"
+#include "convolution_test/convolution_test.h"
+#include "output/output_layer.h"
 
 #define DIM 5
 
@@ -44,24 +46,25 @@ float output_array_dense[OUTPUT_LENTH_DENSE_LAYER_TEST] = {0};
 float weights_biases_test[10] = { 1,1,1,1,1,1,1,1,1,0 };
 
 /* Input Image */
-extern float input_image[];
-float temp_input_image[150*50] = {0};
+extern image_t input_image[];
 
 int main(){
 	
     int i,j;
-	FILE *results;
-	results = fopen("Outputs/results.txt","w+");
-	
-	if(results == NULL){
-	  printf("Error! Can't Open File! \n");   
-	  return(1);             
-	}
+
 	
 	/* Conv Layer 1 */
     #ifdef CONV_1_LAYER
 	printf("\n**************************************** Beginning Conv 1 Layer Testing ****************************************\n");
+
+	FILE *conv_1_results;
+	conv_1_results = fopen("generated_outputs/conv_1.txt","w+");
 	
+	if(conv_1_results == NULL){
+	  printf("Error! Can't Open File! \n");   
+	  return(1);             
+	}
+
 	float conv_1_out[CONV1_OUTPUT_X*CONV1_OUTPUT_Y*CONV1_NUM_FILTERS*CONV1_BATCHES];
 	extern float conv2d_1[];
 	
@@ -80,9 +83,9 @@ int main(){
                 CONV1_KERNEL);            // kernel size   
 	
 	for (i = 0; i < CONV1_OUTPUT_X*CONV1_OUTPUT_Y*CONV1_NUM_FILTERS*CONV1_BATCHES; i++){
-		fprintf(results, "%f ", conv_1_out[i]);
+		fprintf(conv_1_results, "%f\n", conv_1_out[i]);
 	}
-	fprintf(results, "\n");
+	fprintf(conv_1_results, "\n");
 	
 	printf("\n**************************************** End Conv 1 Layer Testing ****************************************\n");
 
@@ -100,7 +103,8 @@ int main(){
 
     convolution_layer_test(CONVOLUTION_LAYER_1_TEST_INPUT_DATA, CONVOLUTION_LAYER_1_TEST_WEIGHTS_BIAS, CONVOLUTION_LAYER_1_TEST_GOLDEN_OUTPUT,
         0, CONV_LAYER_1_NAME, convolution_layer_one);
-
+		
+	fclose(conv_1_results);
 
 	#endif
 	
@@ -117,7 +121,12 @@ int main(){
 					1,            		// number of batches
 					CONV1_NUM_FILTERS,  // number of inputs (number of outputs from previous conv layer)
 					CONV1_OUTPUT_X,     // input width
-					CONV1_OUTPUT_Y)     // input height
+					CONV1_OUTPUT_Y);     // input height
+	
+	for (i = 0; i < CONV1_OUTPUT_X*CONV1_OUTPUT_Y*CONV1_NUM_FILTERS*CONV1_BATCHES; i++){
+		fprintf(results, "%f ", batch_norm_1_out[i]);
+	}
+	fprintf(results, "\n");
 	
 	printf("\n**************************************** End Batch Norm 1 Layer Testing ****************************************\n");
 	#endif
@@ -240,7 +249,7 @@ int main(){
 
     printf("\n**************************************** Finishing Dense Layer Testing ****************************************\n");*/
     
-	fclose(results);
+
 	
     return 0;
 }
