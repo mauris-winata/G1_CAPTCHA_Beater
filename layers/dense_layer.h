@@ -1,5 +1,9 @@
 // this file contains the dense layer function declarations
 // additional layer specific parameters have been added 
+#ifndef DENSE_LAYER_H
+#define DENSE_LAYER_H
+
+
 
 #include <float.h>
 #include <stdint.h>
@@ -37,3 +41,5 @@ void dense_layer(float* mem, // global pointer to weights and biases
 	int ix, // input data dimension (length after arriving from flatten layer, 1xid)
 	int ox // output data dimension (length after leaving dense layer, 1xod)
 );
+
+#endif // !DENSE_LAYER_H

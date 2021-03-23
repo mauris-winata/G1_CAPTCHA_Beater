@@ -1,3 +1,6 @@
+#ifndef CONV_LAYER_H
+#define CONV_LAYER_H
+
 #include <stdint.h>
 
 //Inline Functions
@@ -47,4 +50,8 @@ void conv_layer(float * mem,         // global memory pointer
                 const int iy,           // input height
                 const int s,            // stride
                 const int k);            // kernel size
+
+
+
+#endif
 

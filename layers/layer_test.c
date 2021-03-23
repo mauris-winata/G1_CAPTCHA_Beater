@@ -4,6 +4,8 @@
 #include "dense_layer.h"
 #include "max_pool_layer.h"
 #include "batch_norm_layer.h"
+#include "shared.h"
+#include "convolution_test.h"
 
 #define DIM 5
 
@@ -83,6 +85,23 @@ int main(){
 	fprintf(results, "\n");
 	
 	printf("\n**************************************** End Conv 1 Layer Testing ****************************************\n");
+
+    /* Using the test framework (convolution layer)*/
+    // prepping for testing the convolution layer
+    layer_params convolution_layer_one = { .batch_size = CONV1_BATCHES,
+                                           .input_dim = CONV1_NUM_INPUTS,
+                                           .input_height = CONV1_INPUT_Y,
+                                           .input_width = CONV1_INPUT_X,
+                                           .kernel_size = CONV1_KERNEL,
+                                           .output_dim = CONV1_NUM_FILTERS,
+                                           .output_height = CONV1_OUTPUT_Y,
+                                           .output_width = CONV1_OUTPUT_X,
+                                           .stride = CONV1_STRIDE };
+
+    convolution_layer_test(CONVOLUTION_LAYER_1_TEST_INPUT_DATA, CONVOLUTION_LAYER_1_TEST_WEIGHTS_BIAS, CONVOLUTION_LAYER_1_TEST_GOLDEN_OUTPUT,
+        0, CONV_LAYER_1_NAME, convolution_layer_one);
+
+
 	#endif
 	
 	/* Batch Norm Layer 1 */
@@ -184,7 +203,7 @@ int main(){
     // }   
     
 
-    printf("**************************************** Beginning Dense Layer Testing ****************************************\n");
+    /*printf("**************************************** Beginning Dense Layer Testing ****************************************\n");
 
 	// dense layer test output
     printf("Kernel array for dense layer test:\n");
@@ -219,7 +238,7 @@ int main(){
         printf("%f ", output_array_dense[i]);
     }
 
-    printf("\n**************************************** Finishing Dense Layer Testing ****************************************\n");
+    printf("\n**************************************** Finishing Dense Layer Testing ****************************************\n");*/
     
 	fclose(results);
 	
