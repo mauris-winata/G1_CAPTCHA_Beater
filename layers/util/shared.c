@@ -43,7 +43,7 @@ void read_file_data(FILE* file, void* data_container, int data_size, LAYER_DATA_
 	return;
 }
 
-float mean_squared_error(float* layer_output, float* golden_output, layer_params_conv layer_info, bool conv_layer)
+float mean_squared_error(float* layer_output, float* golden_output, layer_params layer_info, bool conv_layer)
 {
 	float total_error = 0.0;
 	float intermediate_error = 0.0;
@@ -92,21 +92,21 @@ float mean_squared_error(float* layer_output, float* golden_output, layer_params
 	return total_error;
 }
 
-void print_layer_test_result(const char* layer_type, layer_params_conv layer_info, int weight_count, int bias_count, float error)
+void print_layer_test_result(const char* layer_type, layer_params layer_info, int weight_count, int bias_count, float error)
 {
-	printf("\n\n************************************* TEST %s PARAMETERS *************************************\n", layer_type);
-	printf("Batch Size: %d\n", layer_info.batch_size);
-	printf("Input Dimension: %d\n", layer_info.input_dim);
-	printf("Input Height: %d\n", layer_info.input_height);
-	printf("Input Width: %d\n", layer_info.input_width);
-	printf("Output Dimension: %d\n", layer_info.output_dim);
-	printf("Output Height: %d\n", layer_info.output_height);
-	printf("Output Width: %d\n", layer_info.output_width);
-	printf("Number of Weights: %d\n", weight_count);
-	printf("Number of Biases: %d\n", bias_count);
+	printf("Test Parameters:\n");
+	if(layer_info.batch_size != -1) printf("  Batch Size: %d\n", layer_info.batch_size);
+	if(layer_info.input_dim != -1) printf("  Input Dimension: %d\n", layer_info.input_dim);
+	if(layer_info.input_height != -1) printf("  Input Height: %d\n", layer_info.input_height);
+	if(layer_info.input_width != -1) printf("  Input Width: %d\n", layer_info.input_width);
+	if(layer_info.output_dim != -1) printf("  Output Dimension: %d\n", layer_info.output_dim);
+	if(layer_info.output_height != -1) printf("  Output Height: %d\n", layer_info.output_height);
+	if(layer_info.output_width != -1) printf("  Output Width: %d\n", layer_info.output_width);
+	if(weight_count != -1) printf("  Number of Weights: %d\n", weight_count);
+	if(bias_count != -1) printf("  Number of Biases: %d\n", bias_count);
 
-	printf("\n************************************* TESTING RESULTS BELOW *************************************\n");
-	printf("Mean Squared Error: %f\n", error);
+	printf("\nTesting Results:\n");
+	printf("  Mean Squared Error: %f\n", error);
 
 	return;
 }

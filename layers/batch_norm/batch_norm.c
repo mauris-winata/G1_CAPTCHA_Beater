@@ -59,6 +59,7 @@ void batch_norm(weights_biases_t * mem, // global memory pointer (stores params)
 	}
 	
 	#ifdef SW_TEST
-	assert(num_output == (output_count + 1));
+	// printf("Num output = %d, output_count = %d\n", num_output, output_count);
+	assert(num_output == output_count);
 	#endif
 }

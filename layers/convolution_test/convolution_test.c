@@ -4,7 +4,7 @@
 #include "../util/data_structs.h"
 
 
-void convolution_layer_test(const char* input_data,const char* weights, const char* golden_output_data, const char* output_data, int offset, const char* layer_name, layer_params_conv convolution_parameters)
+void convolution_layer_test(const char* input_data,const char* weights, const char* golden_output_data, const char* output_data, int offset, const char* layer_name, layer_params convolution_parameters)
 {
 	// file handlers
 	FILE* input_data_file = fopen(input_data, "r");

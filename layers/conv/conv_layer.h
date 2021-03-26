@@ -20,6 +20,7 @@
 
 //Conv 2 Params
 #define CONV2_KERNEL 3
+#define CONV2_BATCHES 1
 #define CONV2_INPUT_X 150 //todo
 #define CONV2_INPUT_Y 50  //todo
 #define CONV2_OUTPUT_X 5 //todo
@@ -30,6 +31,7 @@
 
 //Conv 3 Params
 #define CONV3_KERNEL 3
+#define CONV3_BATCHES 1
 #define CONV3_INPUT_X 150 //todo
 #define CONV3_INPUT_Y 50  //todo
 #define CONV3_OUTPUT_X 5  //todo

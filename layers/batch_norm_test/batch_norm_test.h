@@ -15,6 +15,6 @@
 #define BATCH_NORM_1_NAME "Batch_normalization_1"
 
 
-// void batch_norm_layer_test(const char* input_data,const char* weights,const char* golden_output_data, const char* output_data, int offset,const char* layer_name,layer_params_batch_norm convolution_parameters);
+void batch_norm_layer_test(const char* input_data,const char* weights,const char* golden_output_data, const char* output_data, int offset,const char* layer_name,layer_params_batch_norm convolution_parameters);
 
 #endif 
