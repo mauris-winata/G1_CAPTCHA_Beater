@@ -7,6 +7,7 @@
 #include "util/shared.h"
 #include "util/data_structs.h"
 #include "convolution_test/convolution_test.h"
+#include "batch_norm_test/batch_norm_test.h"
 #include "output/output_layer.h"
 
 #define DIM 5
@@ -52,46 +53,43 @@ int main(){
 	
     int i,j;
 
-	
 	/* Conv Layer 1 */
     #ifdef CONV_1_LAYER
-	printf("\n**************************************** Beginning Conv 1 Layer Testing ****************************************\n");
+	// printf("\n**************************************** Beginning Conv 1 Layer Testing ****************************************\n");
 
-	FILE *conv_1_results;
-	conv_1_results = fopen("generated_outputs/conv_1.txt","w+");
+	// FILE *conv_1_results;
+	// conv_1_results = fopen("generated_outputs/conv_1.txt","w+");
 	
-	if(conv_1_results == NULL){
-	  printf("Error! Can't Open File! \n");   
-	  return(1);             
-	}
+	// if(conv_1_results == NULL){
+	  // printf("Error! Can't Open File! \n");   
+	  // return(1);             
+	// }
 
-	float conv_1_out[CONV1_OUTPUT_X*CONV1_OUTPUT_Y*CONV1_NUM_FILTERS*CONV1_BATCHES];
-	extern float conv2d_1[];
+	// float conv_1_out[CONV1_OUTPUT_X*CONV1_OUTPUT_Y*CONV1_NUM_FILTERS*CONV1_BATCHES];
+	// extern float conv2d_1[];
 	
-    conv_layer(conv2d_1,         	  	  // global memory pointer
-				input_image, 		  // where to get inputs
-				conv_1_out,				  // where to store outputs
-				0, 						  // offset for biases, weights
-                CONV1_BATCHES,            // batch size
-                CONV1_NUM_FILTERS,        // number of filters
-                CONV1_OUTPUT_X,           // output width
-                CONV1_OUTPUT_Y,           // output height
-                CONV1_NUM_INPUTS,         // number of inputs 
-                CONV1_OUTPUT_X,           // input width
-                CONV1_OUTPUT_Y,           // input height
-                CONV1_STRIDE,             // stride
-                CONV1_KERNEL);            // kernel size   
+    // conv_layer(conv2d_1,         	  	  // global memory pointer
+				// input_image, 		  // where to get inputs
+				// conv_1_out,				  // where to store outputs
+				// 0, 						  // offset for biases, weights
+                // CONV1_BATCHES,            // batch size
+                // CONV1_NUM_FILTERS,        // number of filters
+                // CONV1_OUTPUT_X,           // output width
+                // CONV1_OUTPUT_Y,           // output height
+                // CONV1_NUM_INPUTS,         // number of inputs 
+                // CONV1_OUTPUT_X,           // input width
+                // CONV1_OUTPUT_Y,           // input height
+                // CONV1_STRIDE,             // stride
+                // CONV1_KERNEL);            // kernel size   
 	
-	for (i = 0; i < CONV1_OUTPUT_X*CONV1_OUTPUT_Y*CONV1_NUM_FILTERS*CONV1_BATCHES; i++){
-		fprintf(conv_1_results, "%f\n", conv_1_out[i]);
-	}
-	fprintf(conv_1_results, "\n");
-	
-	printf("\n**************************************** End Conv 1 Layer Testing ****************************************\n");
+	// for (i = 0; i < CONV1_OUTPUT_X*CONV1_OUTPUT_Y*CONV1_NUM_FILTERS*CONV1_BATCHES; i++){
+		// fprintf(conv_1_results, "%f\n", conv_1_out[i]);
+	// }
+	// fprintf(conv_1_results, "\n");
 
     /* Using the test framework (convolution layer)*/
     // prepping for testing the convolution layer
-    layer_params convolution_layer_one = { .batch_size = CONV1_BATCHES,
+    layer_params_conv convolution_layer_one = { .batch_size = CONV1_BATCHES,
                                            .input_dim = CONV1_NUM_INPUTS,
                                            .input_height = CONV1_INPUT_Y,
                                            .input_width = CONV1_INPUT_X,
@@ -101,10 +99,11 @@ int main(){
                                            .output_width = CONV1_OUTPUT_X,
                                            .stride = CONV1_STRIDE };
 
-    convolution_layer_test(CONVOLUTION_LAYER_1_TEST_INPUT_DATA, CONVOLUTION_LAYER_1_TEST_WEIGHTS_BIAS, CONVOLUTION_LAYER_1_TEST_GOLDEN_OUTPUT,
-        0, CONV_LAYER_1_NAME, convolution_layer_one);
+    convolution_layer_test(CONVOLUTION_LAYER_1_TEST_INPUT_DATA, CONVOLUTION_LAYER_1_TEST_WEIGHTS_BIAS, CONVOLUTION_LAYER_1_TEST_GOLDEN_OUTPUT, 
+	CONVOLUTION_LAYER_1_TEST_OUTPUT_DATA, 0, CONV_LAYER_1_NAME, convolution_layer_one);
 		
-	fclose(conv_1_results);
+	// fclose(conv_1_results);
+	// printf("\n**************************************** End Conv 1 Layer Testing ****************************************\n");
 
 	#endif
 	

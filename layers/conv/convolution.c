@@ -79,8 +79,8 @@ void conv_layer(weights_biases_t * mem,         // global memory pointer
 				float weight = mem[offset/sizeof(float) + (k*iiy + iix)*od + o_d]; //todo - incorporate batch num?
                 output_element += input_val*weight;  
 				
-				//Debug
-				// if (o_d == 0 && o_y == 0 && o_x == 1){
+				// // Debug
+				// if (o_d == 0 && o_y == 0 && o_x == 0){
 					// int mem_index = offset/sizeof(float) + (k*iiy + iix)*od + o_d;
 					// int input_index = b_*id*ix*iy + i_d*ix*iy + i_y*ix + i_x;
 					// printf("Input val = %f, Weight = %f, mem index = %d, input index = %d\n", input_val, weight, mem_index, input_index);
@@ -88,8 +88,8 @@ void conv_layer(weights_biases_t * mem,         // global memory pointer
               }
             }
           }
-		  //Debug
-		  // if (o_d == 0 && o_y == 0 && o_x == 1){
+		  // // Debug
+		  // if (o_d == 0 && o_y == 0 && o_x == 0){
 			  // printf("Bias = %f, Output = %f\n", bias, output_element);
 		  // }
 		  

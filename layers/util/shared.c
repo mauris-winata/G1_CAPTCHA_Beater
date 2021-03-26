@@ -43,7 +43,7 @@ void read_file_data(FILE* file, void* data_container, int data_size, LAYER_DATA_
 	return;
 }
 
-float mean_squared_error(float* layer_output, float* golden_output, layer_params layer_info, bool conv_layer)
+float mean_squared_error(float* layer_output, float* golden_output, layer_params_conv layer_info, bool conv_layer)
 {
 	float total_error = 0.0;
 	float intermediate_error = 0.0;
@@ -92,7 +92,7 @@ float mean_squared_error(float* layer_output, float* golden_output, layer_params
 	return total_error;
 }
 
-void print_layer_test_result(const char* layer_type, layer_params layer_info, int weight_count, int bias_count, float error)
+void print_layer_test_result(const char* layer_type, layer_params_conv layer_info, int weight_count, int bias_count, float error)
 {
 	printf("\n\n************************************* TEST %s PARAMETERS *************************************\n", layer_type);
 	printf("Batch Size: %d\n", layer_info.batch_size);

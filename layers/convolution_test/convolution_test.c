@@ -1,17 +1,19 @@
 
 
 #include "convolution_test.h"
+#include "../util/data_structs.h"
 
 
-void convolution_layer_test(const char* input_data,const char* weights,const char* golden_output_data, int offset, const char* layer_name, layer_params convolution_parameters)
+void convolution_layer_test(const char* input_data,const char* weights, const char* golden_output_data, const char* output_data, int offset, const char* layer_name, layer_params_conv convolution_parameters)
 {
 	// file handlers
 	FILE* input_data_file = fopen(input_data, "r");
 	FILE* weights_data_file = fopen(weights, "r");
 	FILE* golden_output_file = fopen(golden_output_data, "r");
+	FILE* output_file = fopen(output_data, "w+");
 
 
-	if ((input_data_file == NULL) || (weights_data_file == NULL) || (golden_output_file == NULL))
+	if ((input_data_file == NULL) || (weights_data_file == NULL) || (golden_output_file == NULL) || (output_file == NULL))
 	{
 		printf("Failed to open the convolution layer test files\n");
 		exit(-1);
@@ -24,10 +26,10 @@ void convolution_layer_test(const char* input_data,const char* weights,const cha
 	int output_size = convolution_parameters.output_dim * convolution_parameters.output_height * convolution_parameters.output_width;
 
 	// we read in the data from the test related files
-	float* input_image = (float*)malloc(sizeof(float) * input_data_size);
-	float* weights_bias = (float*)malloc(sizeof(float) * weights_size);
-	float* golden_output = (float*)malloc(sizeof(float) * output_size);
-	float* output_result = (float*)malloc(sizeof(float) * output_size);
+	result_t* input_image = (result_t*)malloc(sizeof(result_t) * input_data_size);
+	weights_biases_t* weights_bias = (weights_biases_t*)malloc(sizeof(weights_biases_t) * weights_size);
+	result_t* golden_output = (result_t*)malloc(sizeof(result_t) * output_size);
+	result_t* output_result = (result_t*)malloc(sizeof(result_t) * output_size);
 
 	// resulting error of the test
 	float convolution_error = 0.0;
@@ -68,6 +70,13 @@ void convolution_layer_test(const char* input_data,const char* weights,const cha
 
 	// print the test results
 	print_layer_test_result(layer_name, convolution_parameters, weights_size - convolution_parameters.output_dim, convolution_parameters.output_dim, convolution_error);
+
+	//Printing output results to a file
+	int i; 
+	for (i = 0; i < output_size; i++){
+		fprintf(output_file, "%f\n", output_result[i]);
+	}
+		
 
 	printf("************************************* FINISHED TESTING %s LAYER *************************************\n", layer_name);
 

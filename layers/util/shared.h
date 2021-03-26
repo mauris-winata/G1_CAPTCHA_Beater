@@ -21,7 +21,15 @@ typedef struct
 	int output_width;
 	int kernel_size;
 	int stride;
-} layer_params;
+} layer_params_conv;
+
+typedef struct
+{
+	int batch_size;
+	int input_dim;
+	int input_height;
+	int input_width;
+} layer_params_batch_norm;
 
 typedef enum
 {
@@ -35,9 +43,9 @@ typedef enum
 
 void read_file_data(FILE* file, void* data_container, int data_size, LAYER_DATA_TYPE type);
 
-float mean_squared_error(float* layer_output, float* golden_output, layer_params layer_info, bool conv_layer);
+float mean_squared_error(float* layer_output, float* golden_output, layer_params_conv layer_info, bool conv_layer);
 
-void print_layer_test_result(const char* layer_type, layer_params layer_info, int weight_count, int bias_count, float error);
+void print_layer_test_result(const char* layer_type, layer_params_conv layer_info, int weight_count, int bias_count, float error);
 
 
 

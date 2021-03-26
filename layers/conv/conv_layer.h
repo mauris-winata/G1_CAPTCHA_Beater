@@ -2,6 +2,7 @@
 #define CONV_LAYER_H
 
 #include <stdint.h>
+#include "../util/data_structs.h"
 
 //Inline Functions
 #define MAX(a,b) (((a)>(b))?(a):(b))
