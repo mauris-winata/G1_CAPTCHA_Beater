@@ -16,7 +16,11 @@ void output_layer(dense_out* mem, //pointer to output of dense layer which serve
 	for (int i = 1; i < n_chr; i++)					// Loop through all the outputs to find highest probability output
 	{
 		if (*(mem + i*sizeof(mem)) > max_val)		// Check if probability is higher than current characters
-			to_out = *(arr + i*sizeof(arr));		// Assign new char if yes
+		{
+			to_out = *(arr + i*sizeof(arr));	// Assign new char if yes
+			max_val = *(mem + i*sizeof(mem))	// Update max_val
+		}
+		
 	}
 
 	*out = to_out;									//write to output
