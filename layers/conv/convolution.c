@@ -39,6 +39,7 @@ void conv_layer(weights_biases_t * mem,         // global memory pointer
 // #pragma HLS INTERFACE s_axilite port=return bundle=CTRL_BUS
  
   int num_weights = id*od*k*k;
+  int temp_counter = 0;
   
   // Batch
   for (int b_=0; b_< b; b_++)
@@ -79,20 +80,21 @@ void conv_layer(weights_biases_t * mem,         // global memory pointer
 				float weight = mem[offset/sizeof(float) + (k*iiy + iix)*od*id +i_d*od + o_d]; 
                 output_element += input_val*weight;  
 				
-				// // Debug
-				// if (o_d == 0 && o_y == 0 && o_x == 0){
-					// int mem_index_old = offset/sizeof(float) + (k*iiy + iix)*od + o_d;
-					// int mem_index = offset/sizeof(float) + (k*iiy + iix)*od*id +i_d*od + o_d; 
-					// int input_index = b_*id*ix*iy + i_d*ix*iy + i_y*ix + i_x;
-					// printf("Input val = %f, Weight = %f, mem index = %d, mem_index_old = %d, input index = %d\n", input_val, weight, mem_index, mem_index_old, input_index);
-				// }                        
+				// Debug
+				if (o_d == 0 && o_y == 0 && o_x == 0){
+					int mem_index_old = offset/sizeof(float) + (k*iiy + iix)*od + o_d;
+					int mem_index = offset/sizeof(float) + (k*iiy + iix)*od*id +i_d*od + o_d; 
+					int input_index = b_*id*ix*iy + i_d*ix*iy + i_y*ix + i_x;
+					printf("Input val = %f, Weight = %f, mem index = %d, mem_index_old = %d, input index = %d\n", input_val, weight, mem_index, mem_index_old, input_index);
+					temp_counter++;
+				}                        
               }
             }
           }
-		  // // Debug
-		  // if (o_d == 0 && o_y == 0 && o_x == 0){
-			  // printf("Bias = %f, Output = %f\n", bias, output_element);
-		  // }
+		  // Debug
+		  if (o_d == 0 && o_y == 0 && o_x == 0){
+			  printf("Bias = %f, Output = %f\n", bias, output_element);
+		  }
 		  
           // Write output
           output[b_*od*ox*oy + o_d*ox*oy + o_y*ox + o_x] = MAX(0, output_element); //ReLu activation means output is non-negative
@@ -100,4 +102,5 @@ void conv_layer(weights_biases_t * mem,         // global memory pointer
       }
     }
   }
+  printf("Temp counter = %d\n", temp_counter);
 }

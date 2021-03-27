@@ -21,16 +21,14 @@
 #define MAX_POOL_1_LAYER
 #define CONV_2_LAYER
 #define BATCH_NORM_2_LAYER
-// #define MAX_POOL_2_LAYER
-// #define CONV_3_LAYER
+#define MAX_POOL_2_LAYER
+#define CONV_3_LAYER
 // #define BATCH_NORM_3_LAYER
 // #define MAX_POOL_3_LAYER
 // #define DENSE_1_LAYER
 // #define DENSE_2_LAYER
 
 int main(){
-	
-    int i,j;
 
 	/* Conv Layer 1 */
     #ifdef CONV_1_LAYER
@@ -110,6 +108,38 @@ int main(){
 										   
     batch_norm_layer_test(BATCH_NORM_LAYER_2_TEST_INPUT_DATA, BATCH_NORM_LAYER_2_TEST_WEIGHTS_BIAS, BATCH_NORM_LAYER_2_TEST_GOLDEN_OUTPUT, 
 	BATCH_NORM_LAYER_2_TEST_OUTPUT_DATA, 0, BATCH_NORM_2_NAME, batch_norm_layer_2);
+	#endif
+	
+	/* Max Pool Layer 2 */
+	#ifdef MAX_POOL_2_LAYER
+    layer_params max_pool_layer_2 = { .batch_size = MAX_POOL_2_BATCHES,
+                                           .input_dim = -1,
+                                           .input_height = MAX_POOL_2_INPUT_Y,
+                                           .input_width = MAX_POOL_2_INPUT_X,
+                                           .kernel_size = -1, //unused
+                                           .output_dim = MAX_POOL_2_OUTPUT_DIM, //unused
+                                           .output_height = MAX_POOL_2_OUTPUT_Y, 
+                                           .output_width = MAX_POOL_2_OUTPUT_X, 
+                                           .stride = -1 }; //unused
+										   
+    max_pool_layer_test(MAX_POOL_LAYER_2_TEST_INPUT_DATA, MAX_POOL_LAYER_2_TEST_WEIGHTS_BIAS, MAX_POOL_LAYER_2_TEST_GOLDEN_OUTPUT, 
+	MAX_POOL_LAYER_2_TEST_OUTPUT_DATA, 0, MAX_POOL_2_NAME, max_pool_layer_2);
+	#endif
+	
+	/* Conv Layer 3 */
+	#ifdef CONV_3_LAYER
+    layer_params convolution_layer_3 = { .batch_size = CONV3_BATCHES,
+                                           .input_dim = CONV3_NUM_INPUTS,
+                                           .input_height = CONV3_INPUT_Y,
+                                           .input_width = CONV3_INPUT_X,
+                                           .kernel_size = CONV3_KERNEL,
+                                           .output_dim = CONV3_NUM_FILTERS,
+                                           .output_height = CONV3_OUTPUT_Y,
+                                           .output_width = CONV3_OUTPUT_X,
+                                           .stride = CONV3_STRIDE };
+
+    convolution_layer_test(CONVOLUTION_LAYER_3_TEST_INPUT_DATA, CONVOLUTION_LAYER_3_TEST_WEIGHTS_BIAS, CONVOLUTION_LAYER_3_TEST_GOLDEN_OUTPUT, 
+	CONVOLUTION_LAYER_3_TEST_OUTPUT_DATA, 0, CONV_LAYER_3_NAME, convolution_layer_3);
 	#endif
 	
     return 0;

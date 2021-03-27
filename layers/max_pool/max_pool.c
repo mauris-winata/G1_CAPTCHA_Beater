@@ -4,6 +4,7 @@
 #include "max_pool_layer.h"
 #include "../util/data_structs.h"
 #include <stdint.h>
+#include <math.h>
 
 void max_pool(result_t * input, 		// where to get inputs
 				result_t * output,		// where to store outputs
@@ -35,13 +36,13 @@ void max_pool(result_t * input, 		// where to get inputs
 
 				//Checking if still in bounds of image
 				if (2*o_y + 1 > iy - 1){
-				  pixel_2 = 0;
-				  pixel_3 = 0;
+				  pixel_2 = -INFINITY;
+				  pixel_3 = -INFINITY;
 				}
 
 				if (2*o_x + 1 > ix - 1){
-				  pixel_1 = 0;
-				  pixel_3 = 0;
+				  pixel_1 = -INFINITY;
+				  pixel_3 = -INFINITY;
 				}
 
 				// Write output

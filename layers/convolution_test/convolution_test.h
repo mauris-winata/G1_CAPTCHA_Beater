@@ -21,6 +21,14 @@
 #define CONVOLUTION_LAYER_2_TEST_GOLDEN_OUTPUT "golden_outputs/conv2d_2_output.txt"
 #define CONV_LAYER_2_NAME "Conv2d_2"
 
+//Conv Layer 3
+// #define CONVOLUTION_LAYER_3_TEST_INPUT_DATA "generated_outputs/max_pool_2.txt"
+#define CONVOLUTION_LAYER_3_TEST_INPUT_DATA "golden_outputs/max_pooling2d_2_output.txt"
+#define CONVOLUTION_LAYER_3_TEST_OUTPUT_DATA "generated_outputs/conv_3.txt"
+#define CONVOLUTION_LAYER_3_TEST_WEIGHTS_BIAS "weights/conv2d_3_weights.txt"
+#define CONVOLUTION_LAYER_3_TEST_GOLDEN_OUTPUT "golden_outputs/conv2d_3_output.txt"
+#define CONV_LAYER_3_NAME "Conv2d_2"
+
 
 void convolution_layer_test(const char* input_data,const char* weights,const char* golden_output_data, const char* output_data, int offset,const char* layer_name,layer_params convolution_parameters);
 
