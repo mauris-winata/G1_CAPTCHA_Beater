@@ -67,14 +67,14 @@ int main(){
 	
 	/* Max Pool Layer 1 */
 	#ifdef MAX_POOL_1_LAYER
-    layer_params max_pool_layer_1 = { .batch_size = BATCH_NORM_1_BATCHES,
-                                           .input_dim = BATCH_NORM_1_INPUT_DIM,
-                                           .input_height = BATCH_NORM_1_INPUT_Y,
-                                           .input_width = BATCH_NORM_1_INPUT_X,
+    layer_params max_pool_layer_1 = { .batch_size = MAX_POOL_1_BATCHES,
+                                           .input_dim = -1,
+                                           .input_height = MAX_POOL_1_INPUT_Y,
+                                           .input_width = MAX_POOL_1_INPUT_X,
                                            .kernel_size = -1, //unused
-                                           .output_dim = -1, //unused
-                                           .output_height = -1, //unused
-                                           .output_width = -1, //unused
+                                           .output_dim = 16, //unused
+                                           .output_height = MAX_POOL_1_OUTPUT_Y, 
+                                           .output_width = MAX_POOL_1_OUTPUT_X, 
                                            .stride = -1 }; //unused
 										   
     max_pool_layer_test(MAX_POOL_LAYER_1_TEST_INPUT_DATA, MAX_POOL_LAYER_1_TEST_WEIGHTS_BIAS, MAX_POOL_LAYER_1_TEST_GOLDEN_OUTPUT, 

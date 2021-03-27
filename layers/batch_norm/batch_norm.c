@@ -25,6 +25,10 @@ void batch_norm(weights_biases_t * mem, // global memory pointer (stores params)
 	#ifdef SW_TEST
 	int output_count = 0;
 	#endif
+	
+	result_t input_val;
+	result_t temp_output;
+	float temp_gamma, temp_beta, temp_mean, temp_var, temp_input;
 
 	// Batch - most likely always 1
 	for (int b_=0; b_< b; b_++){
@@ -38,6 +42,11 @@ void batch_norm(weights_biases_t * mem, // global memory pointer (stores params)
 			mean_t mean = mem[offset/sizeof(mean_t) + b_*id*4 + i_d*4 + 2];
 			var_t var = mem[offset/sizeof(var_t) + b_*id*4 + i_d*4 + 3];
 			
+			temp_gamma = gamma;
+			temp_beta = beta;
+			temp_mean = mean;
+			temp_var = var;
+			
 			// Input Y Dimension
 			for (int i_y = 0; i_y < iy; i_y++){
 				
@@ -45,10 +54,12 @@ void batch_norm(weights_biases_t * mem, // global memory pointer (stores params)
 				for (int i_x = 0; i_x < ix; i_x++){
 
 					//access the input array; offset is: batch + current input + row + column
-					float input_val = input[b_*id*ix*iy + i_d*ix*iy + i_y*ix + i_x];
+					input_val = input[b_*id*ix*iy + i_d*ix*iy + i_y*ix + i_x];
+					temp_input = input_val;
 
 					// Write output (one for every input)
 					output[b_*id*ix*iy + i_d*ix*iy + i_y*ix + i_x] = gamma*input_val/sqrt(var + EPSILON) + beta - gamma*mean/sqrt(var + EPSILON); 
+					temp_output = gamma*input_val/sqrt(var + EPSILON) + beta - gamma*mean/sqrt(var + EPSILON); 
 					
 					#ifdef SW_TEST
 					output_count++;
@@ -58,6 +69,8 @@ void batch_norm(weights_biases_t * mem, // global memory pointer (stores params)
 		}	
 	}
 	
+	printf("Final output is: %f, final input is: %f\n", temp_output, temp_input);
+	printf("Gamma: %f, beta: %f, mean: %f, var: %f\n", temp_gamma, temp_beta, temp_mean, temp_var);
 	#ifdef SW_TEST
 	assert(num_output == output_count);
 	#endif
