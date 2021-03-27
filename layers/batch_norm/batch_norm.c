@@ -33,10 +33,10 @@ void batch_norm(weights_biases_t * mem, // global memory pointer (stores params)
 		for (int i_d = 0; i_d < id; i_d++){
 
 			//set gamma, beta, mean, variance - 4 different params for each "filter"
-			float gamma = mem[offset/sizeof(float) + b_*id*4 + id*4]; 	
-			float beta = mem[offset/sizeof(float) + b_*id*4 + id*4 + 1];
-			float mean = mem[offset/sizeof(float) + b_*id*4 + id*4 + 2];
-			float var = mem[offset/sizeof(float) + b_*id*4 + id*4 + 3];
+			gamma_t gamma = mem[offset/sizeof(gamma_t) + b_*id*4 + i_d*4]; 	
+			beta_t beta = mem[offset/sizeof(beta_t) + b_*id*4 + i_d*4 + 1];
+			mean_t mean = mem[offset/sizeof(mean_t) + b_*id*4 + i_d*4 + 2];
+			var_t var = mem[offset/sizeof(var_t) + b_*id*4 + i_d*4 + 3];
 			
 			// Input Y Dimension
 			for (int i_y = 0; i_y < iy; i_y++){
@@ -59,7 +59,6 @@ void batch_norm(weights_biases_t * mem, // global memory pointer (stores params)
 	}
 	
 	#ifdef SW_TEST
-	// printf("Num output = %d, output_count = %d\n", num_output, output_count);
 	assert(num_output == output_count);
 	#endif
 }
