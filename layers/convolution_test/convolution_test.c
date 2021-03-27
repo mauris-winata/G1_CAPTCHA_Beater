@@ -74,7 +74,7 @@ void convolution_layer_test(const char* input_data,const char* weights, const ch
 	//Printing output results to a file
 	int i; 
 	for (i = 0; i < output_size; i++){
-		fprintf(output_file, "%f\n", output_result[i]);
+		fprintf(output_file, "%.6f\n", output_result[i]);
 	}
 		
 
@@ -84,6 +84,7 @@ void convolution_layer_test(const char* input_data,const char* weights, const ch
 	fclose(input_data_file);
 	fclose(weights_data_file);
 	fclose(golden_output_file);
+	fclose(output_file);
 
 	free(input_image);
 	free(weights_bias);

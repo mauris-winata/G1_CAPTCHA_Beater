@@ -7,6 +7,7 @@ void batch_norm_layer_test(const char* input_data,const char* weights, const cha
 	// file handlers
 	FILE* input_data_file = fopen(input_data, "r");
 	FILE* weights_data_file = fopen(weights, "r");
+	// FILE* golden_output_file = fopen(golden_output_data, "r");
 	FILE* golden_output_file = fopen(golden_output_data, "r");
 	FILE* output_file = fopen(output_data, "w+");
 
@@ -21,13 +22,16 @@ void batch_norm_layer_test(const char* input_data,const char* weights, const cha
 	int input_data_size = batch_norm_parameters.batch_size * batch_norm_parameters.input_dim * batch_norm_parameters.input_height * batch_norm_parameters.input_width;
 	int weights_size = batch_norm_parameters.input_dim * 4;
 	int output_size = input_data_size;
+	
+	printf("Input data size is: %d\n", input_data_size);
 
 	// we read in the data from the test related files
 	result_t* input = (result_t*)malloc(sizeof(result_t) * input_data_size);
-	weights_biases_t* weights_bias = (weights_biases_t*)malloc(sizeof(weights_biases_t) * weights_size);
-		
+	weights_biases_t* weights_bias = (weights_biases_t*)malloc(sizeof(weights_biases_t) * weights_size);		
 	result_t* golden_output = (result_t*)malloc(sizeof(result_t) * output_size);
 	result_t* output_result = (result_t*)malloc(sizeof(result_t) * output_size);
+	
+
 
 	// resulting error of the test
 	float batch_norm_error = -1;
@@ -44,6 +48,8 @@ void batch_norm_layer_test(const char* input_data,const char* weights, const cha
 	read_file_data(weights_data_file, weights_bias, weights_size, FLOAT); // weights and bias
 	read_file_data(golden_output_file, golden_output, output_size, FLOAT); // golden output
 
+	printf("Final calculated input is: %f\n", input[input_data_size - 1]);
+	printf("Final golden output is: %f\n", golden_output[output_size - 1]);
 	// printf("testing: first weight is %f\n", weights_bias[0]);
 
 	// start the batch norm operation
@@ -79,6 +85,7 @@ void batch_norm_layer_test(const char* input_data,const char* weights, const cha
 	fclose(input_data_file);
 	fclose(weights_data_file);
 	fclose(golden_output_file);
+	fclose(output_file);
 
 	free(input);
 	free(weights_bias);

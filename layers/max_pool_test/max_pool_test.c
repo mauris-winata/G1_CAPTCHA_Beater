@@ -13,14 +13,14 @@ void max_pool_layer_test(const char* input_data,const char* weights, const char*
 
 	if ((input_data_file == NULL) ||  (golden_output_file == NULL) || (output_file == NULL))
 	{
-		printf("Failed to open the convolution layer test files\n");
+		printf("Failed to open the max pool layer test files\n");
 		exit(-1);
 	}
 
 	//important parameters regarding the convolution layer
-	int input_data_size = max_pool_parameters.batch_size * max_pool_parameters.input_dim * max_pool_parameters.input_height * max_pool_parameters.input_width;
+	int input_data_size = max_pool_parameters.batch_size * max_pool_parameters.output_dim * max_pool_parameters.input_height * max_pool_parameters.input_width;
 	// int weights_size = max_pool_parameters.input_dim * 4;
-	int output_size = input_data_size;
+	int output_size = max_pool_parameters.batch_size * max_pool_parameters.output_dim * max_pool_parameters.output_height * max_pool_parameters.output_width;;
 
 	// we read in the data from the test related files
 	result_t* input = (result_t*)malloc(sizeof(result_t) * input_data_size);
@@ -34,7 +34,8 @@ void max_pool_layer_test(const char* input_data,const char* weights, const char*
 	// check to make sure the memory was allocated appropriately
 	if ((input == NULL) || (golden_output == NULL) || (output_result == NULL))
 	{
-		printf("Failed to allocate memory for the batch norm layer test\n");
+		if (output_result == NULL) printf("output_result is null\n");
+		printf("Failed to allocate memory for the max pool layer test\n");
 		exit(-1);
 	}
 
@@ -75,6 +76,7 @@ void max_pool_layer_test(const char* input_data,const char* weights, const char*
 	// unallocating resources
 	fclose(input_data_file);
 	fclose(golden_output_file);
+	fclose(output_file);
 
 	free(input);
 	free(golden_output);
