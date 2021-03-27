@@ -20,7 +20,7 @@
 #define BATCH_NORM_1_LAYER
 #define MAX_POOL_1_LAYER
 #define CONV_2_LAYER
-// #define BATCH_NORM_2_LAYER
+#define BATCH_NORM_2_LAYER
 // #define MAX_POOL_2_LAYER
 // #define CONV_3_LAYER
 // #define BATCH_NORM_3_LAYER
@@ -96,7 +96,21 @@ int main(){
 	CONVOLUTION_LAYER_2_TEST_OUTPUT_DATA, 0, CONV_LAYER_2_NAME, convolution_layer_2);
 	#endif
 
-
+	/* Batch Norm Layer 2 */
+	#ifdef BATCH_NORM_2_LAYER
+	layer_params batch_norm_layer_2 = { .batch_size = BATCH_NORM_2_BATCHES,
+                                           .input_dim = BATCH_NORM_2_INPUT_DIM,
+                                           .input_height = BATCH_NORM_2_INPUT_Y,
+                                           .input_width = BATCH_NORM_2_INPUT_X,
+                                           .kernel_size = -1, //unused
+                                           .output_dim = -1, //unused
+                                           .output_height = -1, //unused
+                                           .output_width = -1, //unused
+                                           .stride = -1 }; //unused
+										   
+    batch_norm_layer_test(BATCH_NORM_LAYER_2_TEST_INPUT_DATA, BATCH_NORM_LAYER_2_TEST_WEIGHTS_BIAS, BATCH_NORM_LAYER_2_TEST_GOLDEN_OUTPUT, 
+	BATCH_NORM_LAYER_2_TEST_OUTPUT_DATA, 0, BATCH_NORM_2_NAME, batch_norm_layer_2);
+	#endif
 	
     return 0;
 }

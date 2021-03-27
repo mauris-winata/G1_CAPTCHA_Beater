@@ -14,6 +14,13 @@
 #define BATCH_NORM_LAYER_1_TEST_GOLDEN_OUTPUT "golden_outputs/batch_normalization_1_output.txt"
 #define BATCH_NORM_1_NAME "Batch_normalization_1"
 
+//Batch norm Layer 2
+#define BATCH_NORM_LAYER_2_TEST_INPUT_DATA "generated_outputs/conv_2.txt"
+#define BATCH_NORM_LAYER_2_TEST_OUTPUT_DATA "generated_outputs/batch_norm_2.txt"
+#define BATCH_NORM_LAYER_2_TEST_WEIGHTS_BIAS "weights/batch_normalization_2_weights.txt"
+#define BATCH_NORM_LAYER_2_TEST_GOLDEN_OUTPUT "golden_outputs/batch_normalization_2_output.txt"
+#define BATCH_NORM_2_NAME "Batch_normalization_2"
+
 
 void batch_norm_layer_test(const char* input_data,const char* weights,const char* golden_output_data, const char* output_data, int offset,const char* layer_name,layer_params convolution_parameters);
 
