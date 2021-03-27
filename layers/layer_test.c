@@ -19,7 +19,7 @@
 #define CONV_1_LAYER
 #define BATCH_NORM_1_LAYER
 #define MAX_POOL_1_LAYER
-// #define CONV_2_LAYER
+#define CONV_2_LAYER
 // #define BATCH_NORM_2_LAYER
 // #define MAX_POOL_2_LAYER
 // #define CONV_3_LAYER
@@ -34,7 +34,6 @@ int main(){
 
 	/* Conv Layer 1 */
     #ifdef CONV_1_LAYER
-
     layer_params convolution_layer_1 = { .batch_size = CONV1_BATCHES,
                                            .input_dim = CONV1_NUM_INPUTS,
                                            .input_height = CONV1_INPUT_Y,
@@ -83,8 +82,18 @@ int main(){
 	
 	/* Conv Layer 2 */
 	#ifdef CONV_2_LAYER
+    layer_params convolution_layer_2 = { .batch_size = CONV2_BATCHES,
+                                           .input_dim = CONV2_NUM_INPUTS,
+                                           .input_height = CONV2_INPUT_Y,
+                                           .input_width = CONV2_INPUT_X,
+                                           .kernel_size = CONV2_KERNEL,
+                                           .output_dim = CONV2_NUM_FILTERS,
+                                           .output_height = CONV2_OUTPUT_Y,
+                                           .output_width = CONV2_OUTPUT_X,
+                                           .stride = CONV2_STRIDE };
 
-
+    convolution_layer_test(CONVOLUTION_LAYER_2_TEST_INPUT_DATA, CONVOLUTION_LAYER_2_TEST_WEIGHTS_BIAS, CONVOLUTION_LAYER_2_TEST_GOLDEN_OUTPUT, 
+	CONVOLUTION_LAYER_2_TEST_OUTPUT_DATA, 0, CONV_LAYER_2_NAME, convolution_layer_2);
 	#endif
 
 

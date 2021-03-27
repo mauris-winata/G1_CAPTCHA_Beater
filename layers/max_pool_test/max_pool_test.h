@@ -9,7 +9,6 @@
 
 //Max Pool Layer 1
 #define MAX_POOL_LAYER_1_TEST_INPUT_DATA "generated_outputs/batch_norm_1.txt"
-// #define MAX_POOL_LAYER_1_TEST_INPUT_DATA "golden_outputs/batch_normalization_1_output.txt"
 #define MAX_POOL_LAYER_1_TEST_OUTPUT_DATA "generated_outputs/max_pool_1.txt"
 #define MAX_POOL_LAYER_1_TEST_WEIGHTS_BIAS "N/A"
 #define MAX_POOL_LAYER_1_TEST_GOLDEN_OUTPUT "golden_outputs/max_pooling2d_1_output.txt"
