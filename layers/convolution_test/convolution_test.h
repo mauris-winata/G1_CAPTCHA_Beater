@@ -27,7 +27,7 @@
 #define CONVOLUTION_LAYER_3_TEST_OUTPUT_DATA "generated_outputs/conv_3.txt"
 #define CONVOLUTION_LAYER_3_TEST_WEIGHTS_BIAS "weights/conv2d_3_weights.txt"
 #define CONVOLUTION_LAYER_3_TEST_GOLDEN_OUTPUT "golden_outputs/conv2d_3_output.txt"
-#define CONV_LAYER_3_NAME "Conv2d_2"
+#define CONV_LAYER_3_NAME "Conv2d_3"
 
 
 void convolution_layer_test(const char* input_data,const char* weights,const char* golden_output_data, const char* output_data, int offset,const char* layer_name,layer_params convolution_parameters);

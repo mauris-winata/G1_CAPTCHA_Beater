@@ -23,8 +23,8 @@
 #define BATCH_NORM_2_LAYER
 #define MAX_POOL_2_LAYER
 #define CONV_3_LAYER
-// #define BATCH_NORM_3_LAYER
-// #define MAX_POOL_3_LAYER
+#define BATCH_NORM_3_LAYER
+#define MAX_POOL_3_LAYER
 // #define DENSE_1_LAYER
 // #define DENSE_2_LAYER
 
@@ -140,6 +140,38 @@ int main(){
 
     convolution_layer_test(CONVOLUTION_LAYER_3_TEST_INPUT_DATA, CONVOLUTION_LAYER_3_TEST_WEIGHTS_BIAS, CONVOLUTION_LAYER_3_TEST_GOLDEN_OUTPUT, 
 	CONVOLUTION_LAYER_3_TEST_OUTPUT_DATA, 0, CONV_LAYER_3_NAME, convolution_layer_3);
+	#endif
+	
+	/* Batch Norm Layer 3 */
+	#ifdef BATCH_NORM_3_LAYER
+	layer_params batch_norm_layer_3 = { .batch_size = BATCH_NORM_3_BATCHES,
+                                           .input_dim = BATCH_NORM_3_INPUT_DIM,
+                                           .input_height = BATCH_NORM_3_INPUT_Y,
+                                           .input_width = BATCH_NORM_3_INPUT_X,
+                                           .kernel_size = -1, //unused
+                                           .output_dim = -1, //unused
+                                           .output_height = -1, //unused
+                                           .output_width = -1, //unused
+                                           .stride = -1 }; //unused
+										   
+    batch_norm_layer_test(BATCH_NORM_LAYER_3_TEST_INPUT_DATA, BATCH_NORM_LAYER_3_TEST_WEIGHTS_BIAS, BATCH_NORM_LAYER_3_TEST_GOLDEN_OUTPUT, 
+	BATCH_NORM_LAYER_3_TEST_OUTPUT_DATA, 0, BATCH_NORM_3_NAME, batch_norm_layer_3);
+	#endif
+	
+	/* Max Pool Layer 3 */
+	#ifdef MAX_POOL_3_LAYER
+    layer_params max_pool_layer_3 = { .batch_size = MAX_POOL_3_BATCHES,
+                                           .input_dim = -1,
+                                           .input_height = MAX_POOL_3_INPUT_Y,
+                                           .input_width = MAX_POOL_3_INPUT_X,
+                                           .kernel_size = -1, //unused
+                                           .output_dim = MAX_POOL_3_OUTPUT_DIM, //unused
+                                           .output_height = MAX_POOL_3_OUTPUT_Y, 
+                                           .output_width = MAX_POOL_3_OUTPUT_X, 
+                                           .stride = -1 }; //unused
+										   
+    max_pool_layer_test(MAX_POOL_LAYER_3_TEST_INPUT_DATA, MAX_POOL_LAYER_3_TEST_WEIGHTS_BIAS, MAX_POOL_LAYER_3_TEST_GOLDEN_OUTPUT, 
+	MAX_POOL_LAYER_3_TEST_OUTPUT_DATA, 0, MAX_POOL_3_NAME, max_pool_layer_3);
 	#endif
 	
     return 0;
