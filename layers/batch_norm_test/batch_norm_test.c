@@ -22,8 +22,6 @@ void batch_norm_layer_test(const char* input_data,const char* weights, const cha
 	int input_data_size = batch_norm_parameters.batch_size * batch_norm_parameters.input_dim * batch_norm_parameters.input_height * batch_norm_parameters.input_width;
 	int weights_size = batch_norm_parameters.input_dim * 4;
 	int output_size = input_data_size;
-	
-	printf("Input data size is: %d\n", input_data_size);
 
 	// we read in the data from the test related files
 	result_t* input = (result_t*)malloc(sizeof(result_t) * input_data_size);
@@ -47,10 +45,6 @@ void batch_norm_layer_test(const char* input_data,const char* weights, const cha
 	read_file_data(input_data_file, input, input_data_size, FLOAT); // input image
 	read_file_data(weights_data_file, weights_bias, weights_size, FLOAT); // weights and bias
 	read_file_data(golden_output_file, golden_output, output_size, FLOAT); // golden output
-
-	printf("Final calculated input is: %f\n", input[input_data_size - 1]);
-	printf("Final golden output is: %f\n", golden_output[output_size - 1]);
-	// printf("testing: first weight is %f\n", weights_bias[0]);
 
 	// start the batch norm operation
 	printf("\n\n************************************* TESTING %s LAYER *************************************\n", layer_name);

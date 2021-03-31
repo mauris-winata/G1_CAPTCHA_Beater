@@ -14,7 +14,10 @@ void max_pool(result_t * input, 		// where to get inputs
                 const int ix,           // input width
                 const int iy)           // input height
 {
+	#ifdef MAX_POOL_DEBUG
 	int output_count = 0;
+	#endif
+	
 	// Number of outputs
 	for (int o_d = 0; o_d < od; o_d++)
 	{
@@ -30,9 +33,11 @@ void max_pool(result_t * input, 		// where to get inputs
 				result_t pixel_2 = input[o_d*ix*iy + (2*o_y + 1)*ix + 2*o_x]; //bot left
 				result_t pixel_3 = input[o_d*ix*iy + (2*o_y + 1)*ix + 2*o_x + 1]; //bot right
 
+				#ifdef MAX_POOL_DEBUG
 				if (o_d == 0 && o_y == 0 && o_x == 0){
 				printf("p0: %f, p1: %f, p2: %f, p3: %f \n", pixel_0, pixel_1, pixel_2, pixel_3);
 				}
+				#endif
 
 				//Checking if still in bounds of image
 				if (2*o_y + 1 > iy - 1){
@@ -47,19 +52,21 @@ void max_pool(result_t * input, 		// where to get inputs
 
 				// Write output
 				output[o_d*ox*oy + o_y*ox + o_x] = MAX(MAX(pixel_0, pixel_1), MAX(pixel_2, pixel_3));
+								
+				#ifdef MAX_POOL_DEBUG
 				output_count++;
-				
-				// if (output_count == 30000){
-					// printf("Output is %f\n", MAX(MAX(pixel_0, pixel_1), MAX(pixel_2, pixel_3)));
-					// printf("Input dims: ix = %d, iy = %d\n", ix, iy);
-					// printf("Output coordinates: %d,%d at dim %d\n", o_x, o_y, o_d);
-					// printf("Inputs: %f, %f, %f, %f\n", pixel_0, pixel_1, pixel_2, pixel_3);
-					// printf("Input indexes: %d, %d, %d, %d\n", 
-						// o_d*ix*iy + 2*o_y*ix + 2*o_x, 
-						// o_d*ix*iy + 2*o_y*ix + 2*o_x + 1, 
-						// o_d*ix*iy + (2*o_y + 1)*ix + 2*o_x,
-						// o_d*ix*iy + (2*o_y + 1)*ix + 2*o_x + 1);
-				// }					
+				if (output_count == 30000){
+					printf("Output is %f\n", MAX(MAX(pixel_0, pixel_1), MAX(pixel_2, pixel_3)));
+					printf("Input dims: ix = %d, iy = %d\n", ix, iy);
+					printf("Output coordinates: %d,%d at dim %d\n", o_x, o_y, o_d);
+					printf("Inputs: %f, %f, %f, %f\n", pixel_0, pixel_1, pixel_2, pixel_3);
+					printf("Input indexes: %d, %d, %d, %d\n", 
+						o_d*ix*iy + 2*o_y*ix + 2*o_x, 
+						o_d*ix*iy + 2*o_y*ix + 2*o_x + 1, 
+						o_d*ix*iy + (2*o_y + 1)*ix + 2*o_x,
+						o_d*ix*iy + (2*o_y + 1)*ix + 2*o_x + 1);
+				}
+				#endif				
 			}
 		}
 	}
