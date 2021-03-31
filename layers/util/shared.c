@@ -70,7 +70,7 @@ float mean_squared_error(float* layer_output, float* golden_output, layer_params
 		// any other layer type (in our case this would be dense, softmax, max pooling etc..)
 		num_inputs = layer_info.input_dim * layer_info.input_height * layer_info.input_width;
 		num_biases = layer_info.output_dim;
-		num_weights = layer_info.input_dim * layer_info.output_dim;
+		num_weights = layer_info.input_dim * layer_info.input_height * layer_info.input_width * layer_info.output_dim * layer_info.output_height * layer_info.output_width;
 		num_outputs = layer_info.output_dim * layer_info.output_height * layer_info.output_width;
 	}
 
@@ -81,8 +81,6 @@ float mean_squared_error(float* layer_output, float* golden_output, layer_params
 	for (int i = 0; i < batch_size * num_outputs; i++)
 	{
 		intermediate_error = fabs(layer_output[i] - golden_output[i]);
-
-
 		total_error += (intermediate_error * intermediate_error);
 	}
 

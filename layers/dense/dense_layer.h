@@ -17,18 +17,23 @@ typedef enum
 	SOFTMAX_ACTIVATION
 } DENSE_LAYER_TYPE;
 
-// dense layer test sizes
-#define INPUT_LENGTH_DENSE_LAYER_TEST 4
-#define OUTPUT_LENTH_DENSE_LAYER_TEST 2
 
-// first type of dense layer parameters (dense_151 to dense_159)
-#define INPUT_LENGTH_DENSE_LAYER_ONE 4256
-#define OUTPUT_LENTH_DENSE_LAYER_ONE 57
+// first type of dense layer parameters (connecting to max pool layer)
+#define DENSE1_BATCHES 1
+#define DENSE1_NUM_INPUTS 1
+#define DENSE1_INPUT_X 4256
+#define DENSE1_INPUT_Y 1
+#define DENSE1_NUM_OUTPUTS 1
+#define DENSE1_OUTUPUT_X 57
+#define DENSE1_OUTPUT_Y 1
 
 
-// second type of dense layer parameters (dense_152 to dense_156)
-#define INPUT_LENGTH_DENSE_LAYER_TWO 57
-#define OUTPUT_LENTH_DENSE_LAYER_TWO 19
+// second type of dense layer parameters (connecting to first set of dense layers)
+#define DENSE2_BATCHES 1
+#define DENSE2_INPUT_X 57
+#define DENSE2_INPUT_Y 1
+#define DENSE2_OUTUPUT_X 19
+#define DENSE2_OUTPUT_Y 1
 
 
 // dense layer function declaration
