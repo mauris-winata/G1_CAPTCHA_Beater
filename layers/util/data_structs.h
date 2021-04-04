@@ -5,3 +5,4 @@ typedef float gamma_t; //gamma for batch norm
 typedef float beta_t; //beta for batch norm
 typedef float mean_t; //mean for batch norm
 typedef float var_t; //var for batch norm
+
