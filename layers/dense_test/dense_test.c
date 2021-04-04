@@ -4,7 +4,7 @@
 #include "../util/data_structs.h"
 
 
-void dense_layer_test(const char* input_data, const char* weights, const char* golden_output_data, const char* output_data, int offset, const char* layer_name, layer_params dense_layer_parameters, DENSE_LAYER_TYPE layer_type)
+void dense_layer_test(const char* input_data, const char* weights, const char* golden_output_data, const char* output_data, int offset, const char* layer_name, layer_params dense_layer_parameters)
 {
 	// file handlers
 	FILE* input_data_file = fopen(input_data, "r");
@@ -29,13 +29,14 @@ void dense_layer_test(const char* input_data, const char* weights, const char* g
 	result_t* input_data_values = (result_t*)malloc(sizeof(result_t) * input_data_size);
 	weights_biases_t* weights_bias = (weights_biases_t*)malloc(sizeof(weights_biases_t) * weights_size);
 	result_t* golden_output = (result_t*)malloc(sizeof(result_t) * output_size);
-	result_t* output_result = (result_t*)malloc(sizeof(result_t) * output_size);
+	result_t* output_result_dense = (result_t*)malloc(sizeof(result_t) * output_size); // output after the dense layer operation
+	result_t* output_result_soft_max = (result_t*)malloc(sizeof(result_t) * output_size); // output after the softmax layer operation
 
 	// resulting error of the test
 	float dense_error = 0.0;
 
 	// check to make sure the memory was allocated appropriately
-	if ((input_data_values == NULL) || (weights_bias == NULL) || (golden_output == NULL) || (output_result == NULL))
+	if ((input_data_values == NULL) || (weights_bias == NULL) || (golden_output == NULL) || (output_result_dense == NULL) || (output_result_soft_max == NULL))
 	{
 		printf("Failed to allocate memory for the convolution layer test\n");
 		exit(-1);
@@ -53,15 +54,21 @@ void dense_layer_test(const char* input_data, const char* weights, const char* g
 	// test the dense layer
 	dense_layer(weights_bias,         	  // global memory pointer
 		input_data_values, 				  // where to get inputs
-		output_result,				  // where to store outputs
+		output_result_dense,				  // where to store outputs
 		offset, 						  // offset for biases, weights
-		layer_type,            			  // activation type
 		dense_layer_parameters.batch_size,        // batch size
 		dense_layer_parameters.input_width,           // input size
 		dense_layer_parameters.output_width);           // output size
 
+	// test the soft max layer operation after the previous dense layer
+	soft_max_layer(output_result_dense,          // output from the previous dense layer
+		output_result_soft_max,                  // where to store the current output
+		dense_layer_parameters.batch_size,       // batch size
+		dense_layer_parameters.input_width,      // input size
+		dense_layer_parameters.output_width);    // output size
+
 	// verify the output
-	dense_error = mean_squared_error(output_result, golden_output, dense_layer_parameters, false);
+	dense_error = mean_squared_error(output_result_soft_max, golden_output, dense_layer_parameters, false);
 
 	// print the test results
 	print_layer_test_result(layer_name, dense_layer_parameters, weights_size - dense_layer_parameters.output_dim, dense_layer_parameters.output_dim, dense_error);
@@ -69,7 +76,7 @@ void dense_layer_test(const char* input_data, const char* weights, const char* g
 	//Printing output results to a file
 	int i;
 	for (i = 0; i < output_size; i++) {
-		fprintf(output_file, "%f\n", output_result[i]);
+		fprintf(output_file, "%f\n", output_result_soft_max[i]);
 	}
 
 
@@ -84,7 +91,8 @@ void dense_layer_test(const char* input_data, const char* weights, const char* g
 	free(input_data_values);
 	free(weights_bias);
 	free(golden_output);
-	free(output_result);
+	free(output_result_dense);
+	free(output_result_soft_max);
 
 	return;
 }

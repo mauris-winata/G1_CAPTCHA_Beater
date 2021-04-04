@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include "conv/conv_layer.h"
 #include "dense/dense_layer.h"
+#include "soft_max/soft_max_layer.h"
 #include "max_pool/max_pool_layer.h"
 #include "batch_norm/batch_norm_layer.h"
 #include "util/shared.h"
@@ -39,11 +40,11 @@
 #define MAX_POOL_DENSE_5_LAYER
 
 // second dense layer set below
-#define DENSE_2_1_LAYER
-#define DENSE_2_2_LAYER
-#define DENSE_2_3_LAYER
-#define DENSE_2_4_LAYER
-#define DENSE_2_5_LAYER
+#define DENSE_1_LAYER
+#define DENSE_2_LAYER
+#define DENSE_3_LAYER
+#define DENSE_4_LAYER
+#define DENSE_5_LAYER
 
 int main(){
 
@@ -241,8 +242,8 @@ int main(){
 
 
     /* Dense Layer set 2, layer 1 and follows the layer immediately above */
-    #ifdef DENSE_2_1_LAYER
-    layer_params dense_layer_2_1 = { .batch_size = DENSE2_BATCHES,
+    #ifdef DENSE_1_LAYER
+    layer_params dense_layer_1 = { .batch_size = DENSE2_BATCHES,
                                            .input_dim = MAX_POOL_DENSE1_NUM_OUTPUTS,
                                            .input_height = DENSE2_INPUT_Y,
                                            .input_width = DENSE2_INPUT_X,
@@ -252,13 +253,13 @@ int main(){
                                            .output_width = DENSE2_OUTUPUT_X,
                                            .stride = -1 }; //unused
 
-    dense_layer_test(DENSE_LAYER_2_1_TEST_INPUT_DATA, DENSE_LAYER_2_1_TEST_WEIGHTS_BIAS, DENSE_LAYER_2_1_TEST_GOLDEN_OUTPUT,
-        DENSE_LAYER_2_1_TEST_OUTPUT_DATA, 0, DENSE_LAYER_2_1_NAME, dense_layer_2_1, SOFTMAX_ACTIVATION);
+    dense_layer_test(DENSE_LAYER_1_TEST_INPUT_DATA, DENSE_LAYER_1_TEST_WEIGHTS_BIAS, DENSE_LAYER_1_TEST_GOLDEN_OUTPUT,
+        DENSE_LAYER_1_TEST_OUTPUT_DATA, 0, DENSE_LAYER_1_NAME, dense_layer_1);
     #endif
 	
     /* Dense Layer set 2, layer 2 and follows the layer immediately above */
-    #ifdef DENSE_2_2_LAYER
-    layer_params dense_layer_2_2 = { .batch_size = DENSE2_BATCHES,
+    #ifdef DENSE_2_LAYER
+    layer_params dense_layer_2 = { .batch_size = DENSE2_BATCHES,
                                            .input_dim = MAX_POOL_DENSE1_NUM_OUTPUTS,
                                            .input_height = DENSE2_INPUT_Y,
                                            .input_width = DENSE2_INPUT_X,
@@ -268,13 +269,13 @@ int main(){
                                            .output_width = DENSE2_OUTUPUT_X,
                                            .stride = -1 }; //unused
 
-    dense_layer_test(DENSE_LAYER_2_2_TEST_INPUT_DATA, DENSE_LAYER_2_2_TEST_WEIGHTS_BIAS, DENSE_LAYER_2_2_TEST_GOLDEN_OUTPUT,
-        DENSE_LAYER_2_2_TEST_OUTPUT_DATA, 0, DENSE_LAYER_2_2_NAME, dense_layer_2_2, SOFTMAX_ACTIVATION);
+    dense_layer_test(DENSE_LAYER_2_TEST_INPUT_DATA, DENSE_LAYER_2_TEST_WEIGHTS_BIAS, DENSE_LAYER_2_TEST_GOLDEN_OUTPUT,
+        DENSE_LAYER_2_TEST_OUTPUT_DATA, 0, DENSE_LAYER_2_NAME, dense_layer_2);
     #endif
 
     /* Dense Layer set 2, layer 3 and follows the layer immediately above */
-    #ifdef DENSE_2_3_LAYER
-    layer_params dense_layer_2_3 = { .batch_size = DENSE2_BATCHES,
+    #ifdef DENSE_3_LAYER
+    layer_params dense_layer_3 = { .batch_size = DENSE2_BATCHES,
                                            .input_dim = MAX_POOL_DENSE1_NUM_OUTPUTS,
                                            .input_height = DENSE2_INPUT_Y,
                                            .input_width = DENSE2_INPUT_X,
@@ -284,13 +285,13 @@ int main(){
                                            .output_width = DENSE2_OUTUPUT_X,
                                            .stride = -1 }; //unused
 
-    dense_layer_test(DENSE_LAYER_2_3_TEST_INPUT_DATA, DENSE_LAYER_2_3_TEST_WEIGHTS_BIAS, DENSE_LAYER_2_3_TEST_GOLDEN_OUTPUT,
-        DENSE_LAYER_2_3_TEST_OUTPUT_DATA, 0, DENSE_LAYER_2_3_NAME, dense_layer_2_3, SOFTMAX_ACTIVATION);
+    dense_layer_test(DENSE_LAYER_3_TEST_INPUT_DATA, DENSE_LAYER_3_TEST_WEIGHTS_BIAS, DENSE_LAYER_3_TEST_GOLDEN_OUTPUT,
+        DENSE_LAYER_3_TEST_OUTPUT_DATA, 0, DENSE_LAYER_3_NAME, dense_layer_3);
     #endif
 
     /* Dense Layer set 2, layer 4 and follows the layer immediately above */
-    #ifdef DENSE_2_4_LAYER
-    layer_params dense_layer_2_4 = { .batch_size = DENSE2_BATCHES,
+    #ifdef DENSE_4_LAYER
+    layer_params dense_layer_4 = { .batch_size = DENSE2_BATCHES,
                                            .input_dim = MAX_POOL_DENSE1_NUM_OUTPUTS,
                                            .input_height = DENSE2_INPUT_Y,
                                            .input_width = DENSE2_INPUT_X,
@@ -300,13 +301,13 @@ int main(){
                                            .output_width = DENSE2_OUTUPUT_X,
                                            .stride = -1 }; //unused
 
-    dense_layer_test(DENSE_LAYER_2_4_TEST_INPUT_DATA, DENSE_LAYER_2_4_TEST_WEIGHTS_BIAS, DENSE_LAYER_2_4_TEST_GOLDEN_OUTPUT,
-        DENSE_LAYER_2_4_TEST_OUTPUT_DATA, 0, DENSE_LAYER_2_4_NAME, dense_layer_2_4, SOFTMAX_ACTIVATION);
+    dense_layer_test(DENSE_LAYER_4_TEST_INPUT_DATA, DENSE_LAYER_4_TEST_WEIGHTS_BIAS, DENSE_LAYER_4_TEST_GOLDEN_OUTPUT,
+        DENSE_LAYER_4_TEST_OUTPUT_DATA, 0, DENSE_LAYER_4_NAME, dense_layer_4);
     #endif
 
     /* Dense Layer set 2, layer 5 and follows the layer immediately above */
-    #ifdef DENSE_2_5_LAYER
-    layer_params dense_layer_2_5 = { .batch_size = DENSE2_BATCHES,
+    #ifdef DENSE_5_LAYER
+    layer_params dense_layer_5 = { .batch_size = DENSE2_BATCHES,
                                            .input_dim = MAX_POOL_DENSE1_NUM_OUTPUTS,
                                            .input_height = DENSE2_INPUT_Y,
                                            .input_width = DENSE2_INPUT_X,
@@ -316,8 +317,8 @@ int main(){
                                            .output_width = DENSE2_OUTUPUT_X,
                                            .stride = -1 }; //unused
 
-    dense_layer_test(DENSE_LAYER_2_5_TEST_INPUT_DATA, DENSE_LAYER_2_5_TEST_WEIGHTS_BIAS, DENSE_LAYER_2_5_TEST_GOLDEN_OUTPUT,
-        DENSE_LAYER_2_5_TEST_OUTPUT_DATA, 0, DENSE_LAYER_2_5_NAME, dense_layer_2_5, SOFTMAX_ACTIVATION);
+    dense_layer_test(DENSE_LAYER_5_TEST_INPUT_DATA, DENSE_LAYER_5_TEST_WEIGHTS_BIAS, DENSE_LAYER_5_TEST_GOLDEN_OUTPUT,
+        DENSE_LAYER_5_TEST_OUTPUT_DATA, 0, DENSE_LAYER_5_NAME, dense_layer_5);
     #endif
 
     return 0;

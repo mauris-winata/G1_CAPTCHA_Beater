@@ -10,12 +10,12 @@
 #include <math.h>
 #include "../max_pool/max_pool_layer.h"
 
-// dense layer types
+/*// dense layer types
 typedef enum
 {
 	RELU_ACTIVATION, 
 	SOFTMAX_ACTIVATION
-} DENSE_LAYER_TYPE;
+} DENSE_LAYER_TYPE;*/
 
 
 // second type of dense layer parameters (connecting to first set of dense layers)
@@ -31,7 +31,7 @@ void dense_layer(weights_biases_t* mem, // global pointer to weights and biases
 	result_t* input,  // pointer to the input data for the current layer
 	result_t* output, // poimter to the output buffer for resulting data
 	int offset, // location of the weights and biases for the current layer
-	DENSE_LAYER_TYPE layer_type,
+	//DENSE_LAYER_TYPE layer_type,
 	int b, // batch size of the input data
 	int ix, // input data dimension (length after arriving from flatten layer, 1xid)
 	int ox // output data dimension (length after leaving dense layer, 1xod)
