@@ -18,16 +18,6 @@ typedef enum
 } DENSE_LAYER_TYPE;
 
 
-// first type of dense layer parameters (connecting to max pool layer)
-#define DENSE1_BATCHES 1
-#define DENSE1_NUM_INPUTS 1
-#define DENSE1_INPUT_X 4256
-#define DENSE1_INPUT_Y 1
-#define DENSE1_NUM_OUTPUTS 1
-#define DENSE1_OUTUPUT_X 57
-#define DENSE1_OUTPUT_Y 1
-
-
 // second type of dense layer parameters (connecting to first set of dense layers)
 #define DENSE2_BATCHES 1
 #define DENSE2_INPUT_X 57

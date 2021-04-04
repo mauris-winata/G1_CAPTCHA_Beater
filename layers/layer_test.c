@@ -11,6 +11,8 @@
 #include "max_pool_test/max_pool_test.h"
 #include "dense_test/dense_test.h"
 #include "output/output_layer.h"
+#include "dense/max_pool_dense_layer.h"
+#include "dense_test/max_pool_dense_test.h"
 
 /* Input Image */
 #define IMG_WIDTH 150
@@ -30,11 +32,11 @@
 /* Dense layer is divided into 2 sets*/
 
 // first dense layer set below
-#define DENSE_1_1_LAYER
-#define DENSE_1_2_LAYER
-#define DENSE_1_3_LAYER
-#define DENSE_1_4_LAYER
-#define DENSE_1_5_LAYER
+#define MAX_POOL_DENSE_1_LAYER
+#define MAX_POOL_DENSE_2_LAYER
+#define MAX_POOL_DENSE_3_LAYER
+#define MAX_POOL_DENSE_4_LAYER
+#define MAX_POOL_DENSE_5_LAYER
 
 // second dense layer set below
 #define DENSE_2_1_LAYER
@@ -158,94 +160,94 @@ int main(){
 	#endif
 
     /* Dense Layer set 1, layer 1 */
-    #ifdef DENSE_1_1_LAYER
-    layer_params dense_layer_1_1 = { .batch_size = DENSE1_BATCHES,
-                                           .input_dim = DENSE1_NUM_INPUTS,
-                                           .input_height = DENSE1_INPUT_Y,
-                                           .input_width = DENSE1_INPUT_X,
+    #ifdef MAX_POOL_DENSE_1_LAYER
+    layer_params max_pool_dense_layer_1 = { .batch_size = MAX_POOL_DENSE1_BATCHES,
+                                           .input_dim = MAX_POOL_DENSE1_NUM_INPUTS,
+                                           .input_height = MAX_POOL_DENSE1_INPUT_Y,
+                                           .input_width = MAX_POOL_DENSE1_INPUT_X,
                                            .kernel_size = -1, // unused
-                                           .output_dim = DENSE1_NUM_OUTPUTS,
-                                           .output_height = DENSE1_OUTPUT_Y,
-                                           .output_width = DENSE1_OUTUPUT_X,
+                                           .output_dim = MAX_POOL_DENSE1_NUM_OUTPUTS,
+                                           .output_height = MAX_POOL_DENSE1_OUTPUT_Y,
+                                           .output_width = MAX_POOL_DENSE1_OUTUPUT_X,
                                            .stride = -1 }; //unused
 
-    dense_layer_test(DENSE_LAYER_1_1_TEST_INPUT_DATA, DENSE_LAYER_1_1_TEST_WEIGHTS_BIAS, DENSE_LAYER_1_1_TEST_GOLDEN_OUTPUT,
-        DENSE_LAYER_1_1_TEST_OUTPUT_DATA, 0, DENSE_LAYER_1_1_NAME, dense_layer_1_1, RELU_ACTIVATION);
+    max_pool_dense_layer_test(MAX_POOL_DENSE_LAYER_1_TEST_INPUT_DATA, MAX_POOL_DENSE_LAYER_1_TEST_WEIGHTS_BIAS, MAX_POOL_DENSE_LAYER_1_TEST_GOLDEN_OUTPUT,
+        MAX_POOL_DENSE_LAYER_1_TEST_OUTPUT_DATA, 0, MAX_POOL_DENSE_LAYER_1_NAME, max_pool_dense_layer_1);
     #endif
 
     /* Dense Layer set 1, layer 2 */
-    #ifdef DENSE_1_2_LAYER
-    layer_params dense_layer_1_2 = { .batch_size = DENSE1_BATCHES,
-                                           .input_dim = DENSE1_NUM_INPUTS,
-                                           .input_height = DENSE1_INPUT_Y,
-                                           .input_width = DENSE1_INPUT_X,
+    #ifdef MAX_POOL_DENSE_2_LAYER
+    layer_params max_pool_dense_layer_2 = { .batch_size = MAX_POOL_DENSE1_BATCHES,
+                                           .input_dim = MAX_POOL_DENSE1_NUM_INPUTS,
+                                           .input_height = MAX_POOL_DENSE1_INPUT_Y,
+                                           .input_width = MAX_POOL_DENSE1_INPUT_X,
                                            .kernel_size = -1, // unused
-                                           .output_dim = DENSE1_NUM_OUTPUTS,
-                                           .output_height = DENSE1_OUTPUT_Y,
-                                           .output_width = DENSE1_OUTUPUT_X,
+                                           .output_dim = MAX_POOL_DENSE1_NUM_OUTPUTS,
+                                           .output_height = MAX_POOL_DENSE1_OUTPUT_Y,
+                                           .output_width = MAX_POOL_DENSE1_OUTUPUT_X,
                                            .stride = -1 }; //unused
 
-    dense_layer_test(DENSE_LAYER_1_2_TEST_INPUT_DATA, DENSE_LAYER_1_2_TEST_WEIGHTS_BIAS, DENSE_LAYER_1_2_TEST_GOLDEN_OUTPUT,
-        DENSE_LAYER_1_2_TEST_OUTPUT_DATA, 0, DENSE_LAYER_1_2_NAME, dense_layer_1_2, RELU_ACTIVATION);
+    max_pool_dense_layer_test(MAX_POOL_DENSE_LAYER_2_TEST_INPUT_DATA, MAX_POOL_DENSE_LAYER_2_TEST_WEIGHTS_BIAS, MAX_POOL_DENSE_LAYER_2_TEST_GOLDEN_OUTPUT,
+        MAX_POOL_DENSE_LAYER_2_TEST_OUTPUT_DATA, 0, MAX_POOL_DENSE_LAYER_2_NAME, max_pool_dense_layer_2);
     #endif
 
     /* Dense Layer set 1, layer 3 */
-    #ifdef DENSE_1_3_LAYER
-    layer_params dense_layer_1_3 = { .batch_size = DENSE1_BATCHES,
-                                           .input_dim = DENSE1_NUM_INPUTS,
-                                           .input_height = DENSE1_INPUT_Y,
-                                           .input_width = DENSE1_INPUT_X,
+    #ifdef MAX_POOL_DENSE_3_LAYER
+    layer_params max_pool_dense_layer_3 = { .batch_size = MAX_POOL_DENSE1_BATCHES,
+                                           .input_dim = MAX_POOL_DENSE1_NUM_INPUTS,
+                                           .input_height = MAX_POOL_DENSE1_INPUT_Y,
+                                           .input_width = MAX_POOL_DENSE1_INPUT_X,
                                            .kernel_size = -1, // unused
-                                           .output_dim = DENSE1_NUM_OUTPUTS,
-                                           .output_height = DENSE1_OUTPUT_Y,
-                                           .output_width = DENSE1_OUTUPUT_X,
+                                           .output_dim = MAX_POOL_DENSE1_NUM_OUTPUTS,
+                                           .output_height = MAX_POOL_DENSE1_OUTPUT_Y,
+                                           .output_width = MAX_POOL_DENSE1_OUTUPUT_X,
                                            .stride = -1 }; //unused
 
-    dense_layer_test(DENSE_LAYER_1_3_TEST_INPUT_DATA, DENSE_LAYER_1_3_TEST_WEIGHTS_BIAS, DENSE_LAYER_1_3_TEST_GOLDEN_OUTPUT,
-        DENSE_LAYER_1_3_TEST_OUTPUT_DATA, 0, DENSE_LAYER_1_3_NAME, dense_layer_1_3, RELU_ACTIVATION);
+    max_pool_dense_layer_test(MAX_POOL_DENSE_LAYER_3_TEST_INPUT_DATA, MAX_POOL_DENSE_LAYER_3_TEST_WEIGHTS_BIAS, MAX_POOL_DENSE_LAYER_3_TEST_GOLDEN_OUTPUT,
+        MAX_POOL_DENSE_LAYER_3_TEST_OUTPUT_DATA, 0, MAX_POOL_DENSE_LAYER_3_NAME, max_pool_dense_layer_3);
     #endif
 
     /* Dense Layer set 1, layer 4 */
-    #ifdef DENSE_1_4_LAYER
-    layer_params dense_layer_1_4 = { .batch_size = DENSE1_BATCHES,
-                                           .input_dim = DENSE1_NUM_INPUTS,
-                                           .input_height = DENSE1_INPUT_Y,
-                                           .input_width = DENSE1_INPUT_X,
+    #ifdef MAX_POOL_DENSE_4_LAYER
+    layer_params max_pool_dense_layer_4 = { .batch_size = MAX_POOL_DENSE1_BATCHES,
+                                           .input_dim = MAX_POOL_DENSE1_NUM_INPUTS,
+                                           .input_height = MAX_POOL_DENSE1_INPUT_Y,
+                                           .input_width = MAX_POOL_DENSE1_INPUT_X,
                                            .kernel_size = -1, // unused
-                                           .output_dim = DENSE1_NUM_OUTPUTS,
-                                           .output_height = DENSE1_OUTPUT_Y,
-                                           .output_width = DENSE1_OUTUPUT_X,
+                                           .output_dim = MAX_POOL_DENSE1_NUM_OUTPUTS,
+                                           .output_height = MAX_POOL_DENSE1_OUTPUT_Y,
+                                           .output_width = MAX_POOL_DENSE1_OUTUPUT_X,
                                            .stride = -1 }; //unused
 
-    dense_layer_test(DENSE_LAYER_1_4_TEST_INPUT_DATA, DENSE_LAYER_1_4_TEST_WEIGHTS_BIAS, DENSE_LAYER_1_4_TEST_GOLDEN_OUTPUT,
-        DENSE_LAYER_1_4_TEST_OUTPUT_DATA, 0, DENSE_LAYER_1_4_NAME, dense_layer_1_4, RELU_ACTIVATION);
+    max_pool_dense_layer_test(MAX_POOL_DENSE_LAYER_4_TEST_INPUT_DATA, MAX_POOL_DENSE_LAYER_4_TEST_WEIGHTS_BIAS, MAX_POOL_DENSE_LAYER_4_TEST_GOLDEN_OUTPUT,
+        MAX_POOL_DENSE_LAYER_4_TEST_OUTPUT_DATA, 0, MAX_POOL_DENSE_LAYER_4_NAME, max_pool_dense_layer_4);
     #endif
 
     /* Dense Layer set 1, layer 5 */
-    #ifdef DENSE_1_5_LAYER
-    layer_params dense_layer_1_5 = { .batch_size = DENSE1_BATCHES,
-                                           .input_dim = DENSE1_NUM_INPUTS,
-                                           .input_height = DENSE1_INPUT_Y,
-                                           .input_width = DENSE1_INPUT_X,
+    #ifdef MAX_POOL_DENSE_5_LAYER
+    layer_params max_pool_dense_layer_5 = { .batch_size = MAX_POOL_DENSE1_BATCHES,
+                                           .input_dim = MAX_POOL_DENSE1_NUM_INPUTS,
+                                           .input_height = MAX_POOL_DENSE1_INPUT_Y,
+                                           .input_width = MAX_POOL_DENSE1_INPUT_X,
                                            .kernel_size = -1, // unused
-                                           .output_dim = DENSE1_NUM_OUTPUTS,
-                                           .output_height = DENSE1_OUTPUT_Y,
-                                           .output_width = DENSE1_OUTUPUT_X,
+                                           .output_dim = MAX_POOL_DENSE1_NUM_OUTPUTS,
+                                           .output_height = MAX_POOL_DENSE1_OUTPUT_Y,
+                                           .output_width = MAX_POOL_DENSE1_OUTUPUT_X,
                                            .stride = -1 }; //unused
 
-    dense_layer_test(DENSE_LAYER_1_5_TEST_INPUT_DATA, DENSE_LAYER_1_5_TEST_WEIGHTS_BIAS, DENSE_LAYER_1_5_TEST_GOLDEN_OUTPUT,
-        DENSE_LAYER_1_5_TEST_OUTPUT_DATA, 0, DENSE_LAYER_1_5_NAME, dense_layer_1_5, RELU_ACTIVATION);
+    max_pool_dense_layer_test(MAX_POOL_DENSE_LAYER_5_TEST_INPUT_DATA, MAX_POOL_DENSE_LAYER_5_TEST_WEIGHTS_BIAS, MAX_POOL_DENSE_LAYER_5_TEST_GOLDEN_OUTPUT,
+        MAX_POOL_DENSE_LAYER_5_TEST_OUTPUT_DATA, 0, MAX_POOL_DENSE_LAYER_5_NAME, max_pool_dense_layer_5);
     #endif
 
 
     /* Dense Layer set 2, layer 1 and follows the layer immediately above */
     #ifdef DENSE_2_1_LAYER
     layer_params dense_layer_2_1 = { .batch_size = DENSE2_BATCHES,
-                                           .input_dim = DENSE1_NUM_INPUTS,
+                                           .input_dim = MAX_POOL_DENSE1_NUM_OUTPUTS,
                                            .input_height = DENSE2_INPUT_Y,
                                            .input_width = DENSE2_INPUT_X,
                                            .kernel_size = -1, // unused
-                                           .output_dim = DENSE1_NUM_OUTPUTS,
+                                           .output_dim = MAX_POOL_DENSE1_NUM_OUTPUTS,
                                            .output_height = DENSE2_OUTPUT_Y,
                                            .output_width = DENSE2_OUTUPUT_X,
                                            .stride = -1 }; //unused
@@ -257,11 +259,11 @@ int main(){
     /* Dense Layer set 2, layer 2 and follows the layer immediately above */
     #ifdef DENSE_2_2_LAYER
     layer_params dense_layer_2_2 = { .batch_size = DENSE2_BATCHES,
-                                           .input_dim = DENSE1_NUM_INPUTS,
+                                           .input_dim = MAX_POOL_DENSE1_NUM_OUTPUTS,
                                            .input_height = DENSE2_INPUT_Y,
                                            .input_width = DENSE2_INPUT_X,
                                            .kernel_size = -1, // unused
-                                           .output_dim = DENSE1_NUM_OUTPUTS,
+                                           .output_dim = MAX_POOL_DENSE1_NUM_OUTPUTS,
                                            .output_height = DENSE2_OUTPUT_Y,
                                            .output_width = DENSE2_OUTUPUT_X,
                                            .stride = -1 }; //unused
@@ -273,11 +275,11 @@ int main(){
     /* Dense Layer set 2, layer 3 and follows the layer immediately above */
     #ifdef DENSE_2_3_LAYER
     layer_params dense_layer_2_3 = { .batch_size = DENSE2_BATCHES,
-                                           .input_dim = DENSE1_NUM_INPUTS,
+                                           .input_dim = MAX_POOL_DENSE1_NUM_OUTPUTS,
                                            .input_height = DENSE2_INPUT_Y,
                                            .input_width = DENSE2_INPUT_X,
                                            .kernel_size = -1, // unused
-                                           .output_dim = DENSE1_NUM_OUTPUTS,
+                                           .output_dim = MAX_POOL_DENSE1_NUM_OUTPUTS,
                                            .output_height = DENSE2_OUTPUT_Y,
                                            .output_width = DENSE2_OUTUPUT_X,
                                            .stride = -1 }; //unused
@@ -289,11 +291,11 @@ int main(){
     /* Dense Layer set 2, layer 4 and follows the layer immediately above */
     #ifdef DENSE_2_4_LAYER
     layer_params dense_layer_2_4 = { .batch_size = DENSE2_BATCHES,
-                                           .input_dim = DENSE1_NUM_INPUTS,
+                                           .input_dim = MAX_POOL_DENSE1_NUM_OUTPUTS,
                                            .input_height = DENSE2_INPUT_Y,
                                            .input_width = DENSE2_INPUT_X,
                                            .kernel_size = -1, // unused
-                                           .output_dim = DENSE1_NUM_OUTPUTS,
+                                           .output_dim = MAX_POOL_DENSE1_NUM_OUTPUTS,
                                            .output_height = DENSE2_OUTPUT_Y,
                                            .output_width = DENSE2_OUTUPUT_X,
                                            .stride = -1 }; //unused
@@ -305,11 +307,11 @@ int main(){
     /* Dense Layer set 2, layer 5 and follows the layer immediately above */
     #ifdef DENSE_2_5_LAYER
     layer_params dense_layer_2_5 = { .batch_size = DENSE2_BATCHES,
-                                           .input_dim = DENSE1_NUM_INPUTS,
+                                           .input_dim = MAX_POOL_DENSE1_NUM_OUTPUTS,
                                            .input_height = DENSE2_INPUT_Y,
                                            .input_width = DENSE2_INPUT_X,
                                            .kernel_size = -1, // unused
-                                           .output_dim = DENSE1_NUM_OUTPUTS,
+                                           .output_dim = MAX_POOL_DENSE1_NUM_OUTPUTS,
                                            .output_height = DENSE2_OUTPUT_Y,
                                            .output_width = DENSE2_OUTUPUT_X,
                                            .stride = -1 }; //unused
