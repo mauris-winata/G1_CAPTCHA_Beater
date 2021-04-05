@@ -1,10 +1,9 @@
 // this file contains all the function definitions that would be useful
 // for testing various layers
 
-
 #include "shared.h"
-
-
+#include "data_structs.h"
+#include "fixed_point.h"
 
 void read_file_data(FILE* file, void* data_container, int data_size, LAYER_DATA_TYPE type)
 {
@@ -33,6 +32,10 @@ void read_file_data(FILE* file, void* data_container, int data_size, LAYER_DATA_
 		case FLOAT:
 			fscanf(file, "%f", &read_value);
 			((float*)data_container)[i] = read_value;
+			break;
+		case FIXED_POINT:
+			fscanf(file, "%f", &read_value);
+			((fixed_point_t*)data_container)[i] = float_to_fixed(read_value, NUM_FRAC_BITS);
 			break;
 		default:
 			break;

@@ -2,8 +2,11 @@
 #include "conv_layer.h"
 #include "../batch_norm/batch_norm_layer.h"
 #include "../util/data_structs.h"
+#include "../util/fixed_point.h"
 #include <stdint.h>
 #include <stdio.h>
+
+// #define CONV_DEBUG
 
 void conv_layer(weights_biases_t * mem,         // global memory pointer
 				result_t * input, 		// where to get inputs
@@ -57,8 +60,8 @@ void conv_layer(weights_biases_t * mem,         // global memory pointer
         for (int o_x = 0; o_x < ox; o_x++)
         {
           // Set bias
-		   float bias = mem[offset/sizeof(float) + num_weights + o_d]; //one bias per filter
-           float output_element = bias;
+		   weights_biases_t bias = mem[offset/sizeof(weights_biases_t) + num_weights + o_d]; //one bias per filter
+           result_t output_element = bias;
 
           // Weighted Sum:
 
@@ -77,18 +80,19 @@ void conv_layer(weights_biases_t * mem,         // global memory pointer
                 if (i_x < 0) continue;
                 if (i_x > ix - 1) continue;
 				//access the input array; offset is: batch + current input + row + column
-				float input_val = input[b_*id*ix*iy + i_d*ix*iy + i_y*ix + i_x];
+				result_t input_val = input[b_*id*ix*iy + i_d*ix*iy + i_y*ix + i_x];
 				
 				//access the weights/bias array; offset is: + row + column
-				float weight = mem[offset/sizeof(float) + (k*iiy + iix)*od*id +i_d*od + o_d]; 
-                output_element += input_val*weight;  
+				weights_biases_t weight = mem[offset/sizeof(weights_biases_t) + (k*iiy + iix)*od*id +i_d*od + o_d]; 
+                // output_element += input_val*weight;  
+				output_element += fixed_mult(input_val, weight, NUM_FRAC_BITS);  
 				
 				#ifdef CONV_DEBUG
 				if (o_d == 0 && o_y == 0 && o_x == 0){
-					int mem_index_old = offset/sizeof(float) + (k*iiy + iix)*od + o_d;
-					int mem_index = offset/sizeof(float) + (k*iiy + iix)*od*id +i_d*od + o_d; 
+					int mem_index_old = offset/sizeof(weights_biases_t) + (k*iiy + iix)*od + o_d;
+					int mem_index = offset/sizeof(weights_biases_t) + (k*iiy + iix)*od*id +i_d*od + o_d; 
 					int input_index = b_*id*ix*iy + i_d*ix*iy + i_y*ix + i_x;
-					printf("Input val = %f, Weight = %f, mem index = %d, mem_index_old = %d, input index = %d\n", input_val, weight, mem_index, mem_index_old, input_index);
+					printf("Input val = %ld, Weight = %ld, mem index = %d, mem_index_old = %d, input index = %d\n", input_val, weight, mem_index, mem_index_old, input_index);
 					temp_counter++;
 				}
 				#endif                        

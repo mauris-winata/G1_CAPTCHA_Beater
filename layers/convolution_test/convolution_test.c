@@ -1,5 +1,6 @@
 #include "convolution_test.h"
 #include "../util/data_structs.h"
+#include "../util/fixed_point.h"
 
 
 void convolution_layer_test(const char* input_data,const char* weights, const char* golden_output_data, const char* output_data, int offset, const char* layer_name, layer_params convolution_parameters)
@@ -9,6 +10,7 @@ void convolution_layer_test(const char* input_data,const char* weights, const ch
 	FILE* weights_data_file = fopen(weights, "r");
 	FILE* golden_output_file = fopen(golden_output_data, "r");
 	FILE* output_file = fopen(output_data, "w+");
+	FILE* debug_output_file = fopen(CONVOLUTION_LAYER_1_TEST_DEBUG_OUTPUT_DATA, "w+");
 
 
 	if ((input_data_file == NULL) || (weights_data_file == NULL) || (golden_output_file == NULL) || (output_file == NULL))
@@ -26,7 +28,7 @@ void convolution_layer_test(const char* input_data,const char* weights, const ch
 	// we read in the data from the test related files
 	result_t* input_image = (result_t*)malloc(sizeof(result_t) * input_data_size);
 	weights_biases_t* weights_bias = (weights_biases_t*)malloc(sizeof(weights_biases_t) * weights_size);
-	result_t* golden_output = (result_t*)malloc(sizeof(result_t) * output_size);
+	float* golden_output = (float*)malloc(sizeof(float) * output_size);
 	result_t* output_result = (result_t*)malloc(sizeof(result_t) * output_size);
 
 	// resulting error of the test
@@ -40,8 +42,8 @@ void convolution_layer_test(const char* input_data,const char* weights, const ch
 	}
 
 	// read the relevant test data from the files
-	read_file_data(input_data_file, input_image, input_data_size, FLOAT); // input image
-	read_file_data(weights_data_file, weights_bias, weights_size, FLOAT); // weights and bias
+	read_file_data(input_data_file, input_image, input_data_size, INT_32); // input image
+	read_file_data(weights_data_file, weights_bias, weights_size, FIXED_POINT); // weights and bias
 	read_file_data(golden_output_file, golden_output, output_size, FLOAT); // golden output
 
 
@@ -64,7 +66,7 @@ void convolution_layer_test(const char* input_data,const char* weights, const ch
 		convolution_parameters.kernel_size);            // kernel size
 
 	// verify the output
-	convolution_error = mean_squared_error(output_result, golden_output, convolution_parameters, true);
+	// convolution_error = mean_squared_error(output_result, golden_output, convolution_parameters, true);
 
 	// print the test results
 	print_layer_test_result(layer_name, convolution_parameters, weights_size - convolution_parameters.output_dim, convolution_parameters.output_dim, convolution_error);
@@ -72,7 +74,11 @@ void convolution_layer_test(const char* input_data,const char* weights, const ch
 	//Printing output results to a file
 	int i; 
 	for (i = 0; i < output_size; i++){
-		fprintf(output_file, "%.6f\n", output_result[i]);
+		fprintf(output_file, "%d\n", output_result[i]);
+	}
+	
+	for (i = 0; i < output_size; i++){
+		fprintf(debug_output_file, "%f\n", fixed_to_float(output_result[i], NUM_FRAC_BITS));
 	}
 		
 
@@ -83,6 +89,7 @@ void convolution_layer_test(const char* input_data,const char* weights, const ch
 	fclose(weights_data_file);
 	fclose(golden_output_file);
 	fclose(output_file);
+	fclose(debug_output_file);
 
 	free(input_image);
 	free(weights_bias);

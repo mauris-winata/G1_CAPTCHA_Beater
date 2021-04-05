@@ -29,7 +29,8 @@ typedef enum
 	INT_16,
 	INT_32,
 	DOUBLE,
-	FLOAT
+	FLOAT,
+	FIXED_POINT
 } LAYER_DATA_TYPE;
 
 

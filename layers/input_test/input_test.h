@@ -10,6 +10,7 @@
 //Input
 #define INPUT_LAYER_INPUT_DATA "input_images/2346f.txt"
 #define INPUT_LAYER_OUTPUT_DATA "generated_outputs/input_data.txt"
+#define INPUT_LAYER_DEBUG_OUTPUT_DATA "debug_outputs/input_data_debug.txt"
 #define INPUT_LAYER_WEIGHTS_BIASES "N/A"
 #define INPUT_LAYER_GOLDEN_OUTPUT_DATA "N/A"
 #define INPUT_LAYER_NAME "input"

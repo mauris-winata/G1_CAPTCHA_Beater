@@ -31,3 +31,25 @@ fixed_point_t fixed_div (fixed_point_t op1, fixed_point_t op2, uint8_t frac_bits
     int64_t quotient = dividend/b;
     return quotient;
 }
+
+//Sqrt - taken from https://github.com/chmike/fpsqrt/blob/master/fpsqrt.c
+fixed_point_t fixed_sqrt (fixed_point_t x, uint8_t frac_bits)
+{
+    uint32_t t, q, b, r;
+    r = x;
+    b = 0x40000000;
+    q = 0;
+    while( b > (NUM_TOTAL_BITS - frac_bits)*4)
+    {
+        t = q + b;
+        if( r >= t )
+        {
+            r -= t;
+            q = t + b; // equivalent to q += 2*b
+        }
+        r <<= 1;
+        b >>= 1;
+    }
+    q >>= (NUM_TOTAL_BITS - frac_bits)/2;
+    return q;
+}

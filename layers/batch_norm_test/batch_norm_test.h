@@ -10,6 +10,7 @@
 //Batch norm Layer 1
 #define BATCH_NORM_LAYER_1_TEST_INPUT_DATA "generated_outputs/conv_1.txt"
 #define BATCH_NORM_LAYER_1_TEST_OUTPUT_DATA "generated_outputs/batch_norm_1.txt"
+#define BATCH_NORM_LAYER_1_TEST_DEBUG_OUTPUT_DATA "debug_outputs/batch_norm_1_debug.txt"
 #define BATCH_NORM_LAYER_1_TEST_WEIGHTS_BIAS "weights/batch_normalization_1_weights.txt"
 #define BATCH_NORM_LAYER_1_TEST_GOLDEN_OUTPUT "golden_outputs/batch_normalization_1_output.txt"
 #define BATCH_NORM_1_NAME "Batch_normalization_1"
@@ -17,6 +18,7 @@
 //Batch norm Layer 2
 #define BATCH_NORM_LAYER_2_TEST_INPUT_DATA "generated_outputs/conv_2.txt"
 #define BATCH_NORM_LAYER_2_TEST_OUTPUT_DATA "generated_outputs/batch_norm_2.txt"
+#define BATCH_NORM_LAYER_2_TEST_DEBUG_OUTPUT_DATA "debug_outputs/batch_norm_2_debug.txt"
 #define BATCH_NORM_LAYER_2_TEST_WEIGHTS_BIAS "weights/batch_normalization_2_weights.txt"
 #define BATCH_NORM_LAYER_2_TEST_GOLDEN_OUTPUT "golden_outputs/batch_normalization_2_output.txt"
 #define BATCH_NORM_2_NAME "Batch_normalization_2"
@@ -24,6 +26,7 @@
 //Batch norm Layer 3
 #define BATCH_NORM_LAYER_3_TEST_INPUT_DATA "generated_outputs/conv_3.txt"
 #define BATCH_NORM_LAYER_3_TEST_OUTPUT_DATA "generated_outputs/batch_norm_3.txt"
+#define BATCH_NORM_LAYER_3_TEST_DEBUG_OUTPUT_DATA "debug_outputs/batch_norm_3_debug.txt"
 #define BATCH_NORM_LAYER_3_TEST_WEIGHTS_BIAS "weights/batch_normalization_3_weights.txt"
 #define BATCH_NORM_LAYER_3_TEST_GOLDEN_OUTPUT "golden_outputs/batch_normalization_3_output.txt"
 #define BATCH_NORM_3_NAME "Batch_normalization_3"

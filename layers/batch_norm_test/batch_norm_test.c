@@ -1,15 +1,15 @@
 #include "batch_norm_test.h"
 #include "../util/data_structs.h"
-
+#include "../util/fixed_point.h"
 
 void batch_norm_layer_test(const char* input_data,const char* weights, const char* golden_output_data, const char* output_data, int offset, const char* layer_name, layer_params batch_norm_parameters)
 {
 	// file handlers
 	FILE* input_data_file = fopen(input_data, "r");
 	FILE* weights_data_file = fopen(weights, "r");
-	// FILE* golden_output_file = fopen(golden_output_data, "r");
 	FILE* golden_output_file = fopen(golden_output_data, "r");
 	FILE* output_file = fopen(output_data, "w+");
+	FILE* debug_output_file = fopen(BATCH_NORM_LAYER_1_TEST_DEBUG_OUTPUT_DATA, "w+");
 
 
 	if ((input_data_file == NULL) || (weights_data_file == NULL) || (golden_output_file == NULL) || (output_file == NULL))
@@ -42,8 +42,8 @@ void batch_norm_layer_test(const char* input_data,const char* weights, const cha
 	}
 
 	// read the relevant test data from the files
-	read_file_data(input_data_file, input, input_data_size, FLOAT); // input image
-	read_file_data(weights_data_file, weights_bias, weights_size, FLOAT); // weights and bias
+	read_file_data(input_data_file, input, input_data_size, INT_32); // input image
+	read_file_data(weights_data_file, weights_bias, weights_size, FIXED_POINT); // weights and bias
 	read_file_data(golden_output_file, golden_output, output_size, FLOAT); // golden output
 
 	// start the batch norm operation
@@ -71,6 +71,10 @@ void batch_norm_layer_test(const char* input_data,const char* weights, const cha
 	for (i = 0; i < output_size; i++){
 		fprintf(output_file, "%f\n", output_result[i]);
 	}
+	
+	for (i = 0; i < output_size; i++){
+		fprintf(debug_output_file, "%f\n", fixed_to_float(output_result[i], NUM_FRAC_BITS));
+	}
 		
 
 	printf("************************************* FINISHED TESTING %s LAYER *************************************\n", layer_name);
@@ -80,6 +84,7 @@ void batch_norm_layer_test(const char* input_data,const char* weights, const cha
 	fclose(weights_data_file);
 	fclose(golden_output_file);
 	fclose(output_file);
+	fclose(debug_output_file);
 
 	free(input);
 	free(weights_bias);

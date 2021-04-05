@@ -6,13 +6,14 @@
 #include <stdio.h>
 #include "../input/input_layer.h"
 #include "../util/shared.h"
+#include "../input_test/input_test.h"
 
 void input_layer_test(const char* input_data,const char* weights, const char* golden_output_data, const char* output_data, int offset, const char* layer_name, layer_params input_layer_parameters)
 {
 	// file handlers
 	FILE* input_data_file = fopen(input_data, "r");
 	FILE* output_file = fopen(output_data, "w+");
-	FILE* output_file_debug = fopen("input_layer_output_debug.txt", "w+");
+	FILE* output_file_debug = fopen(INPUT_LAYER_DEBUG_OUTPUT_DATA, "w+");
 
 	if ((input_data_file == NULL) || (output_file == NULL))
 	{
@@ -23,8 +24,6 @@ void input_layer_test(const char* input_data,const char* weights, const char* go
 	//important parameters regarding the convolution layer
 	int input_data_size = input_layer_parameters.batch_size * input_layer_parameters.input_height * input_layer_parameters.input_width;
 	int output_size = input_data_size;
-	
-	printf("input size: %d\n", input_data_size);
 
 	// we read in the data from the test related files
 	image_t* input_image = (image_t*)malloc(sizeof(image_t) * input_data_size);

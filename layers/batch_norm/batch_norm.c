@@ -5,8 +5,10 @@
 #include <assert.h>
 #include <stdint.h>
 #include <stdio.h>
+#include "../util/fixed_point.h"
 
 #define SW_TEST
+// #define BATCH_NORM_DEBUG
 
 
 void batch_norm(weights_biases_t * mem, // global memory pointer (stores params)
@@ -30,8 +32,12 @@ void batch_norm(weights_biases_t * mem, // global memory pointer (stores params)
 	result_t input_val;
 	
 	#ifdef BATCH_NORM_DEBUG
-	result_t temp_output;
-	float temp_gamma, temp_beta, temp_mean, temp_var, temp_input;
+	fixed_point_t temp_output;
+	gamma_t temp_gamma;
+	beta_t temp_beta;
+	mean_t temp_mean;
+	var_t temp_var;
+	result_t temp_input;
 	#endif
 
 	// Batch - most likely always 1
@@ -47,10 +53,12 @@ void batch_norm(weights_biases_t * mem, // global memory pointer (stores params)
 			var_t var = mem[offset/sizeof(var_t) + b_*id*4 + i_d*4 + 3];
 			
 			#ifdef BATCH_NORM_DEBUG
-			temp_gamma = gamma;
-			temp_beta = beta;
-			temp_mean = mean;
-			temp_var = var;
+			if (i_d == 0 && b_ == 0){
+				temp_gamma = gamma;
+				temp_beta = beta;
+				temp_mean = mean;
+				temp_var = var;
+			}
 			#endif
 			
 			// Input Y Dimension
@@ -63,11 +71,18 @@ void batch_norm(weights_biases_t * mem, // global memory pointer (stores params)
 					input_val = input[b_*id*ix*iy + i_d*ix*iy + i_y*ix + i_x];
 					
 					// Write output (one for every input)
-					output[b_*id*ix*iy + i_d*ix*iy + i_y*ix + i_x] = gamma*input_val/sqrt(var + EPSILON) + beta - gamma*mean/sqrt(var + EPSILON);
+					fixed_point_t numerator_1 = fixed_mult(gamma, input_val, NUM_FRAC_BITS);
+					fixed_point_t numerator_2 = fixed_mult(gamma, mean, NUM_FRAC_BITS);
+					fixed_point_t epsilon_fixed = float_to_fixed(EPSILON, NUM_FRAC_BITS);
+					fixed_point_t denominator = fixed_sqrt(var + epsilon_fixed, NUM_FRAC_BITS); 
+					output[b_*id*ix*iy + i_d*ix*iy + i_y*ix + i_x] = fixed_div(numerator_1, denominator, NUM_FRAC_BITS) + beta - fixed_div(numerator_2, denominator, NUM_FRAC_BITS);
+					// output[b_*id*ix*iy + i_d*ix*iy + i_y*ix + i_x] = gamma*input_val/sqrt(var + EPSILON) + beta - gamma*mean/sqrt(var + EPSILON);
 
-					#ifdef BATCH_NORM_DEBUG				
-					temp_output = gamma*input_val/sqrt(var + EPSILON) + beta - gamma*mean/sqrt(var + EPSILON); 
-					temp_input = input_val;
+					#ifdef BATCH_NORM_DEBUG	
+					if (i_d == 0 && b_ == 0){					
+						temp_output = denominator; 
+						temp_input = input_val;
+					}
 					#endif
 					
 					#ifdef SW_TEST
@@ -79,8 +94,9 @@ void batch_norm(weights_biases_t * mem, // global memory pointer (stores params)
 	}
 	
 	#ifdef BATCH_NORM_DEBUG
-	printf("Final output is: %f, final input is: %f\n", temp_output, temp_input);
-	printf("Gamma: %f, beta: %f, mean: %f, var: %f\n", temp_gamma, temp_beta, temp_mean, temp_var);
+	// printf("Final output is: %f, final input is: %f\n", temp_output, temp_input);
+	printf("Gamma: %d, beta: %d, mean: %d, var: %d\n", temp_gamma, temp_beta, temp_mean, temp_var);
+	printf("Temp output is: %d, temp input is %d\n", temp_output, temp_input);
 	#endif
 	
 	#ifdef SW_TEST

@@ -23,8 +23,8 @@
 
 /* Layers (turn on if required) */
 #define INPUT_LAYER
-// #define CONV_1_LAYER
-// #define BATCH_NORM_1_LAYER
+#define CONV_1_LAYER
+#define BATCH_NORM_1_LAYER
 // #define MAX_POOL_1_LAYER
 // #define CONV_2_LAYER
 // #define BATCH_NORM_2_LAYER
