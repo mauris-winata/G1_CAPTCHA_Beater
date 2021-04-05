@@ -1,3 +1,6 @@
+#include <stdint.h>
+#include "data_structs.h"
+
 #define NUM_FRAC_BITS 10
 
 typedef int32_t fixed_point_t;

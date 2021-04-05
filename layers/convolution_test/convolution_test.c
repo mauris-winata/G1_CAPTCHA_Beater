@@ -1,5 +1,3 @@
-
-
 #include "convolution_test.h"
 #include "../util/data_structs.h"
 

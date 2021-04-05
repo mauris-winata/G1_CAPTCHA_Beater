@@ -14,39 +14,58 @@
 #include "output/output_layer.h"
 #include "dense/max_pool_dense_layer.h"
 #include "dense_test/max_pool_dense_test.h"
+#include "input_test/input_test.h"
+#include "input/input_layer.h"
 
 /* Input Image */
 #define IMG_WIDTH 150
 #define IMG_HEIGHT 50
 
 /* Layers (turn on if required) */
-#define CONV_1_LAYER
-#define BATCH_NORM_1_LAYER
-#define MAX_POOL_1_LAYER
-#define CONV_2_LAYER
-#define BATCH_NORM_2_LAYER
-#define MAX_POOL_2_LAYER
-#define CONV_3_LAYER
-#define BATCH_NORM_3_LAYER
-#define MAX_POOL_3_LAYER
+#define INPUT_LAYER
+// #define CONV_1_LAYER
+// #define BATCH_NORM_1_LAYER
+// #define MAX_POOL_1_LAYER
+// #define CONV_2_LAYER
+// #define BATCH_NORM_2_LAYER
+// #define MAX_POOL_2_LAYER
+// #define CONV_3_LAYER
+// #define BATCH_NORM_3_LAYER
+// #define MAX_POOL_3_LAYER
  
 /* Dense layer is divided into 2 sets*/
 
 // first dense layer set below
-#define MAX_POOL_DENSE_1_LAYER
-#define MAX_POOL_DENSE_2_LAYER
-#define MAX_POOL_DENSE_3_LAYER
-#define MAX_POOL_DENSE_4_LAYER
-#define MAX_POOL_DENSE_5_LAYER
+// #define MAX_POOL_DENSE_1_LAYER
+// #define MAX_POOL_DENSE_2_LAYER
+// #define MAX_POOL_DENSE_3_LAYER
+// #define MAX_POOL_DENSE_4_LAYER
+// #define MAX_POOL_DENSE_5_LAYER
 
 // second dense layer set below
-#define DENSE_1_LAYER
-#define DENSE_2_LAYER
-#define DENSE_3_LAYER
-#define DENSE_4_LAYER
-#define DENSE_5_LAYER
+// #define DENSE_1_LAYER
+// #define DENSE_2_LAYER
+// #define DENSE_3_LAYER
+// #define DENSE_4_LAYER
+// #define DENSE_5_LAYER
 
 int main(){
+
+	/* Input Layer */
+    #ifdef INPUT_LAYER
+    layer_params input_layer = { .batch_size = 1,
+                                           .input_dim = -1,
+                                           .input_height = IMG_HEIGHT,
+                                           .input_width = IMG_WIDTH,
+                                           .kernel_size = -1,
+                                           .output_dim = -1,
+                                           .output_height = -1,
+                                           .output_width = -1,
+                                           .stride = -1 };
+
+    input_layer_test(INPUT_LAYER_INPUT_DATA, INPUT_LAYER_WEIGHTS_BIASES, INPUT_LAYER_GOLDEN_OUTPUT_DATA, 
+	INPUT_LAYER_OUTPUT_DATA, 0, INPUT_LAYER_NAME, input_layer);
+	#endif	
 
 	/* Conv Layer 1 */
     #ifdef CONV_1_LAYER
