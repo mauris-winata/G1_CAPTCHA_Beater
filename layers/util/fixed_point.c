@@ -16,13 +16,18 @@ float fixed_to_float(fixed_point_t input, uint8_t frac_bits){
 
 //Multiplication
 fixed_point_t fixed_mult (fixed_point_t op1, fixed_point_t op2, uint8_t frac_bits){
-    int64_t product = op1*op2;
-    return (((fixed_point_t) product) >> frac_bits);
+    int64_t a = op1;
+    int64_t b = op2; 
+    int64_t product = a*b;
+    product = product >> frac_bits;
+    return product;
 }
 
 //Division
 fixed_point_t fixed_div (fixed_point_t op1, fixed_point_t op2, uint8_t frac_bits){
-    int64_t dividend = op1 << frac_bits;
-    int64_t quotient = dividend/op2;
-    return (fixed_point_t) quotient;
+    int64_t a = op1;
+    int64_t b = op2; 
+    int64_t dividend = a << frac_bits;
+    int64_t quotient = dividend/b;
+    return quotient;
 }
