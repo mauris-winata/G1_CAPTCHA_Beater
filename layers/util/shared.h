@@ -9,6 +9,7 @@
 #include <stdbool.h>
 #include <math.h>
 #include <stdlib.h>
+#include "data_structs.h"
 
 typedef struct
 {
@@ -36,7 +37,7 @@ typedef enum
 
 void read_file_data(FILE* file, void* data_container, int data_size, LAYER_DATA_TYPE type);
 
-float mean_squared_error(float* layer_output, float* golden_output, layer_params layer_info, bool conv_layer);
+float mean_squared_error(result_t* layer_output, float* golden_output, layer_params layer_info, bool conv_layer);
 
 void print_layer_test_result(const char* layer_type, layer_params layer_info, int weight_count, int bias_count, float error);
 

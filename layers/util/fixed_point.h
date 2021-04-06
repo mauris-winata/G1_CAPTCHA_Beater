@@ -17,3 +17,6 @@ fixed_point_t fixed_mult (fixed_point_t op1, fixed_point_t op2, uint8_t frac_bit
 
 //Division
 fixed_point_t fixed_div (fixed_point_t op1, fixed_point_t op2, uint8_t frac_bits);
+
+//Sqrt
+fixed_point_t fixed_sqrt (fixed_point_t x, uint8_t frac_bits);

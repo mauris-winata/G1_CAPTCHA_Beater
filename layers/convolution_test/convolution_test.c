@@ -10,7 +10,7 @@ void convolution_layer_test(const char* input_data,const char* weights, const ch
 	FILE* weights_data_file = fopen(weights, "r");
 	FILE* golden_output_file = fopen(golden_output_data, "r");
 	FILE* output_file = fopen(output_data, "w+");
-	FILE* debug_output_file = fopen(CONVOLUTION_LAYER_1_TEST_DEBUG_OUTPUT_DATA, "w+");
+	FILE* debug_output_file = fopen(CONVOLUTION_LAYER_2_TEST_DEBUG_OUTPUT_DATA, "w+");
 
 
 	if ((input_data_file == NULL) || (weights_data_file == NULL) || (golden_output_file == NULL) || (output_file == NULL))

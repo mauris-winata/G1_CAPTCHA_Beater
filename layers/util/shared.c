@@ -46,7 +46,7 @@ void read_file_data(FILE* file, void* data_container, int data_size, LAYER_DATA_
 	return;
 }
 
-float mean_squared_error(float* layer_output, float* golden_output, layer_params layer_info, bool conv_layer)
+float mean_squared_error(result_t* layer_output, float* golden_output, layer_params layer_info, bool conv_layer)
 {
 	float total_error = 0.0;
 	float intermediate_error = 0.0;
