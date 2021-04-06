@@ -10,7 +10,7 @@ void convolution_layer_test(const char* input_data,const char* weights, const ch
 	FILE* weights_data_file = fopen(weights, "r");
 	FILE* golden_output_file = fopen(golden_output_data, "r");
 	FILE* output_file = fopen(output_data, "w+");
-	FILE* debug_output_file = fopen(CONVOLUTION_LAYER_2_TEST_DEBUG_OUTPUT_DATA, "w+");
+	FILE* debug_output_file = fopen(CONVOLUTION_LAYER_3_TEST_DEBUG_OUTPUT_DATA, "w+");
 
 
 	if ((input_data_file == NULL) || (weights_data_file == NULL) || (golden_output_file == NULL) || (output_file == NULL))
@@ -66,11 +66,14 @@ void convolution_layer_test(const char* input_data,const char* weights, const ch
 		convolution_parameters.kernel_size);            // kernel size
 
 	// verify the output
-	// convolution_error = mean_squared_error(output_result, golden_output, convolution_parameters, true);
+	convolution_error = mean_squared_error(output_result, golden_output, convolution_parameters, true);
 
 	// print the test results
 	print_layer_test_result(layer_name, convolution_parameters, weights_size - convolution_parameters.output_dim, convolution_parameters.output_dim, convolution_error);
 
+	//print max error
+	print_max_error(output_result, golden_output, convolution_parameters, true);
+	
 	//Printing output results to a file
 	int i; 
 	for (i = 0; i < output_size; i++){

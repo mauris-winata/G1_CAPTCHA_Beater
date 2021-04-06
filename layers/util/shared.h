@@ -41,7 +41,7 @@ float mean_squared_error(result_t* layer_output, float* golden_output, layer_par
 
 void print_layer_test_result(const char* layer_type, layer_params layer_info, int weight_count, int bias_count, float error);
 
-
+void print_max_error(result_t* layer_output, float* golden_output, layer_params layer_info, bool conv_layer);
 
 
 

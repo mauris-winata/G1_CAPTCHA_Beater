@@ -1,6 +1,7 @@
 // this file contains the definition of the dense layer within the CNN
 
 #include "dense_layer.h"
+#include "../util/fixed_point.h"
 
 
 void dense_layer(weights_biases_t* mem, // global pointer to weights and biases
@@ -23,12 +24,17 @@ void dense_layer(weights_biases_t* mem, // global pointer to weights and biases
 		// output dimension
 		for (int o_x = 0; o_x < ox; o_x++)
 		{
-			float output_data = mem[offset / sizeof(float) + num_weights + o_x]; // handle bias here. (one bias per output)
+			result_t output_data = mem[offset / sizeof(result_t) + num_weights + o_x]; // handle bias here. (one bias per output)
 			
 			// handle the dot product per output
 			for (int i_x = 0; i_x < ix; i_x++) 
 			{
-				output_data += input[b_ * ix + i_x] * mem[offset / sizeof(float) + i_x * ox + o_x]; 
+				result_t input_val = input[b_ * ix + i_x];
+				weights_biases_t weight = mem[offset / sizeof(weights_biases_t) + i_x * ox + o_x];
+				
+				output_data += fixed_mult(input_val, weight, NUM_FRAC_BITS);
+				
+				// output_data += input[b_ * ix + i_x] * mem[offset / sizeof(float) + i_x * ox + o_x]; 
 			}
 
 			// handling the appropriate layer for the output

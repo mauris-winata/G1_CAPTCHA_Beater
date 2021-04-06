@@ -53,9 +53,9 @@ float mean_squared_error(result_t* layer_output, float* golden_output, layer_par
 	int total_number_of_outputs = 0;
 
 	// layer parameters
-	int num_inputs;
-	int num_biases;
-	int num_weights;
+	// int num_inputs;
+	// int num_biases;
+	// int num_weights;
 	int num_outputs;
 	int batch_size = layer_info.batch_size;
 
@@ -63,17 +63,17 @@ float mean_squared_error(result_t* layer_output, float* golden_output, layer_par
 	if (conv_layer)
 	{
 		// if our current layer verification is convolution
-		num_inputs = layer_info.input_dim * layer_info.input_height * layer_info.input_width;
-		num_biases = layer_info.output_dim;
-		num_weights = layer_info.input_dim * layer_info.kernel_size * layer_info.kernel_size * layer_info.output_dim;
+		// num_inputs = layer_info.input_dim * layer_info.input_height * layer_info.input_width;
+		// num_biases = layer_info.output_dim;
+		// num_weights = layer_info.input_dim * layer_info.kernel_size * layer_info.kernel_size * layer_info.output_dim;
 		num_outputs = layer_info.output_dim * layer_info.output_height * layer_info.output_width;
 	}
 	else
 	{
 		// any other layer type (in our case this would be dense, softmax, max pooling etc..)
-		num_inputs = layer_info.input_dim * layer_info.input_height * layer_info.input_width;
-		num_biases = layer_info.output_dim;
-		num_weights = layer_info.input_dim * layer_info.input_height * layer_info.input_width * layer_info.output_dim * layer_info.output_height * layer_info.output_width;
+		// num_inputs = layer_info.input_dim * layer_info.input_height * layer_info.input_width;
+		// num_biases = layer_info.output_dim;
+		// num_weights = layer_info.input_dim * layer_info.input_height * layer_info.input_width * layer_info.output_dim * layer_info.output_height * layer_info.output_width;
 		num_outputs = layer_info.output_dim * layer_info.output_height * layer_info.output_width;
 	}
 
@@ -83,7 +83,7 @@ float mean_squared_error(result_t* layer_output, float* golden_output, layer_par
 	// actually calculating the error below
 	for (int i = 0; i < batch_size * num_outputs; i++)
 	{
-		intermediate_error = fabs(layer_output[i] - golden_output[i]);
+		intermediate_error = fabs(fixed_to_float(layer_output[i], NUM_FRAC_BITS) - golden_output[i]);
 		total_error += (intermediate_error * intermediate_error);
 	}
 
@@ -91,6 +91,35 @@ float mean_squared_error(result_t* layer_output, float* golden_output, layer_par
 	total_error /= total_number_of_outputs;
 
 	return total_error;
+}
+
+void print_max_error(result_t* layer_output, float* golden_output, layer_params layer_info, bool conv_layer)
+{
+	float max_error = 0.0;
+	float intermediate_error;
+
+	// layer parameters
+	int num_outputs;
+	int batch_size = layer_info.batch_size;
+
+	// convolution layers and other layers have different parameter calculations
+	if (conv_layer)
+	{
+		num_outputs = layer_info.output_dim * layer_info.output_height * layer_info.output_width;
+	}
+	else
+	{
+		num_outputs = layer_info.output_dim * layer_info.output_height * layer_info.output_width;
+	}
+
+	// actually calculating the error below
+	for (int i = 0; i < batch_size * num_outputs; i++)
+	{
+		intermediate_error = fabs(fixed_to_float(layer_output[i], NUM_FRAC_BITS) - golden_output[i]);
+		if (intermediate_error > max_error) max_error = intermediate_error;
+	}
+
+	printf("  Max error is: %f\n", max_error);
 }
 
 void print_layer_test_result(const char* layer_type, layer_params layer_info, int weight_count, int bias_count, float error)
@@ -107,7 +136,7 @@ void print_layer_test_result(const char* layer_type, layer_params layer_info, in
 	if(bias_count != -1) printf("  Number of Biases: %d\n", bias_count);
 
 	printf("\nTesting Results:\n");
-	printf("  Mean Squared Error: %f\n", error);
+	printf("  Mean Squared Error: %.15f\n", error);
 
 	return;
 }

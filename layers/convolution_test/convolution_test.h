@@ -24,8 +24,7 @@
 #define CONV_LAYER_2_NAME "Conv2d_2"
 
 //Conv Layer 3
-// #define CONVOLUTION_LAYER_3_TEST_INPUT_DATA "generated_outputs/max_pool_2.txt"
-#define CONVOLUTION_LAYER_3_TEST_INPUT_DATA "golden_outputs/max_pooling2d_2_output.txt"
+#define CONVOLUTION_LAYER_3_TEST_INPUT_DATA "generated_outputs/max_pool_2.txt"
 #define CONVOLUTION_LAYER_3_TEST_OUTPUT_DATA "generated_outputs/conv_3.txt"
 #define CONVOLUTION_LAYER_3_TEST_DEBUG_OUTPUT_DATA "debug_outputs/conv_3_debug.txt"
 #define CONVOLUTION_LAYER_3_TEST_WEIGHTS_BIAS "weights/conv2d_3_weights.txt"

@@ -9,7 +9,7 @@ void batch_norm_layer_test(const char* input_data,const char* weights, const cha
 	FILE* weights_data_file = fopen(weights, "r");
 	FILE* golden_output_file = fopen(golden_output_data, "r");
 	FILE* output_file = fopen(output_data, "w+");
-	FILE* debug_output_file = fopen(BATCH_NORM_LAYER_1_TEST_DEBUG_OUTPUT_DATA, "w+");
+	FILE* debug_output_file = fopen(BATCH_NORM_LAYER_3_TEST_DEBUG_OUTPUT_DATA, "w+");
 
 
 	if ((input_data_file == NULL) || (weights_data_file == NULL) || (golden_output_file == NULL) || (output_file == NULL))
@@ -65,6 +65,9 @@ void batch_norm_layer_test(const char* input_data,const char* weights, const cha
 
 	// print the test results
 	print_layer_test_result(layer_name, batch_norm_parameters, 4*batch_norm_parameters.input_dim, batch_norm_parameters.output_dim, batch_norm_error);
+	
+	//print max error
+	print_max_error(output_result, golden_output, batch_norm_parameters, true);
 
 	//Printing output results to a file
 	int i; 

@@ -2,6 +2,7 @@
 
 #include "max_pool_dense_test.h"
 #include "../util/data_structs.h"
+#include "../util/fixed_point.h"
 
 void max_pool_dense_layer_test(const char* input_data, const char* weights, const char* golden_output_data, const char* output_data, int offset, const char* layer_name, layer_params max_pool_dense_layer_parameters)
 {
@@ -10,7 +11,7 @@ void max_pool_dense_layer_test(const char* input_data, const char* weights, cons
 	FILE* weights_data_file = fopen(weights, "r");
 	FILE* golden_output_file = fopen(golden_output_data, "r");
 	FILE* output_file = fopen(output_data, "w+");
-
+	FILE* debug_output_file = fopen("debug_outputs/max_pool_dense_1_debug.txt", "w+");
 
 	if ((input_data_file == NULL) || (weights_data_file == NULL) || (golden_output_file == NULL) || (output_file == NULL))
 	{
@@ -27,7 +28,7 @@ void max_pool_dense_layer_test(const char* input_data, const char* weights, cons
 	// we read in the data from the test related files
 	result_t* input_data_values = (result_t*)malloc(sizeof(result_t) * input_data_size);
 	weights_biases_t* weights_bias = (weights_biases_t*)malloc(sizeof(weights_biases_t) * weights_size);
-	result_t* golden_output = (result_t*)malloc(sizeof(result_t) * output_size);
+	float* golden_output = (float*)malloc(sizeof(float) * output_size);
 	result_t* output_result = (result_t*)malloc(sizeof(result_t) * output_size);
 
 	// resulting error of the test
@@ -41,8 +42,8 @@ void max_pool_dense_layer_test(const char* input_data, const char* weights, cons
 	}
 
 	// read the relevant test data from the files
-	read_file_data(input_data_file, input_data_values, input_data_size, FLOAT); // input image
-	read_file_data(weights_data_file, weights_bias, weights_size, FLOAT); // weights and bias
+	read_file_data(input_data_file, input_data_values, input_data_size, INT_32); // input image
+	read_file_data(weights_data_file, weights_bias, weights_size, FIXED_POINT); // weights and bias
 	read_file_data(golden_output_file, golden_output, output_size, FLOAT); // golden output
 
 
@@ -66,10 +67,17 @@ void max_pool_dense_layer_test(const char* input_data, const char* weights, cons
 	// print the test results
 	print_layer_test_result(layer_name, max_pool_dense_layer_parameters, weights_size - max_pool_dense_layer_parameters.output_dim, max_pool_dense_layer_parameters.output_dim, dense_error);
 
+	//print max error
+	print_max_error(output_result, golden_output, max_pool_dense_layer_parameters, false);
+
 	//Printing output results to a file
 	int i;
 	for (i = 0; i < output_size; i++) {
-		fprintf(output_file, "%f\n", output_result[i]);
+		fprintf(output_file, "%d\n", output_result[i]);
+	}
+	
+	for (i = 0; i < output_size; i++){
+		fprintf(debug_output_file, "%f\n", fixed_to_float(output_result[i], NUM_FRAC_BITS));
 	}
 
 
@@ -80,6 +88,7 @@ void max_pool_dense_layer_test(const char* input_data, const char* weights, cons
 	fclose(weights_data_file);
 	fclose(golden_output_file);
 	fclose(output_file);
+	fclose(debug_output_file);
 
 	free(input_data_values);
 	free(weights_bias);

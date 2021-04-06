@@ -10,7 +10,7 @@ void max_pool_layer_test(const char* input_data,const char* weights, const char*
 	// FILE* weights_data_file = fopen(weights, "r");
 	FILE* golden_output_file = fopen(golden_output_data, "r");
 	FILE* output_file = fopen(output_data, "w+");
-	FILE* debug_output_file = fopen(MAX_POOL_LAYER_1_DEBUG_OUTPUT_DATA, "w+");
+	FILE* debug_output_file = fopen(MAX_POOL_LAYER_3_DEBUG_OUTPUT_DATA, "w+");
 
 
 	if ((input_data_file == NULL) ||  (golden_output_file == NULL) || (output_file == NULL))
@@ -26,7 +26,7 @@ void max_pool_layer_test(const char* input_data,const char* weights, const char*
 
 	// we read in the data from the test related files
 	result_t* input = (result_t*)malloc(sizeof(result_t) * input_data_size);
-	result_t* golden_output = (result_t*)malloc(sizeof(result_t) * output_size);
+	float* golden_output = (float*)malloc(sizeof(float) * output_size);
 	result_t* output_result = (result_t*)malloc(sizeof(result_t) * output_size);
 
 	// resulting error of the test
@@ -64,6 +64,9 @@ void max_pool_layer_test(const char* input_data,const char* weights, const char*
 	// print the test results
 	print_layer_test_result(layer_name, max_pool_parameters, -1, max_pool_parameters.output_dim, max_pool_error);
 
+	//printing max error
+	print_max_error(output_result, golden_output, max_pool_parameters, true);
+	
 	//Printing output results to a file
 	int i; 
 	for (i = 0; i < output_size; i++){
