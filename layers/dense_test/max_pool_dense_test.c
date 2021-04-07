@@ -4,6 +4,8 @@
 #include "../util/data_structs.h"
 #include "../util/fixed_point.h"
 
+// #define DEBUG_PRINTS
+
 void max_pool_dense_layer_test(const char* input_data, const char* weights, const char* golden_output_data, const char* output_data, int offset, const char* layer_name, layer_params max_pool_dense_layer_parameters)
 {
 	// file handlers
@@ -31,8 +33,7 @@ void max_pool_dense_layer_test(const char* input_data, const char* weights, cons
 	float* golden_output = (float*)malloc(sizeof(float) * output_size);
 	result_t* output_result = (result_t*)malloc(sizeof(result_t) * output_size);
 
-	// resulting error of the test
-	float dense_error = 0.0;
+
 
 	// check to make sure the memory was allocated appropriately
 	if ((input_data_values == NULL) || (weights_bias == NULL) || (golden_output == NULL) || (output_result == NULL))
@@ -46,10 +47,6 @@ void max_pool_dense_layer_test(const char* input_data, const char* weights, cons
 	read_file_data(weights_data_file, weights_bias, weights_size, FIXED_POINT); // weights and bias
 	read_file_data(golden_output_file, golden_output, output_size, FLOAT); // golden output
 
-
-	// start the dense operation
-	printf("\n\n************************************* TESTING %s LAYER *************************************\n", layer_name);
-
 	// test the dense layer
 	max_pool_dense_layer(weights_bias,         	  // global memory pointer
 		input_data_values, 				  // where to get inputs
@@ -61,6 +58,13 @@ void max_pool_dense_layer_test(const char* input_data, const char* weights, cons
 		max_pool_dense_layer_parameters.input_height,          // input size height
 		max_pool_dense_layer_parameters.output_width);           // output size (1-d vector)
 
+	#ifdef DEBUG_PRINTS
+	// resulting error of the test
+	float dense_error = 0.0;
+	
+	// start the dense operation
+	printf("\n\n************************************* TESTING %s LAYER *************************************\n", layer_name);
+
 	// verify the output
 	dense_error = mean_squared_error(output_result, golden_output, max_pool_dense_layer_parameters, false);
 
@@ -69,6 +73,9 @@ void max_pool_dense_layer_test(const char* input_data, const char* weights, cons
 
 	//print max error
 	print_max_error(output_result, golden_output, max_pool_dense_layer_parameters, false);
+	
+	printf("************************************* FINISHED TESTING %s LAYER *************************************\n", layer_name);
+	#endif
 
 	//Printing output results to a file
 	int i;
@@ -81,7 +88,7 @@ void max_pool_dense_layer_test(const char* input_data, const char* weights, cons
 	}
 
 
-	printf("************************************* FINISHED TESTING %s LAYER *************************************\n", layer_name);
+	
 
 	// unallocating resources
 	fclose(input_data_file);

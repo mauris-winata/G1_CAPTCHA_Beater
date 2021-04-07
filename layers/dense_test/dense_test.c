@@ -4,6 +4,8 @@
 #include "../util/data_structs.h"
 #include "../util/fixed_point.h"
 
+// #define DEBUG_PRINTS
+
 void dense_layer_test(const char* input_data, const char* weights, const char* golden_output_data, const char* output_data, int offset, const char* layer_name, layer_params dense_layer_parameters)
 {
 	// file handlers
@@ -32,9 +34,6 @@ void dense_layer_test(const char* input_data, const char* weights, const char* g
 	result_t* output_result_dense = (result_t*)malloc(sizeof(result_t) * output_size); // output after the dense layer operation
 	result_t* output_result_soft_max = (result_t*)malloc(sizeof(result_t) * output_size); // output after the softmax layer operation
 
-	// resulting error of the test
-	float dense_error = 0.0;
-
 	// check to make sure the memory was allocated appropriately
 	if ((input_data_values == NULL) || (weights_bias == NULL) || (golden_output == NULL) || (output_result_dense == NULL) || (output_result_soft_max == NULL))
 	{
@@ -48,8 +47,7 @@ void dense_layer_test(const char* input_data, const char* weights, const char* g
 	read_file_data(golden_output_file, golden_output, output_size, FLOAT); // golden output
 
 
-	// start the dense operation
-	printf("\n\n************************************* TESTING %s LAYER *************************************\n", layer_name);
+
 
 	// test the dense layer
 	dense_layer(weights_bias,         	  // global memory pointer
@@ -67,6 +65,13 @@ void dense_layer_test(const char* input_data, const char* weights, const char* g
 		dense_layer_parameters.input_width,      // input size
 		dense_layer_parameters.output_width);    // output size
 
+	#ifdef DEBUG_PRINTS	
+	// resulting error of the test
+	float dense_error = 0.0;
+	
+	// start the dense operation
+	printf("\n\n************************************* TESTING %s LAYER *************************************\n", layer_name);
+
 	// verify the output
 	dense_error = mean_squared_error(output_result_soft_max, golden_output, dense_layer_parameters, false);
 
@@ -75,6 +80,9 @@ void dense_layer_test(const char* input_data, const char* weights, const char* g
 
 	//print max error
 	print_max_error(output_result_soft_max, golden_output, dense_layer_parameters, false);
+
+	printf("************************************* FINISHED TESTING %s LAYER *************************************\n", layer_name);
+	#endif
 	
 	//Printing output results to a file
 	int i;
@@ -85,9 +93,6 @@ void dense_layer_test(const char* input_data, const char* weights, const char* g
 	for (i = 0; i < output_size; i++){
 		fprintf(debug_output_file, "%f\n", fixed_to_float(output_result_soft_max[i], NUM_FRAC_BITS));
 	}
-
-
-	printf("************************************* FINISHED TESTING %s LAYER *************************************\n", layer_name);
 
 	// unallocating resources
 	fclose(input_data_file);

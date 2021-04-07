@@ -40,8 +40,7 @@ void input_layer_test(const char* input_data,const char* weights, const char* go
 	read_file_data(input_data_file, input_image, input_data_size, FLOAT); // input image
 
 
-	// start the input operation
-	printf("\n\n************************************* TESTING %s LAYER *************************************\n", layer_name);
+
 
 	// test the input layer
 	input_layer(input_image, 				 		// where to get inputs
@@ -50,8 +49,15 @@ void input_layer_test(const char* input_data,const char* weights, const char* go
 		input_layer_parameters.input_width,         // input width
 		input_layer_parameters.input_height);       // input height
 
+	#ifdef DEBUG_PRINTS
+	// start the input operation
+	printf("\n\n************************************* TESTING %s LAYER *************************************\n", layer_name);
+
 	// print the test results
 	print_layer_test_result(layer_name, input_layer_parameters, 0, input_layer_parameters.output_dim, -1);
+	
+	printf("************************************* FINISHED TESTING %s LAYER *************************************\n", layer_name);
+	#endif
 
 	//Printing output results to a file
 	int i; 
@@ -64,7 +70,7 @@ void input_layer_test(const char* input_data,const char* weights, const char* go
 	}
 		
 
-	printf("************************************* FINISHED TESTING %s LAYER *************************************\n", layer_name);
+	
 
 	// unallocating resources
 	fclose(input_data_file);

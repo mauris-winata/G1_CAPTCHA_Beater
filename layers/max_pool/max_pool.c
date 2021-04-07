@@ -6,7 +6,7 @@
 #include <stdint.h>
 #include <math.h>
 
-#define MAX_POOL_DEBUG
+// #define MAX_POOL_DEBUG
 
 void max_pool(result_t * input, 		// where to get inputs
 				result_t * output,		// where to store outputs

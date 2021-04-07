@@ -29,8 +29,7 @@ void max_pool_layer_test(const char* input_data,const char* weights, const char*
 	float* golden_output = (float*)malloc(sizeof(float) * output_size);
 	result_t* output_result = (result_t*)malloc(sizeof(result_t) * output_size);
 
-	// resulting error of the test
-	float max_pool_error = -1;
+
 
 	// check to make sure the memory was allocated appropriately
 	if ((input == NULL) || (golden_output == NULL) || (output_result == NULL))
@@ -45,8 +44,7 @@ void max_pool_layer_test(const char* input_data,const char* weights, const char*
 	read_file_data(golden_output_file, golden_output, output_size, FLOAT); // golden output
 
 
-	// start the max_pool operation
-	printf("\n\n************************************* TESTING %s LAYER *************************************\n", layer_name);
+
 
 	// test the batch norm layer
 	max_pool(input, 				  // where to get inputs
@@ -57,6 +55,12 @@ void max_pool_layer_test(const char* input_data,const char* weights, const char*
 		max_pool_parameters.input_width,           // input width
 		max_pool_parameters.input_height);           // input height
 
+	#ifdef DEBUG_PRINTS
+	// resulting error of the test
+	float max_pool_error = -1;
+	
+	// start the max_pool operation
+	printf("\n\n************************************* TESTING %s LAYER *************************************\n", layer_name);
 
 	// verify the output
 	max_pool_error = mean_squared_error(output_result, golden_output, max_pool_parameters, true);
@@ -67,6 +71,10 @@ void max_pool_layer_test(const char* input_data,const char* weights, const char*
 	//printing max error
 	print_max_error(output_result, golden_output, max_pool_parameters, true);
 	
+	printf("************************************* FINISHED TESTING %s LAYER *************************************\n", layer_name);
+	
+	#endif
+	
 	//Printing output results to a file
 	int i; 
 	for (i = 0; i < output_size; i++){
@@ -76,8 +84,6 @@ void max_pool_layer_test(const char* input_data,const char* weights, const char*
 	for (i = 0; i < output_size; i++){
 		fprintf(debug_output_file, "%f\n", fixed_to_float(output_result[i], NUM_FRAC_BITS));
 	}		
-
-	printf("************************************* FINISHED TESTING %s LAYER *************************************\n", layer_name);
 
 	// unallocating resources
 	fclose(input_data_file);

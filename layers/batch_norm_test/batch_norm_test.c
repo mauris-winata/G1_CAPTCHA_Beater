@@ -2,6 +2,8 @@
 #include "../util/data_structs.h"
 #include "../util/fixed_point.h"
 
+// #define DEBUG_PRINTS
+
 void batch_norm_layer_test(const char* input_data,const char* weights, const char* golden_output_data, const char* output_data, int offset, const char* layer_name, layer_params batch_norm_parameters)
 {
 	// file handlers
@@ -29,11 +31,6 @@ void batch_norm_layer_test(const char* input_data,const char* weights, const cha
 	float* golden_output = (float*)malloc(sizeof(float) * output_size);
 	result_t* output_result = (result_t*)malloc(sizeof(result_t) * output_size);
 	
-
-
-	// resulting error of the test
-	float batch_norm_error = -1;
-
 	// check to make sure the memory was allocated appropriately
 	if ((input == NULL) || (weights_bias == NULL) || (golden_output == NULL) || (output_result == NULL))
 	{
@@ -46,9 +43,6 @@ void batch_norm_layer_test(const char* input_data,const char* weights, const cha
 	read_file_data(weights_data_file, weights_bias, weights_size, FIXED_POINT); // weights and bias
 	read_file_data(golden_output_file, golden_output, output_size, FLOAT); // golden output
 
-	// start the batch norm operation
-	printf("\n\n************************************* TESTING %s LAYER *************************************\n", layer_name);
-
 	// test the batch norm layer
 	batch_norm(weights_bias,         	  // global memory pointer
 		input, 				  // where to get inputs
@@ -59,7 +53,13 @@ void batch_norm_layer_test(const char* input_data,const char* weights, const cha
 		batch_norm_parameters.input_width,           // input width
 		batch_norm_parameters.input_height);           // input height
 
-
+	#ifdef DEBUG_PRINTS
+	// resulting error of the test
+	float batch_norm_error = -1;
+	
+	// start the batch norm operation
+	printf("\n\n************************************* TESTING %s LAYER *************************************\n", layer_name);
+	
 	// verify the output
 	batch_norm_error = mean_squared_error(output_result, golden_output, batch_norm_parameters, true);
 
@@ -68,6 +68,9 @@ void batch_norm_layer_test(const char* input_data,const char* weights, const cha
 	
 	//print max error
 	print_max_error(output_result, golden_output, batch_norm_parameters, true);
+	
+	printf("************************************* FINISHED TESTING %s LAYER *************************************\n", layer_name);
+	#endif
 
 	//Printing output results to a file
 	int i; 
@@ -79,9 +82,6 @@ void batch_norm_layer_test(const char* input_data,const char* weights, const cha
 		fprintf(debug_output_file, "%f\n", fixed_to_float(output_result[i], NUM_FRAC_BITS));
 	}
 		
-
-	printf("************************************* FINISHED TESTING %s LAYER *************************************\n", layer_name);
-
 	// unallocating resources
 	fclose(input_data_file);
 	fclose(weights_data_file);

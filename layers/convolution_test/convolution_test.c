@@ -2,6 +2,7 @@
 #include "../util/data_structs.h"
 #include "../util/fixed_point.h"
 
+// #define DEBUG_PRINTS
 
 void convolution_layer_test(const char* input_data,const char* weights, const char* golden_output_data, const char* output_data, int offset, const char* layer_name, layer_params convolution_parameters)
 {
@@ -31,9 +32,6 @@ void convolution_layer_test(const char* input_data,const char* weights, const ch
 	float* golden_output = (float*)malloc(sizeof(float) * output_size);
 	result_t* output_result = (result_t*)malloc(sizeof(result_t) * output_size);
 
-	// resulting error of the test
-	float convolution_error = 0.0;
-
 	// check to make sure the memory was allocated appropriately
 	if ((input_image == NULL) || (weights_bias == NULL) || (golden_output == NULL) || (output_result == NULL))
 	{
@@ -45,10 +43,6 @@ void convolution_layer_test(const char* input_data,const char* weights, const ch
 	read_file_data(input_data_file, input_image, input_data_size, INT_32); // input image
 	read_file_data(weights_data_file, weights_bias, weights_size, FIXED_POINT); // weights and bias
 	read_file_data(golden_output_file, golden_output, output_size, FLOAT); // golden output
-
-
-	// start the convolution operation
-	printf("\n\n************************************* TESTING %s LAYER *************************************\n", layer_name);
 
 	// test the convolution layer
 	conv_layer(weights_bias,         	  // global memory pointer
@@ -65,6 +59,13 @@ void convolution_layer_test(const char* input_data,const char* weights, const ch
 		convolution_parameters.stride,             // stride
 		convolution_parameters.kernel_size);            // kernel size
 
+	#ifdef DEBUG_PRINTS
+	// resulting error of the test
+	float convolution_error = 0.0;
+	
+	// start the convolution operation
+	printf("\n\n************************************* TESTING %s LAYER *************************************\n", layer_name);	
+
 	// verify the output
 	convolution_error = mean_squared_error(output_result, golden_output, convolution_parameters, true);
 
@@ -73,6 +74,9 @@ void convolution_layer_test(const char* input_data,const char* weights, const ch
 
 	//print max error
 	print_max_error(output_result, golden_output, convolution_parameters, true);
+	
+	printf("************************************* FINISHED TESTING %s LAYER *************************************\n", layer_name);
+	#endif
 	
 	//Printing output results to a file
 	int i; 
@@ -84,9 +88,6 @@ void convolution_layer_test(const char* input_data,const char* weights, const ch
 		fprintf(debug_output_file, "%f\n", fixed_to_float(output_result[i], NUM_FRAC_BITS));
 	}
 		
-
-	printf("************************************* FINISHED TESTING %s LAYER *************************************\n", layer_name);
-
 	// unallocating resources
 	fclose(input_data_file);
 	fclose(weights_data_file);

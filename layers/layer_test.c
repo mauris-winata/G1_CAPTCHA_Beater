@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdint.h>
+#include <dirent.h>
 #include "conv/conv_layer.h"
 #include "dense/dense_layer.h"
 #include "soft_max/soft_max_layer.h"
@@ -14,14 +15,19 @@
 #include "output/output_layer.h"
 #include "dense/max_pool_dense_layer.h"
 #include "dense_test/max_pool_dense_test.h"
+#include "output_test/output_test.h"
+#include "output/output_layer.h"
 #include "input_test/input_test.h"
 #include "input/input_layer.h"
+#include <string.h>
 
-/* Input Image */
+#define INPUT_IMAGES_DIR "input_images"
+
+// /* Input Image */
 #define IMG_WIDTH 150
 #define IMG_HEIGHT 50
 
-/* Layers (turn on if required) */
+// /* Layers (turn on if required) */
 #define INPUT_LAYER
 #define CONV_1_LAYER
 #define BATCH_NORM_1_LAYER
@@ -33,24 +39,86 @@
 #define BATCH_NORM_3_LAYER
 #define MAX_POOL_3_LAYER
  
-/* Dense layer is divided into 2 sets*/
+// /* Dense layer is divided into 2 sets*/
 
-// first dense layer set below
+// // first dense layer set below
 #define MAX_POOL_DENSE_1_LAYER
 #define MAX_POOL_DENSE_2_LAYER
 #define MAX_POOL_DENSE_3_LAYER
 #define MAX_POOL_DENSE_4_LAYER
 #define MAX_POOL_DENSE_5_LAYER
 
-// second dense layer set below
+// // second dense layer set below
 #define DENSE_1_LAYER
 #define DENSE_2_LAYER
 #define DENSE_3_LAYER
 #define DENSE_4_LAYER
 #define DENSE_5_LAYER
 
-int main(){
+// // output layer set below
+#define OUTPUT_1_LAYER
+#define OUTPUT_2_LAYER
+#define OUTPUT_3_LAYER
+#define OUTPUT_4_LAYER
+#define OUTPUT_5_LAYER
 
+void run_test(char* input_image, char *output);
+
+int main(){
+	struct dirent *pDirent;
+	DIR *pDir;
+	char input_image_location[50];
+	char input_image_file[10]; 
+	char golden_output[6]; //from file name
+	char calculated_output[6]; //from inference
+	int total_files = 0;
+	int correct_preds = 0;
+	
+	int limit = 1001;
+	
+
+	// Ensure we can open directory.
+	pDir = opendir (INPUT_IMAGES_DIR);
+	if (pDir == NULL) {
+		printf ("Cannot open directory '%s'\n", INPUT_IMAGES_DIR);
+		return 1;
+	}
+
+	// Process each entry.
+
+	while ((pDirent = readdir(pDir)) != NULL) {
+		// printf ("%s\n", pDirent->d_name);
+		if (total_files == limit) break;
+		snprintf(input_image_location, strlen(INPUT_IMAGES_DIR) + 2, "%s/", INPUT_IMAGES_DIR);
+		snprintf(golden_output, 6, "%s", pDirent->d_name); 
+		snprintf(input_image_file, 10, "%s", pDirent->d_name);
+		strcat(input_image_location, input_image_file);
+		if (golden_output[0] == '.') continue;
+		run_test(input_image_location, calculated_output);
+		total_files++;	
+		if(!strcmp(calculated_output, golden_output)) {
+			correct_preds++;
+			printf ("Test %d: Golden: %s Calculated: %s CORRECT! 	Current Accuracy: %f\n", total_files, golden_output, calculated_output, (float) 100*correct_preds/total_files);
+		}
+		else printf ("Test %d: Golden: %s Calculated: %s INCORRECT!	Current Accuracy: %f\n", total_files, golden_output, calculated_output, (float) 100*correct_preds/total_files);
+		
+	}
+	printf("\n\nPredicted %d/%d correctly - %f percent \n", correct_preds, total_files, (float) 100*correct_preds/total_files);
+	
+	// Close directory and exit.
+	closedir (pDir);
+
+    return 0;
+}
+
+void run_test(char* input_image, char *output){
+	
+	char char_0 = '-';
+	char char_1 = '-';
+	char char_2 = '-';
+	char char_3 = '-';
+	char char_4 = '-';
+	
 	/* Input Layer */
     #ifdef INPUT_LAYER
     layer_params input_layer = { .batch_size = 1,
@@ -63,7 +131,7 @@ int main(){
                                            .output_width = -1,
                                            .stride = -1 };
 
-    input_layer_test(INPUT_LAYER_INPUT_DATA, INPUT_LAYER_WEIGHTS_BIASES, INPUT_LAYER_GOLDEN_OUTPUT_DATA, 
+    input_layer_test(input_image, INPUT_LAYER_WEIGHTS_BIASES, INPUT_LAYER_GOLDEN_OUTPUT_DATA, 
 	INPUT_LAYER_OUTPUT_DATA, 0, INPUT_LAYER_NAME, input_layer);
 	#endif	
 
@@ -371,6 +439,82 @@ int main(){
     dense_layer_test(DENSE_LAYER_5_TEST_INPUT_DATA, DENSE_LAYER_5_TEST_WEIGHTS_BIAS, DENSE_LAYER_5_TEST_GOLDEN_OUTPUT,
         DENSE_LAYER_5_TEST_OUTPUT_DATA, 0, DENSE_LAYER_5_NAME, dense_layer_5);
     #endif
+	
+    #ifdef OUTPUT_1_LAYER
+    layer_params output_layer_1 = { .batch_size = -1,
+                                           .input_dim = OUTPUT_LAYER_INPUT_DIMS,
+                                           .input_height = OUTPUT_LAYER_INPUT_HEIGHT,
+                                           .input_width = OUTPUT_LAYER_INPUT_WIDTH,
+                                           .kernel_size = -1, // unused
+                                           .output_dim = OUTPUT_LAYER_OUTPUT_DIMS,
+                                           .output_height = OUTPUT_LAYER_OUTPUT_HEIGHT,
+                                           .output_width = OUTPUT_LAYER_OUTPUT_WIDTH,
+                                           .stride = -1 }; //unused
 
-    return 0;
+    output_layer_test(OUTPUT_LAYER_1_INPUT_DATA, OUTPUT_LAYER_WEIGHTS_BIAS, OUTPUT_LAYER_GOLDEN_OUTPUT,
+        &char_0, 0, OUTPUT_LAYER_1_NAME, output_layer_1);
+    #endif
+	
+    #ifdef OUTPUT_2_LAYER
+    layer_params output_layer_2 = { .batch_size = -1,
+                                           .input_dim = OUTPUT_LAYER_INPUT_DIMS,
+                                           .input_height = OUTPUT_LAYER_INPUT_HEIGHT,
+                                           .input_width = OUTPUT_LAYER_INPUT_WIDTH,
+                                           .kernel_size = -1, // unused
+                                           .output_dim = OUTPUT_LAYER_OUTPUT_DIMS,
+                                           .output_height = OUTPUT_LAYER_OUTPUT_HEIGHT,
+                                           .output_width = OUTPUT_LAYER_OUTPUT_WIDTH,
+                                           .stride = -1 }; //unused
+
+    output_layer_test(OUTPUT_LAYER_2_INPUT_DATA, OUTPUT_LAYER_WEIGHTS_BIAS, OUTPUT_LAYER_GOLDEN_OUTPUT,
+        &char_1, 0, OUTPUT_LAYER_2_NAME, output_layer_2);
+    #endif
+	
+    #ifdef OUTPUT_3_LAYER
+    layer_params output_layer_3 = { .batch_size = -1,
+                                           .input_dim = OUTPUT_LAYER_INPUT_DIMS,
+                                           .input_height = OUTPUT_LAYER_INPUT_HEIGHT,
+                                           .input_width = OUTPUT_LAYER_INPUT_WIDTH,
+                                           .kernel_size = -1, // unused
+                                           .output_dim = OUTPUT_LAYER_OUTPUT_DIMS,
+                                           .output_height = OUTPUT_LAYER_OUTPUT_HEIGHT,
+                                           .output_width = OUTPUT_LAYER_OUTPUT_WIDTH,
+                                           .stride = -1 }; //unused
+
+    output_layer_test(OUTPUT_LAYER_3_INPUT_DATA, OUTPUT_LAYER_WEIGHTS_BIAS, OUTPUT_LAYER_GOLDEN_OUTPUT,
+        &char_2, 0, OUTPUT_LAYER_3_NAME, output_layer_3);
+    #endif
+	
+    #ifdef OUTPUT_4_LAYER
+    layer_params output_layer_4 = { .batch_size = -1,
+                                           .input_dim = OUTPUT_LAYER_INPUT_DIMS,
+                                           .input_height = OUTPUT_LAYER_INPUT_HEIGHT,
+                                           .input_width = OUTPUT_LAYER_INPUT_WIDTH,
+                                           .kernel_size = -1, // unused
+                                           .output_dim = OUTPUT_LAYER_OUTPUT_DIMS,
+                                           .output_height = OUTPUT_LAYER_OUTPUT_HEIGHT,
+                                           .output_width = OUTPUT_LAYER_OUTPUT_WIDTH,
+                                           .stride = -1 }; //unused
+
+    output_layer_test(OUTPUT_LAYER_4_INPUT_DATA, OUTPUT_LAYER_WEIGHTS_BIAS, OUTPUT_LAYER_GOLDEN_OUTPUT,
+        &char_3, 0, OUTPUT_LAYER_4_NAME, output_layer_4);
+    #endif
+	
+    #ifdef OUTPUT_5_LAYER
+    layer_params output_layer_5 = { .batch_size = -1,
+                                           .input_dim = OUTPUT_LAYER_INPUT_DIMS,
+                                           .input_height = OUTPUT_LAYER_INPUT_HEIGHT,
+                                           .input_width = OUTPUT_LAYER_INPUT_WIDTH,
+                                           .kernel_size = -1, // unused
+                                           .output_dim = OUTPUT_LAYER_OUTPUT_DIMS,
+                                           .output_height = OUTPUT_LAYER_OUTPUT_HEIGHT,
+                                           .output_width = OUTPUT_LAYER_OUTPUT_WIDTH,
+                                           .stride = -1 }; //unused
+
+    output_layer_test(OUTPUT_LAYER_5_INPUT_DATA, OUTPUT_LAYER_WEIGHTS_BIAS, OUTPUT_LAYER_GOLDEN_OUTPUT,
+        &char_4, 0, OUTPUT_LAYER_5_NAME, output_layer_5);
+    #endif
+	snprintf(output, 6, "%c%c%c%c%c", char_0, char_1, char_2, char_3, char_4);
+	// printf("output is %s\n", output);
+	
 }

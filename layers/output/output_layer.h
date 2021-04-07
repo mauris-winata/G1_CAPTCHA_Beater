@@ -9,13 +9,16 @@
 #include <float.h>
 #include <stdint.h>
 #include <math.h>
+#include "../util/data_structs.h"
 //#include "../dense/dense_layer.h"
+
+#define NUM_CHARS 19
 
 typedef float dense_out; // For now Dense_out is set to float, change to fixed point whenever
 
 //output layer function declaration
 
-void output_layer(dense_out* mem, //pointer to output of dense layer which serves as input for this layer
+void output_layer(result_t* mem, //pointer to output of dense layer which serves as input for this layer
 	char* arr, //pointer to the array of possible characters ---- IN THE ORDER OF DENSE LAYER OUTPUT		
 	int n_chr, //number of possible characters that could be an output
 	char* out // pointer to memory where to write the output character

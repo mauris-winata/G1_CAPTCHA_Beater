@@ -24,16 +24,15 @@ void soft_max_layer(result_t* input,  // pointer to the input data for the curre
 		for (int o_x = 0; o_x < ox; o_x++)
 		{
 			result_t input_val = input[b_ * ox + o_x];
-			intermediate_result[o_x] = (float)exp(fixed_to_float(input_val, NUM_FRAC_BITS));
+			intermediate_result[o_x] = exp(fixed_to_float(input_val, NUM_FRAC_BITS));
 			
 			output_result_sum += intermediate_result[o_x];
 		}
 
-		printf("\n\n");
 		// perform the final softmax layer calculation
 		for (int o_x = 0; o_x < ox; o_x++)
 		{
-			intermediate_result[o_x] /= output_result_sum;			
+			intermediate_result[o_x] /= output_result_sum;	
 			output[b_ * ox + o_x] = (result_t) float_to_fixed(intermediate_result[o_x], NUM_FRAC_BITS);
 		}
 	}

@@ -5,7 +5,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#define INPUT_DEBUG
+// #define INPUT_DEBUG
 
 void input_layer(image_t * input, 		// where to get inputs
 				result_t * output,		// where to store outputs
