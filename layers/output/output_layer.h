@@ -9,7 +9,7 @@
 #include <float.h>
 #include <stdint.h>
 #include <math.h>
-#include "../dense/dense_layer.h"
+//#include "../dense/dense_layer.h"
 
 typedef float dense_out; // For now Dense_out is set to float, change to fixed point whenever
 
