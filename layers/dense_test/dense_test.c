@@ -32,10 +32,9 @@ void dense_layer_test(const char* input_data, const char* weights, const char* g
 	weights_biases_t* weights_bias = (weights_biases_t*)malloc(sizeof(weights_biases_t) * weights_size);
 	float* golden_output = (float*)malloc(sizeof(float) * output_size);
 	result_t* output_result_dense = (result_t*)malloc(sizeof(result_t) * output_size); // output after the dense layer operation
-	result_t* output_result_soft_max = (result_t*)malloc(sizeof(result_t) * output_size); // output after the softmax layer operation
 
 	// check to make sure the memory was allocated appropriately
-	if ((input_data_values == NULL) || (weights_bias == NULL) || (golden_output == NULL) || (output_result_dense == NULL) || (output_result_soft_max == NULL))
+	if ((input_data_values == NULL) || (weights_bias == NULL) || (golden_output == NULL) || (output_result_dense == NULL))
 	{
 		printf("Failed to allocate memory for the convolution layer test\n");
 		exit(-1);
@@ -57,13 +56,6 @@ void dense_layer_test(const char* input_data, const char* weights, const char* g
 		dense_layer_parameters.batch_size,        // batch size
 		dense_layer_parameters.input_width,           // input size
 		dense_layer_parameters.output_width);           // output size
-
-	// test the soft max layer operation after the previous dense layer
-	soft_max_layer(output_result_dense,          // output from the previous dense layer
-		output_result_soft_max,                  // where to store the current output
-		dense_layer_parameters.batch_size,       // batch size
-		dense_layer_parameters.input_width,      // input size
-		dense_layer_parameters.output_width);    // output size
 
 	#ifdef DEBUG_PRINTS	
 	// resulting error of the test
@@ -87,11 +79,11 @@ void dense_layer_test(const char* input_data, const char* weights, const char* g
 	//Printing output results to a file
 	int i;
 	for (i = 0; i < output_size; i++) {
-		fprintf(output_file, "%d\n", output_result_soft_max[i]);
+		fprintf(output_file, "%d\n", output_result_dense[i]);
 	}
 	
 	for (i = 0; i < output_size; i++){
-		fprintf(debug_output_file, "%f\n", fixed_to_float(output_result_soft_max[i], NUM_FRAC_BITS));
+		fprintf(debug_output_file, "%f\n", fixed_to_float(output_result_dense[i], NUM_FRAC_BITS));
 	}
 
 	// unallocating resources
@@ -105,7 +97,6 @@ void dense_layer_test(const char* input_data, const char* weights, const char* g
 	free(weights_bias);
 	free(golden_output);
 	free(output_result_dense);
-	free(output_result_soft_max);
 
 	return;
 }
