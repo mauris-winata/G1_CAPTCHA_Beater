@@ -1,0 +1,27 @@
+#!/bin/bash
+
+vivado_hls ./hls_proj/dense_layer_one.tcl &
+DENSE1=$!
+
+vivado_hls ./hls_proj/dense_layer_two.tcl &
+DENSE2=$!
+
+vivado_hls ./hls_proj/dense_layer_three.tcl &
+DENSE3=$!
+
+vivado_hls ./hls_proj/dense_layer_four.tcl &
+DENSE4=$!
+
+vivado_hls ./hls_proj/dense_layer_five.tcl &
+DENSE5=$!
+
+wait $DENSE1 $DENSE2 $DENSE3 $DENSE4 $DENSE5
+
+
+echo " "
+echo " "
+echo " "
+echo "****************************************************************************************************"
+echo "Finished creating the IP cores for the 5 final Dense layers"
+echo "Project files can be found in /hls_proj/dense_layer_x.prj, where x is the dense layer number"
+echo "****************************************************************************************************"
