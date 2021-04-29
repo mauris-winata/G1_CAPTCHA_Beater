@@ -1,0 +1,27 @@
+#!/bin/bash
+
+vivado_hls ./hls_proj/max_pool_dense_layer_one.tcl &
+MAXPOOLDENSE1=$!
+
+vivado_hls ./hls_proj/max_pool_dense_layer_two.tcl &
+MAXPOOLDENSE2=$!
+
+vivado_hls ./hls_proj/max_pool_dense_layer_three.tcl &
+MAXPOOLDENSE3=$!
+
+vivado_hls ./hls_proj/max_pool_dense_layer_four.tcl &
+MAXPOOLDENSE4=$!
+
+vivado_hls ./hls_proj/max_pool_dense_layer_five.tcl &
+MAXPOOLDENSE5=$!
+
+wait $MAXPOOLDENSE1 $MAXPOOLDENSE2 $MAXPOOLDENSE3 $MAXPOOLDENSE4 $MAXPOOLDENSE5
+
+
+echo " "
+echo " "
+echo " "
+echo "****************************************************************************************************"
+echo "Finished creating the IP cores for the 5 max pool dense layers"
+echo "Project files can be found in /hls_proj/max_pool_dense_layer_x.prj, where x is the max pool dense layer number"
+echo "****************************************************************************************************"
