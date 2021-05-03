@@ -14,7 +14,7 @@ add_files -tb ../dense_test/max_pool_dense_test.cpp -cflags "-std=c++0x -Wno-unk
 add_files -tb ../util/shared.cpp -cflags "-std=c++0x -Wno-unknown-pragmas"
 open_solution "solution1"
 set_part {xcvu095-ffvc1517-2-e} -tool vivado
-create_clock -period 4 -name default
+create_clock -period 2.5 -name default
 config_compile -no_signed_zeros=0 -unsafe_math_optimizations=0
 #config_sdx -optimization_level none -target none
 config_bind -effort medium
