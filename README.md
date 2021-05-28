@@ -10,7 +10,7 @@ A method to solve text-based CAPTCHAs using FPGAs is designed as a term project 
 
 https://user-images.githubusercontent.com/71918289/120048088-32c2ad80-bfe4-11eb-9f94-d65f9957cb87.mov
 
-*To build the project:*
+*To Build the Project:*
 -
 1. step 1
 2. ...
@@ -18,7 +18,7 @@ https://user-images.githubusercontent.com/71918289/120048088-32c2ad80-bfe4-11eb-
 
 
 
-*To run and use the GUI:*
+*To Run & Use:*
 -
 1. Navigate to the source/util/test folder
 2. Run the following command: "python3 captcha_beater.py"
