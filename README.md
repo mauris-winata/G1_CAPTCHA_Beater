@@ -12,18 +12,19 @@ https://user-images.githubusercontent.com/71918289/120048088-32c2ad80-bfe4-11eb-
 
 *To build the project:*
 -
-- step 1
-- step 2
-- ...
+1. step 1
+2. ...
+3. ...
+
 
 
 *To run and use the GUI:*
 -
-- navigate to the source/util/test folder
-- run the following command: "python3 captcha_beater.py"
-- import an image by clicking the "Open File" button
-- center the image appropriately by dragging the image to the center of the dotted rectangle 
-- size the image appropriately by clicking the "+" or "-" buttons
-- press the "Predict" button to generate a prediction
+1. Navigate to the source/util/test folder
+2. Run the following command: "python3 captcha_beater.py"
+3. Import an image by clicking the "Open File" button
+4. Center the image appropriately by dragging the image to the center of the dotted rectangle 
+5. Size the image appropriately by clicking the "+" or "-" buttons
+6. Press the "Predict" button to generate a prediction
 
 Note: The "New Snip" feature is disabled due to the missing libraries on Agent8
