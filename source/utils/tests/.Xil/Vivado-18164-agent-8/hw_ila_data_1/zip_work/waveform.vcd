@@ -1,0 +1,591 @@
+$date
+        2021-May-17 15:12:30
+$end
+$version
+        Vivado v2017.2 (64-bit)
+$end
+$timescale
+        1ps
+$end
+$scope module dut $end
+$var reg 32 " static_region_i/system_ila_0/inst/net_slot_0_axis_tdata [31:0] $end
+$var reg 1 B static_region_i/system_ila_0/inst/net_slot_0_axis_tvalid $end
+$var reg 1 C static_region_i/system_ila_0/inst/net_slot_0_axis_tready $end
+$var reg 1 D static_region_i/system_ila_0/inst/net_slot_0_axis_tlast $end
+$var reg 2 E static_region_i/system_ila_0/inst/net_slot_1_axi_ar_cnt [1:0] $end
+$var reg 32 G static_region_i/system_ila_0/inst/net_slot_1_axi_araddr [31:0] $end
+$var reg 4 g static_region_i/system_ila_0/inst/net_slot_1_axi_arcache [3:0] $end
+$var reg 8 k static_region_i/system_ila_0/inst/net_slot_1_axi_arlen [7:0] $end
+$var reg 1 s static_region_i/system_ila_0/inst/net_slot_1_axi_arlock $end
+$var reg 3 t static_region_i/system_ila_0/inst/net_slot_1_axi_arprot [2:0] $end
+$var reg 4 w static_region_i/system_ila_0/inst/net_slot_1_axi_arqos [3:0] $end
+$var reg 4 { static_region_i/system_ila_0/inst/net_slot_1_axi_arregion [3:0] $end
+$var reg 3 !" static_region_i/system_ila_0/inst/net_slot_1_axi_arsize [2:0] $end
+$var reg 2 $" static_region_i/system_ila_0/inst/net_slot_1_axi_aw_cnt [1:0] $end
+$var reg 32 &" static_region_i/system_ila_0/inst/net_slot_1_axi_awaddr [31:0] $end
+$var reg 4 F" static_region_i/system_ila_0/inst/net_slot_1_axi_awcache [3:0] $end
+$var reg 8 J" static_region_i/system_ila_0/inst/net_slot_1_axi_awlen [7:0] $end
+$var reg 1 R" static_region_i/system_ila_0/inst/net_slot_1_axi_awlock $end
+$var reg 3 S" static_region_i/system_ila_0/inst/net_slot_1_axi_awprot [2:0] $end
+$var reg 4 V" static_region_i/system_ila_0/inst/net_slot_1_axi_awqos [3:0] $end
+$var reg 4 Z" static_region_i/system_ila_0/inst/net_slot_1_axi_awregion [3:0] $end
+$var reg 3 ^" static_region_i/system_ila_0/inst/net_slot_1_axi_awsize [2:0] $end
+$var reg 2 a" static_region_i/system_ila_0/inst/net_slot_1_axi_b_cnt [1:0] $end
+$var reg 2 c" static_region_i/system_ila_0/inst/net_slot_1_axi_bresp [1:0] $end
+$var reg 2 e" static_region_i/system_ila_0/inst/net_slot_1_axi_r_cnt [1:0] $end
+$var reg 32 g" static_region_i/system_ila_0/inst/net_slot_1_axi_rdata [31:0] $end
+$var reg 2 )# static_region_i/system_ila_0/inst/net_slot_1_axi_rresp [1:0] $end
+$var reg 32 +# static_region_i/system_ila_0/inst/net_slot_1_axi_wdata [31:0] $end
+$var reg 4 K# static_region_i/system_ila_0/inst/net_slot_1_axi_wstrb [3:0] $end
+$var reg 1 O# static_region_i/system_ila_0/inst/net_slot_1_axi_awvalid $end
+$var reg 2 P# static_region_i/system_ila_0/inst/net_slot_1_axi_aw_ctrl [1:0] $end
+$var reg 1 R# static_region_i/system_ila_0/inst/net_slot_1_axi_awready $end
+$var reg 1 S# static_region_i/system_ila_0/inst/net_slot_1_axi_wvalid $end
+$var reg 3 T# static_region_i/system_ila_0/inst/net_slot_1_axi_w_ctrl [2:0] $end
+$var reg 1 W# static_region_i/system_ila_0/inst/net_slot_1_axi_wready $end
+$var reg 1 X# static_region_i/system_ila_0/inst/net_slot_1_axi_wlast $end
+$var reg 2 Y# static_region_i/system_ila_0/inst/net_slot_1_axi_b_ctrl [1:0] $end
+$var reg 1 [# static_region_i/system_ila_0/inst/net_slot_1_axi_bvalid $end
+$var reg 1 \# static_region_i/system_ila_0/inst/net_slot_1_axi_bready $end
+$var reg 1 ]# static_region_i/system_ila_0/inst/net_slot_1_axi_arvalid $end
+$var reg 2 ^# static_region_i/system_ila_0/inst/net_slot_1_axi_ar_ctrl [1:0] $end
+$var reg 1 `# static_region_i/system_ila_0/inst/net_slot_1_axi_arready $end
+$var reg 3 a# static_region_i/system_ila_0/inst/net_slot_1_axi_r_ctrl [2:0] $end
+$var reg 1 d# static_region_i/system_ila_0/inst/net_slot_1_axi_rvalid $end
+$var reg 1 e# static_region_i/system_ila_0/inst/net_slot_1_axi_rready $end
+$var reg 1 f# static_region_i/system_ila_0/inst/net_slot_1_axi_rlast $end
+$var reg 2 g# static_region_i/system_ila_0/inst/net_slot_2_axi_ar_cnt [1:0] $end
+$var reg 32 i# static_region_i/system_ila_0/inst/net_slot_2_axi_araddr [31:0] $end
+$var reg 4 +$ static_region_i/system_ila_0/inst/net_slot_2_axi_arcache [3:0] $end
+$var reg 8 /$ static_region_i/system_ila_0/inst/net_slot_2_axi_arlen [7:0] $end
+$var reg 1 7$ static_region_i/system_ila_0/inst/net_slot_2_axi_arlock $end
+$var reg 3 8$ static_region_i/system_ila_0/inst/net_slot_2_axi_arprot [2:0] $end
+$var reg 4 ;$ static_region_i/system_ila_0/inst/net_slot_2_axi_arqos [3:0] $end
+$var reg 4 ?$ static_region_i/system_ila_0/inst/net_slot_2_axi_arregion [3:0] $end
+$var reg 3 C$ static_region_i/system_ila_0/inst/net_slot_2_axi_arsize [2:0] $end
+$var reg 2 F$ static_region_i/system_ila_0/inst/net_slot_2_axi_aw_cnt [1:0] $end
+$var reg 32 H$ static_region_i/system_ila_0/inst/net_slot_2_axi_awaddr [31:0] $end
+$var reg 4 h$ static_region_i/system_ila_0/inst/net_slot_2_axi_awcache [3:0] $end
+$var reg 8 l$ static_region_i/system_ila_0/inst/net_slot_2_axi_awlen [7:0] $end
+$var reg 1 t$ static_region_i/system_ila_0/inst/net_slot_2_axi_awlock $end
+$var reg 3 u$ static_region_i/system_ila_0/inst/net_slot_2_axi_awprot [2:0] $end
+$var reg 4 x$ static_region_i/system_ila_0/inst/net_slot_2_axi_awqos [3:0] $end
+$var reg 4 |$ static_region_i/system_ila_0/inst/net_slot_2_axi_awregion [3:0] $end
+$var reg 3 "% static_region_i/system_ila_0/inst/net_slot_2_axi_awsize [2:0] $end
+$var reg 2 %% static_region_i/system_ila_0/inst/net_slot_2_axi_b_cnt [1:0] $end
+$var reg 2 '% static_region_i/system_ila_0/inst/net_slot_2_axi_bresp [1:0] $end
+$var reg 2 )% static_region_i/system_ila_0/inst/net_slot_2_axi_r_cnt [1:0] $end
+$var reg 32 +% static_region_i/system_ila_0/inst/net_slot_2_axi_rdata [31:0] $end
+$var reg 2 K% static_region_i/system_ila_0/inst/net_slot_2_axi_rresp [1:0] $end
+$var reg 32 M% static_region_i/system_ila_0/inst/net_slot_2_axi_wdata [31:0] $end
+$var reg 4 m% static_region_i/system_ila_0/inst/net_slot_2_axi_wstrb [3:0] $end
+$var reg 1 q% static_region_i/system_ila_0/inst/net_slot_2_axi_awvalid $end
+$var reg 2 r% static_region_i/system_ila_0/inst/net_slot_2_axi_aw_ctrl [1:0] $end
+$var reg 1 t% static_region_i/system_ila_0/inst/net_slot_2_axi_awready $end
+$var reg 1 u% static_region_i/system_ila_0/inst/net_slot_2_axi_wvalid $end
+$var reg 3 v% static_region_i/system_ila_0/inst/net_slot_2_axi_w_ctrl [2:0] $end
+$var reg 1 y% static_region_i/system_ila_0/inst/net_slot_2_axi_wready $end
+$var reg 1 z% static_region_i/system_ila_0/inst/net_slot_2_axi_wlast $end
+$var reg 2 {% static_region_i/system_ila_0/inst/net_slot_2_axi_b_ctrl [1:0] $end
+$var reg 1 }% static_region_i/system_ila_0/inst/net_slot_2_axi_bvalid $end
+$var reg 1 ~% static_region_i/system_ila_0/inst/net_slot_2_axi_bready $end
+$var reg 2 !& static_region_i/system_ila_0/inst/net_slot_2_axi_ar_ctrl [1:0] $end
+$var reg 1 #& static_region_i/system_ila_0/inst/net_slot_2_axi_arvalid $end
+$var reg 1 $& static_region_i/system_ila_0/inst/net_slot_2_axi_arready $end
+$var reg 1 %& static_region_i/system_ila_0/inst/net_slot_2_axi_rvalid $end
+$var reg 3 && static_region_i/system_ila_0/inst/net_slot_2_axi_r_ctrl [2:0] $end
+$var reg 1 )& static_region_i/system_ila_0/inst/net_slot_2_axi_rready $end
+$var reg 1 *& static_region_i/system_ila_0/inst/net_slot_2_axi_rlast $end
+$var reg 3 +& AR_Channel__i1_s1___input_memory_0_m_axi_output_r_ [2:0] $end
+$var reg 3 .& AR_Channel__i1_s2___output_layer_0_m_axi_output_r_ [2:0] $end
+$var reg 3 1& AW_Channel__i1_s1___input_memory_0_m_axi_output_r_ [2:0] $end
+$var reg 3 4& AW_Channel__i1_s2___output_layer_0_m_axi_output_r_ [2:0] $end
+$var reg 3 7& B_Channel__i1_s1___input_memory_0_m_axi_output_r_ [2:0] $end
+$var reg 3 :& B_Channel__i1_s2___output_layer_0_m_axi_output_r_ [2:0] $end
+$var reg 3 =& R_Channel__i1_s1___input_memory_0_m_axi_output_r_ [2:0] $end
+$var reg 3 @& R_Channel__i1_s2___output_layer_0_m_axi_output_r_ [2:0] $end
+$var reg 3 C& T_Channel__i1_s0___input_layer_0_output_r_ [2:0] $end
+$var reg 3 F& W_Channel__i1_s1___input_memory_0_m_axi_output_r_ [2:0] $end
+$var reg 3 I& W_Channel__i1_s2___output_layer_0_m_axi_output_r_ [2:0] $end
+$var reg 16 L& slot_2___output_layer_0_m_axi_output_r___Write_Transactions_0 [15:0] $end
+$var reg 1 \& _TRIGGER $end
+$var reg 1 ]& _WINDOW $end
+$var reg 1 ^& _GAP $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b1111011100000000000000000000 "
+1B
+0C
+0D
+b0 E
+b0 G
+b11 g
+b0 k
+0s
+b0 t
+b0 w
+b0 {
+b10 !"
+b0 $"
+b111010100101100 &"
+b11 F"
+b0 J"
+0R"
+b0 S"
+b0 V"
+b0 Z"
+b10 ^"
+b0 a"
+b0 c"
+b0 e"
+b0 g"
+b0 )#
+b1000011011101110000000000000000 +#
+b1111 K#
+0O#
+b10 P#
+1R#
+0S#
+b10 T#
+1W#
+0X#
+b10 Y#
+0[#
+1\#
+0]#
+b10 ^#
+1`#
+b10 a#
+0d#
+1e#
+0f#
+b0 g#
+b0 i#
+b11 +$
+b0 /$
+07$
+b0 8$
+b0 ;$
+b0 ?$
+b10 C$
+b1 F$
+b1000000 H$
+b11 h$
+b1111 l$
+0t$
+b0 u$
+b0 x$
+b0 |$
+b10 "%
+b1 %%
+b0 '%
+b0 )%
+b0 +%
+b0 K%
+b1000010010010000000000000000000 M%
+b1111 m%
+0q%
+b10 r%
+1t%
+1u%
+b11 v%
+1y%
+0z%
+b10 {%
+0}%
+1~%
+b10 !&
+0#&
+1$&
+0%&
+b10 &&
+1)&
+0*&
+b11 +&
+b11 .&
+b11 1&
+b0 4&
+b11 7&
+b0 :&
+b100 =&
+b100 @&
+b11 C&
+b100 F&
+b1 I&
+b0 L&
+1\&
+1]&
+0^&
+$end
+#1
+0u%
+b10 v%
+b0 I&
+#51
+1u%
+b11 v%
+b1 I&
+#52
+0u%
+b10 v%
+b0 I&
+#102
+1u%
+b11 v%
+b1 I&
+#103
+0u%
+b10 v%
+b0 I&
+#153
+1u%
+b11 v%
+b1 I&
+#154
+0u%
+b10 v%
+b0 I&
+#204
+1u%
+b11 v%
+b1 I&
+#205
+0u%
+b10 v%
+b0 I&
+#255
+1u%
+b11 v%
+b1 I&
+#256
+0u%
+b10 v%
+b0 I&
+#306
+1u%
+b11 v%
+b1 I&
+#307
+0u%
+b10 v%
+b0 I&
+#357
+1u%
+b11 v%
+b1 I&
+#358
+0u%
+b10 v%
+b0 I&
+#408
+1u%
+b11 v%
+b1 I&
+#409
+0u%
+b10 v%
+b0 I&
+#459
+1u%
+b11 v%
+b1 I&
+#460
+0u%
+b10 v%
+b0 I&
+#510
+1u%
+b11 v%
+b1 I&
+#511
+0u%
+b10 v%
+b0 I&
+#561
+1u%
+b11 v%
+b1 I&
+#562
+0u%
+b10 v%
+b0 I&
+#612
+1u%
+b11 v%
+b1 I&
+#613
+0u%
+b10 v%
+b0 I&
+#663
+1u%
+b11 v%
+b1 I&
+#664
+0u%
+b10 v%
+b0 I&
+#714
+1u%
+b11 v%
+b1 I&
+#715
+1q%
+b11 r%
+0u%
+b10 v%
+b10 4&
+b0 I&
+b1 L&
+#716
+b10 F$
+b10000000 H$
+b10 %%
+0q%
+b10 r%
+b0 4&
+#765
+1u%
+b111 v%
+1z%
+b111 I&
+#766
+0u%
+b10 v%
+0z%
+b0 I&
+#788
+b11 {%
+1}%
+b10 :&
+#789
+b1 F$
+b1 %%
+b10 {%
+0}%
+b0 :&
+#816
+1u%
+b11 v%
+b1 I&
+#817
+0u%
+b10 v%
+b0 I&
+#867
+1u%
+b11 v%
+b1 I&
+#868
+0u%
+b10 v%
+b0 I&
+#918
+1u%
+b11 v%
+b1 I&
+#919
+0u%
+b10 v%
+b0 I&
+#969
+1u%
+b11 v%
+b1 I&
+#970
+0u%
+b10 v%
+b0 I&
+#1020
+1u%
+b11 v%
+b1 I&
+#1021
+0u%
+b10 v%
+b0 I&
+#1071
+1u%
+b11 v%
+b1 I&
+#1072
+0u%
+b10 v%
+b0 I&
+#1122
+1u%
+b11 v%
+b1 I&
+#1123
+0u%
+b10 v%
+b0 I&
+#1173
+1u%
+b11 v%
+b1 I&
+#1174
+0u%
+b10 v%
+b0 I&
+#1224
+1u%
+b11 v%
+b1 I&
+#1225
+0u%
+b10 v%
+b0 I&
+#1275
+1u%
+b11 v%
+b1 I&
+#1276
+0u%
+b10 v%
+b0 I&
+#1326
+1u%
+b11 v%
+b1 I&
+#1327
+0u%
+b10 v%
+b0 I&
+#1377
+1u%
+b11 v%
+b1 I&
+#1378
+0u%
+b10 v%
+b0 I&
+#1428
+1u%
+b11 v%
+b1 I&
+#1429
+0u%
+b10 v%
+b0 I&
+#1479
+1u%
+b11 v%
+b1 I&
+#1480
+1q%
+b11 r%
+0u%
+b10 v%
+b10 4&
+b0 I&
+#1481
+b10 F$
+b11000000 H$
+b10 %%
+0q%
+b10 r%
+b0 4&
+#1530
+1u%
+b11 v%
+b1 I&
+#1531
+0u%
+b10 v%
+b0 I&
+#1581
+1u%
+b111 v%
+1z%
+b111 I&
+#1582
+0u%
+b10 v%
+0z%
+b0 I&
+#1604
+b11 {%
+1}%
+b10 :&
+#1605
+b1 F$
+b1 %%
+b10 {%
+0}%
+b0 :&
+b0 L&
+#1632
+1u%
+b11 v%
+b1 I&
+#1633
+0u%
+b10 v%
+b0 I&
+#1683
+1u%
+b11 v%
+b1 I&
+#1684
+0u%
+b10 v%
+b0 I&
+#1734
+1u%
+b11 v%
+b1 I&
+#1735
+0u%
+b10 v%
+b0 I&
+#1785
+1u%
+b11 v%
+b1 I&
+#1786
+0u%
+b10 v%
+b0 I&
+#1836
+1u%
+b11 v%
+b1 I&
+#1837
+0u%
+b10 v%
+b0 I&
+#1887
+1u%
+b11 v%
+b1 I&
+#1888
+0u%
+b10 v%
+b0 I&
+#1938
+1u%
+b11 v%
+b1 I&
+#1939
+0u%
+b10 v%
+b0 I&
+#1989
+1u%
+b11 v%
+b1 I&
+#1990
+0u%
+b10 v%
+b0 I&
+#2040
+1u%
+b11 v%
+b1 I&
+#2041
+0u%
+b10 v%
+b0 I&
