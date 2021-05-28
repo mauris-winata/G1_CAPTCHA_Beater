@@ -1,5 +1,5 @@
 # ECE1373 Group 1 Final Project - Captcha Beater
-Members: 
+**Members**: 
   Mauris Winata,
   Nikhil Deshpande,
   Randy Ewing Chow,
