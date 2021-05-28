@@ -1,0 +1,1 @@
+Hardware files related to to the dense layer and max pool dense layer IP Core

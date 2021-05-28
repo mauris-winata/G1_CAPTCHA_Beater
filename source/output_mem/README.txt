@@ -1,0 +1,1 @@
+Hardware files related to to the output memory layer IP Core

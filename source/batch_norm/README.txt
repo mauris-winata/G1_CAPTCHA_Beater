@@ -1,0 +1,1 @@
+Hardware files related to to the batch normalization layer IP Core
