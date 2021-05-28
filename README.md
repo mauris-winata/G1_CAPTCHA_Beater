@@ -12,9 +12,13 @@ https://user-images.githubusercontent.com/71918289/120048088-32c2ad80-bfe4-11eb-
 
 *To build the project:*
 -
+- step 1
+- step 2
+- ...
 
 
 *To run and use the GUI:*
+-
 - navigate to the source/util/test folder
 - run the following command: "python3 captcha_beater.py"
 - import an image by clicking the "Open File" button
