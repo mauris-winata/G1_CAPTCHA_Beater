@@ -20,6 +20,7 @@ https://user-images.githubusercontent.com/71918289/120048088-32c2ad80-bfe4-11eb-
 
 *To Run & Use:*
 -
+Required Packages:  tkinter, sys, os, PIL, math, pyscreenshot, time
 1. Navigate to the source/util/test folder
 2. Run the following command: "python3 captcha_beater.py"
 3. Import an image by clicking the "Open File" button, several test images are provided in the source/test_captchas folder
@@ -28,3 +29,9 @@ https://user-images.githubusercontent.com/71918289/120048088-32c2ad80-bfe4-11eb-
 6. Press the "Predict" button to generate a prediction
 
 **Note: The "New Snip" feature is disabled due to the missing libraries on Agent8**
+
+
+*Software Dependencies:*
+-
+- Python 3.7 or newer
+- Vivado 2017.2
