@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2017.2 (64-bit)
+# SW Build 1909853 on Thu Jun 15 18:39:10 MDT 2017
+# IP Build 1909766 on Thu Jun 15 19:58:00 MDT 2017
+# Start of session at: Fri May 14 00:29:37 2021
+# Process ID: 4946
+# Current directory: /home/rewingchow/ECE1373_assignment2-2021_2017.2_InputTest/8v3_shell/test_proj/mig_shell.runs/impl_1
+# Command line: vivado -log static_region_wrapper.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source static_region_wrapper.tcl -notrace
+# Log file: /home/rewingchow/ECE1373_assignment2-2021_2017.2_InputTest/8v3_shell/test_proj/mig_shell.runs/impl_1/static_region_wrapper.vdi
+# Journal file: /home/rewingchow/ECE1373_assignment2-2021_2017.2_InputTest/8v3_shell/test_proj/mig_shell.runs/impl_1/vivado.jou
+#-----------------------------------------------------------
+source static_region_wrapper.tcl -notrace

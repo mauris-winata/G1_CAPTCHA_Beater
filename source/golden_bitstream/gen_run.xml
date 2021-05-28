@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xcvu095-ffvc1517-2-e" LaunchTime="1621537992">
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="BG-DRC" Name="static_region_wrapper.drc"/>
+  <File Type="BG-BGN" Name="static_region_wrapper.bgn"/>
+  <File Type="BITSTR-SYSDEF" Name="static_region_wrapper.sysdef"/>
+  <File Type="BITSTR-MMI" Name="static_region_wrapper.mmi"/>
+  <File Type="BITSTR-BMM" Name="static_region_wrapper_bd.bmm"/>
+  <File Type="BITSTR-NKY" Name="static_region_wrapper.nky"/>
+  <File Type="BITSTR-RBT" Name="static_region_wrapper.rbt"/>
+  <File Type="BITSTR-MSK" Name="static_region_wrapper.msk"/>
+  <File Type="BG-BIN" Name="static_region_wrapper.bin"/>
+  <File Type="BG-BIT" Name="static_region_wrapper.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="static_region_wrapper_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="static_region_wrapper_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="static_region_wrapper_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="static_region_wrapper_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="static_region_wrapper_postroute_physopt.dcp"/>
+  <File Type="ROUTE-CLK" Name="static_region_wrapper_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-SIMILARITY" Name="static_region_wrapper_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-TIMING-RPX" Name="static_region_wrapper_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-TIMING-PB" Name="static_region_wrapper_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="static_region_wrapper_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="static_region_wrapper_route_status.pb"/>
+  <File Type="ROUTE-STATUS" Name="static_region_wrapper_route_status.rpt"/>
+  <File Type="ROUTE-PWR-RPX" Name="static_region_wrapper_power_routed.rpx"/>
+  <File Type="ROUTE-PWR-SUM" Name="static_region_wrapper_power_summary_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="static_region_wrapper_power_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="static_region_wrapper_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="static_region_wrapper_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="static_region_wrapper_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-RPX" Name="static_region_wrapper_drc_routed.rpx"/>
+  <File Type="ROUTE-DRC-PB" Name="static_region_wrapper_drc_routed.pb"/>
+  <File Type="ROUTE-DRC" Name="static_region_wrapper_drc_routed.rpt"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="static_region_wrapper_routed_bb.dcp"/>
+  <File Type="ROUTE-DCP" Name="static_region_wrapper_routed.dcp"/>
+  <File Type="ROUTE-ERROR-DCP" Name="static_region_wrapper_routed_error.dcp"/>
+  <File Type="PHYSOPT-TIMING" Name="static_region_wrapper_timing_summary_physopted.rpt"/>
+  <File Type="PHYSOPT-DRC" Name="static_region_wrapper_drc_physopted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="static_region_wrapper_physopt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="static_region_wrapper_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="RDI-RDI" Name="static_region_wrapper.vdi"/>
+  <File Type="PLACE-TIMING" Name="static_region_wrapper_timing_summary_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="static_region_wrapper_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="static_region_wrapper_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-CTRL" Name="static_region_wrapper_control_sets_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="static_region_wrapper_utilization_placed.pb"/>
+  <File Type="PLACE-UTIL" Name="static_region_wrapper_utilization_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="static_region_wrapper_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-IO" Name="static_region_wrapper_io_placed.rpt"/>
+  <File Type="PLACE-DCP" Name="static_region_wrapper_placed.dcp"/>
+  <File Type="PWROPT-TIMING" Name="static_region_wrapper_timing_summary_pwropted.rpt"/>
+  <File Type="PWROPT-DRC" Name="static_region_wrapper_drc_pwropted.rpt"/>
+  <File Type="PWROPT-DCP" Name="static_region_wrapper_pwropt.dcp"/>
+  <File Type="OPT-TIMING" Name="static_region_wrapper_timing_summary_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="static_region_wrapper.hwdef"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="static_region_wrapper_methodology_drc_opted.rpt"/>
+  <File Type="OPT-DRC" Name="static_region_wrapper_drc_opted.rpt"/>
+  <File Type="OPT-DCP" Name="static_region_wrapper_opt.dcp"/>
+  <File Type="INIT-TIMING" Name="static_region_wrapper_timing_summary_init.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="static_region_wrapper_postplace_pwropt.dcp"/>
+  <File Type="PA-TCL" Name="static_region_wrapper.tcl"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/bd/static_region/static_region.bd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/static_region/hdl/static_region_wrapper.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../adm-pcie-8v3_custom_parts_2400.csv"/>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="static_region_wrapper"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/imports/8v3_shell/bitstream.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../bitstream.xdc"/>
+        <Attr Name="ImportTime" Val="1614738088"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/constrs_1/imports/8v3_shell/ddr4sdram_b0_lane8.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ddr4sdram_b0_lane8.xdc"/>
+        <Attr Name="ImportTime" Val="1614738088"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/constrs_1/imports/8v3_shell/ddr4sdram_b0_unused.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ddr4sdram_b0_unused.xdc"/>
+        <Attr Name="ImportTime" Val="1614738088"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/constrs_1/imports/8v3_shell/ddr4sdram_locs_b0_twin_die.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ddr4sdram_locs_b0_twin_die.xdc"/>
+        <Attr Name="ImportTime" Val="1614738088"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/constrs_1/imports/8v3_shell/ddr4sdram_locs_b0_x64.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ddr4sdram_locs_b0_x64.xdc"/>
+        <Attr Name="ImportTime" Val="1614738088"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/constrs_1/imports/8v3_shell/ddr4sdram_locs_b0_x72.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ddr4sdram_locs_b0_x72.xdc"/>
+        <Attr Name="ImportTime" Val="1614738088"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/constrs_1/imports/8v3_shell/ddr4sdram_props_b0_twin_die.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ddr4sdram_props_b0_twin_die.xdc"/>
+        <Attr Name="ImportTime" Val="1614738088"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/constrs_1/imports/8v3_shell/pcie_constr.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../pcie_constr.xdc"/>
+        <Attr Name="ImportTime" Val="1614738088"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2017"/>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_batch_norm2_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_batch_norm3_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_batch_norm1_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_max_pool_3_0_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_max_pool_1_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_output_memory_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_output_layer_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_output_layer_2_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_output_layer_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_output_layer_3_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_max_pool_dense_layer_three_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_max_pool_dense_layer_five_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_max_pool_2_0_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_dense_layer_three_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_dense_layer_four_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_conv_layer2_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_conv_layer1_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_conv_layer3_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_axis_broadcaster_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_max_pool_dense_layer_one_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_output_layer_4_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_dense_layer_one_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_max_pool_dense_layer_four_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_dense_layer_two_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_max_pool_dense_layer_two_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_xbar_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_input_layer_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_vio_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_dense_layer_five_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_util_vector_logic_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_xdma_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_util_ds_buf_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_rst_ddr4_0_300M_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_proc_sys_reset_0_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_pr_decoupler_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_decouple_resetn_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="static_region_ddr4_0_0"/>
+</GenRun>

@@ -1,0 +1,160 @@
+Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2017.2 (lin64) Build 1909853 Thu Jun 15 18:39:10 MDT 2017
+| Date         : Thu May 20 15:42:09 2021
+| Host         : agent-8 running 64-bit Ubuntu 16.04.7 LTS
+| Command      : report_methodology -file static_region_wrapper_methodology_drc_routed.rpt -rpx static_region_wrapper_methodology_drc_routed.rpx
+| Design       : static_region_wrapper
+| Device       : xcvu095-ffvc1517-2-e
+| Speed File   : -2
+| Design State : Routed
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max violations: <unlimited>
+             Violations found: 21
++-----------+----------+-------------------------------------------------+------------+
+| Rule      | Severity | Description                                     | Violations |
++-----------+----------+-------------------------------------------------+------------+
+| PDRC-190  | Warning  | Suboptimally placed synchronized register chain | 1          |
+| TIMING-3  | Warning  | Invalid primary clock on Clock Modifying Block  | 2          |
+| TIMING-6  | Warning  | No common primary clock between related clocks  | 1          |
+| TIMING-7  | Warning  | No common node between related clocks           | 1          |
+| TIMING-8  | Warning  | No common period between related clocks         | 1          |
+| TIMING-9  | Warning  | Unknown CDC Logic                               | 1          |
+| TIMING-18 | Warning  | Missing input or output delay                   | 1          |
+| XDCB-5    | Warning  | Runtime inefficient way to find pin objects     | 13         |
++-----------+----------+-------------------------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+PDRC-190#1 Warning
+Suboptimally placed synchronized register chain  
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD5/shift_reg_in_reg[2] in site SLICE_X60Y130 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD5/shift_reg_in_reg[1] is not placed in the same (SLICE) site.
+Related violations: <none>
+
+TIMING-3#1 Warning
+Invalid primary clock on Clock Modifying Block  
+A primary clock static_region_i/xdma_0/inst/sys_clk is created on the output pin or net static_region_i/xdma_0/inst/sys_clk of a Clock Modifying Block
+Related violations: <none>
+
+TIMING-3#2 Warning
+Invalid primary clock on Clock Modifying Block  
+A primary clock static_region_i/xdma_0/inst/sys_clk_gt is created on the output pin or net static_region_i/xdma_0/inst/sys_clk_gt of a Clock Modifying Block
+Related violations: <none>
+
+TIMING-6#1 Warning
+No common primary clock between related clocks  
+The clocks mmcm_clkout0 and S00_ACLK_1 are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks mmcm_clkout0] -to [get_clocks S00_ACLK_1]
+Related violations: <none>
+
+TIMING-7#1 Warning
+No common node between related clocks  
+The clocks mmcm_clkout0 and S00_ACLK_1 are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks mmcm_clkout0] -to [get_clocks S00_ACLK_1]
+Related violations: <none>
+
+TIMING-8#1 Warning
+No common period between related clocks  
+The clocks mmcm_clkout0 and S00_ACLK_1 are found related (timed together) but have no common (expandable) period
+Related violations: <none>
+
+TIMING-9#1 Warning
+Unknown CDC Logic  
+One or more asynchronous Clock Domain Crossing has been detected between 2 clock domains through a set_false_path or a set_clock_groups or set_max_delay -datapath_only constraint but no double-registers logic synchronizer has been found on the side of the capture clock. It is recommended to run report_cdc for a complete and detailed CDC coverage. Please consider using XPM_CDC to avoid Critical severities
+Related violations: <none>
+
+TIMING-18#1 Warning
+Missing input or output delay  
+An output delay is missing on c0_ddr4_reset_n relative to clock(s) c0_sys_clk_clk_p 
+Related violations: <none>
+
+XDCB-5#1 Warning
+Runtime inefficient way to find pin objects  
+The option '-through : [get_pins -hierarchical -filter NAME=~*/CPLLLOCK]' of constraint 'set_false_path' uses inefficient query to find pin objects (see constraint position '84' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
+Current XDC: /home/rewingchow/ECE1373_assignment2-2021_2017.2_InputTest/8v3_shell/test_proj/mig_shell.srcs/sources_1/bd/static_region/ip/static_region_xdma_0_0/ip_0/source/static_region_xdma_0_0_pcie3_ip-PCIE_X0Y1.xdc (Line: 184)
+Related violations: <none>
+
+XDCB-5#2 Warning
+Runtime inefficient way to find pin objects  
+The option '-through : [get_pins -hierarchical -filter NAME=~*/GTPOWERGOOD]' of constraint 'set_false_path' uses inefficient query to find pin objects (see constraint position '83' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
+Current XDC: /home/rewingchow/ECE1373_assignment2-2021_2017.2_InputTest/8v3_shell/test_proj/mig_shell.srcs/sources_1/bd/static_region/ip/static_region_xdma_0_0/ip_0/source/static_region_xdma_0_0_pcie3_ip-PCIE_X0Y1.xdc (Line: 183)
+Related violations: <none>
+
+XDCB-5#3 Warning
+Runtime inefficient way to find pin objects  
+The option '-through : [get_pins -hierarchical -filter NAME=~*/PCIEPERST0B]' of constraint 'set_false_path' uses inefficient query to find pin objects (see constraint position '78' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
+Current XDC: /home/rewingchow/ECE1373_assignment2-2021_2017.2_InputTest/8v3_shell/test_proj/mig_shell.srcs/sources_1/bd/static_region/ip/static_region_xdma_0_0/ip_0/source/static_region_xdma_0_0_pcie3_ip-PCIE_X0Y1.xdc (Line: 178)
+Related violations: <none>
+
+XDCB-5#4 Warning
+Runtime inefficient way to find pin objects  
+The option '-through : [get_pins -hierarchical -filter NAME=~*/PCIERATEGEN3]' of constraint 'set_false_path' uses inefficient query to find pin objects (see constraint position '79' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
+Current XDC: /home/rewingchow/ECE1373_assignment2-2021_2017.2_InputTest/8v3_shell/test_proj/mig_shell.srcs/sources_1/bd/static_region/ip/static_region_xdma_0_0/ip_0/source/static_region_xdma_0_0_pcie3_ip-PCIE_X0Y1.xdc (Line: 179)
+Related violations: <none>
+
+XDCB-5#5 Warning
+Runtime inefficient way to find pin objects  
+The option '-through : [get_pins -hierarchical -filter NAME=~*/PCIESYNCTXSYNCDONE]' of constraint 'set_false_path' uses inefficient query to find pin objects (see constraint position '82' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
+Current XDC: /home/rewingchow/ECE1373_assignment2-2021_2017.2_InputTest/8v3_shell/test_proj/mig_shell.srcs/sources_1/bd/static_region/ip/static_region_xdma_0_0/ip_0/source/static_region_xdma_0_0_pcie3_ip-PCIE_X0Y1.xdc (Line: 182)
+Related violations: <none>
+
+XDCB-5#6 Warning
+Runtime inefficient way to find pin objects  
+The option '-through : [get_pins -hierarchical -filter NAME=~*/QPLL1LOCK]' of constraint 'set_false_path' uses inefficient query to find pin objects (see constraint position '85' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
+Current XDC: /home/rewingchow/ECE1373_assignment2-2021_2017.2_InputTest/8v3_shell/test_proj/mig_shell.srcs/sources_1/bd/static_region/ip/static_region_xdma_0_0/ip_0/source/static_region_xdma_0_0_pcie3_ip-PCIE_X0Y1.xdc (Line: 185)
+Related violations: <none>
+
+XDCB-5#7 Warning
+Runtime inefficient way to find pin objects  
+The option '-through : [get_pins -hierarchical -filter NAME=~*/RXELECIDLE]' of constraint 'set_false_path' uses inefficient query to find pin objects (see constraint position '77' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
+Current XDC: /home/rewingchow/ECE1373_assignment2-2021_2017.2_InputTest/8v3_shell/test_proj/mig_shell.srcs/sources_1/bd/static_region/ip/static_region_xdma_0_0/ip_0/source/static_region_xdma_0_0_pcie3_ip-PCIE_X0Y1.xdc (Line: 177)
+Related violations: <none>
+
+XDCB-5#8 Warning
+Runtime inefficient way to find pin objects  
+The option '-through : [get_pins -hierarchical -filter NAME=~*/RXPRGDIVRESETDONE]' of constraint 'set_false_path' uses inefficient query to find pin objects (see constraint position '80' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
+Current XDC: /home/rewingchow/ECE1373_assignment2-2021_2017.2_InputTest/8v3_shell/test_proj/mig_shell.srcs/sources_1/bd/static_region/ip/static_region_xdma_0_0/ip_0/source/static_region_xdma_0_0_pcie3_ip-PCIE_X0Y1.xdc (Line: 180)
+Related violations: <none>
+
+XDCB-5#9 Warning
+Runtime inefficient way to find pin objects  
+The option '-through : [get_pins -hierarchical -filter NAME=~*/TXPRGDIVRESETDONE]' of constraint 'set_false_path' uses inefficient query to find pin objects (see constraint position '81' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
+Current XDC: /home/rewingchow/ECE1373_assignment2-2021_2017.2_InputTest/8v3_shell/test_proj/mig_shell.srcs/sources_1/bd/static_region/ip/static_region_xdma_0_0/ip_0/source/static_region_xdma_0_0_pcie3_ip-PCIE_X0Y1.xdc (Line: 181)
+Related violations: <none>
+
+XDCB-5#10 Warning
+Runtime inefficient way to find pin objects  
+The option 'objects : [get_pins -hierarchical -filter {NAME =~ *gen_channel_container[*].*gen_gthe3_channel_inst[*].GTHE3_CHANNEL_PRIM_INST/RXRATE[0]}]' of constraint 'set_case_analysis' uses inefficient query to find pin objects (see constraint position '55' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
+Current XDC: /home/rewingchow/ECE1373_assignment2-2021_2017.2_InputTest/8v3_shell/test_proj/mig_shell.srcs/sources_1/bd/static_region/ip/static_region_xdma_0_0/ip_0/source/static_region_xdma_0_0_pcie3_ip-PCIE_X0Y1.xdc (Line: 129)
+Related violations: <none>
+
+XDCB-5#11 Warning
+Runtime inefficient way to find pin objects  
+The option 'objects : [get_pins -hierarchical -filter {NAME =~ *gen_channel_container[*].*gen_gthe3_channel_inst[*].GTHE3_CHANNEL_PRIM_INST/RXRATE[1]}]' of constraint 'set_case_analysis' uses inefficient query to find pin objects (see constraint position '57' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
+Current XDC: /home/rewingchow/ECE1373_assignment2-2021_2017.2_InputTest/8v3_shell/test_proj/mig_shell.srcs/sources_1/bd/static_region/ip/static_region_xdma_0_0/ip_0/source/static_region_xdma_0_0_pcie3_ip-PCIE_X0Y1.xdc (Line: 131)
+Related violations: <none>
+
+XDCB-5#12 Warning
+Runtime inefficient way to find pin objects  
+The option 'objects : [get_pins -hierarchical -filter {NAME =~ *gen_channel_container[*].*gen_gthe3_channel_inst[*].GTHE3_CHANNEL_PRIM_INST/TXRATE[0]}]' of constraint 'set_case_analysis' uses inefficient query to find pin objects (see constraint position '54' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
+Current XDC: /home/rewingchow/ECE1373_assignment2-2021_2017.2_InputTest/8v3_shell/test_proj/mig_shell.srcs/sources_1/bd/static_region/ip/static_region_xdma_0_0/ip_0/source/static_region_xdma_0_0_pcie3_ip-PCIE_X0Y1.xdc (Line: 128)
+Related violations: <none>
+
+XDCB-5#13 Warning
+Runtime inefficient way to find pin objects  
+The option 'objects : [get_pins -hierarchical -filter {NAME =~ *gen_channel_container[*].*gen_gthe3_channel_inst[*].GTHE3_CHANNEL_PRIM_INST/TXRATE[1]}]' of constraint 'set_case_analysis' uses inefficient query to find pin objects (see constraint position '56' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
+Current XDC: /home/rewingchow/ECE1373_assignment2-2021_2017.2_InputTest/8v3_shell/test_proj/mig_shell.srcs/sources_1/bd/static_region/ip/static_region_xdma_0_0/ip_0/source/static_region_xdma_0_0_pcie3_ip-PCIE_X0Y1.xdc (Line: 130)
+Related violations: <none>
+
+
