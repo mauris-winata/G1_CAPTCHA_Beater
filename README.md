@@ -22,7 +22,7 @@ https://user-images.githubusercontent.com/71918289/120048088-32c2ad80-bfe4-11eb-
 -
 1. Navigate to the source/util/test folder
 2. Run the following command: "python3 captcha_beater.py"
-3. Import an image by clicking the "Open File" button
+3. Import an image by clicking the "Open File" button, several test images are provided in the source/test_captchas folder
 4. Center the image appropriately by dragging the image to the center of the dotted rectangle 
 5. Size the image appropriately by clicking the "+" or "-" buttons
 6. Press the "Predict" button to generate a prediction
