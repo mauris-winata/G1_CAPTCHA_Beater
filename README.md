@@ -27,4 +27,4 @@ https://user-images.githubusercontent.com/71918289/120048088-32c2ad80-bfe4-11eb-
 5. Size the image appropriately by clicking the "+" or "-" buttons
 6. Press the "Predict" button to generate a prediction
 
-Note: The "New Snip" feature is disabled due to the missing libraries on Agent8
+**Note: The "New Snip" feature is disabled due to the missing libraries on Agent8**
