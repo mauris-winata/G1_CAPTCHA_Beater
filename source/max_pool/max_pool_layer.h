@@ -1,5 +1,6 @@
 #include "../batch_norm/batch_norm_layer.h"
 #include "../util/data_structs.h"
+#include "../conv/conv_layer.h"
 #include "hls_stream.h"
 
 #define MAX_POOL_1_BATCHES 1
@@ -37,3 +38,5 @@ void max_pool(result_t * input1,		// where to get inputs
 */
 //void max_pool_layer_3(hls::stream<result_t>& input, // where to get input
 	//	result_t* output);		// where to store output
+void max_pool_1(result_t input, 		// where to get inputs
+				result_t* output);	

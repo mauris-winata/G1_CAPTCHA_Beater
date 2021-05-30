@@ -1,7 +1,7 @@
 #include <float.h>
-#include "../conv_layer.h"
-#include "../../util/data_structs.h"
-#include "../../util/fixed_point.h"
+#include "conv_layer.h"
+#include "../util/data_structs.h"
+#include "../util/fixed_point.h"
 #include <stdint.h>
 #include <stdio.h>
 #include "hls_stream.h"

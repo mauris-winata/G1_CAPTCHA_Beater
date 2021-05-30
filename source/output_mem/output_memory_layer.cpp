@@ -1,6 +1,6 @@
-#include "output_layer.h"
-#include "../../util/fixed_point.h"
-#include "../../util/data_structs.h"
+#include "output_memory_layer.h"
+#include "../util/fixed_point.h"
+#include "../util/data_structs.h"
 #include <float.h>
 #include <stdint.h>
 #include <stdio.h>
