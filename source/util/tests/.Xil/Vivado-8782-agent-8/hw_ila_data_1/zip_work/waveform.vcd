@@ -1,0 +1,205 @@
+$date
+        2021-May-17 22:37:31
+$end
+$version
+        Vivado v2017.2 (64-bit)
+$end
+$timescale
+        1ps
+$end
+$scope module dut $end
+$var reg 32 " static_region_i/system_ila_0/inst/net_slot_0_axis_tdata [31:0] $end
+$var reg 1 B static_region_i/system_ila_0/inst/net_slot_0_axis_tvalid $end
+$var reg 1 C static_region_i/system_ila_0/inst/net_slot_0_axis_tready $end
+$var reg 1 D static_region_i/system_ila_0/inst/net_slot_0_axis_tlast $end
+$var reg 2 E static_region_i/system_ila_0/inst/net_slot_1_axi_ar_cnt [1:0] $end
+$var reg 32 G static_region_i/system_ila_0/inst/net_slot_1_axi_araddr [31:0] $end
+$var reg 4 g static_region_i/system_ila_0/inst/net_slot_1_axi_arcache [3:0] $end
+$var reg 8 k static_region_i/system_ila_0/inst/net_slot_1_axi_arlen [7:0] $end
+$var reg 1 s static_region_i/system_ila_0/inst/net_slot_1_axi_arlock $end
+$var reg 3 t static_region_i/system_ila_0/inst/net_slot_1_axi_arprot [2:0] $end
+$var reg 4 w static_region_i/system_ila_0/inst/net_slot_1_axi_arqos [3:0] $end
+$var reg 4 { static_region_i/system_ila_0/inst/net_slot_1_axi_arregion [3:0] $end
+$var reg 3 !" static_region_i/system_ila_0/inst/net_slot_1_axi_arsize [2:0] $end
+$var reg 2 $" static_region_i/system_ila_0/inst/net_slot_1_axi_aw_cnt [1:0] $end
+$var reg 32 &" static_region_i/system_ila_0/inst/net_slot_1_axi_awaddr [31:0] $end
+$var reg 4 F" static_region_i/system_ila_0/inst/net_slot_1_axi_awcache [3:0] $end
+$var reg 8 J" static_region_i/system_ila_0/inst/net_slot_1_axi_awlen [7:0] $end
+$var reg 1 R" static_region_i/system_ila_0/inst/net_slot_1_axi_awlock $end
+$var reg 3 S" static_region_i/system_ila_0/inst/net_slot_1_axi_awprot [2:0] $end
+$var reg 4 V" static_region_i/system_ila_0/inst/net_slot_1_axi_awqos [3:0] $end
+$var reg 4 Z" static_region_i/system_ila_0/inst/net_slot_1_axi_awregion [3:0] $end
+$var reg 3 ^" static_region_i/system_ila_0/inst/net_slot_1_axi_awsize [2:0] $end
+$var reg 2 a" static_region_i/system_ila_0/inst/net_slot_1_axi_b_cnt [1:0] $end
+$var reg 2 c" static_region_i/system_ila_0/inst/net_slot_1_axi_bresp [1:0] $end
+$var reg 2 e" static_region_i/system_ila_0/inst/net_slot_1_axi_r_cnt [1:0] $end
+$var reg 32 g" static_region_i/system_ila_0/inst/net_slot_1_axi_rdata [31:0] $end
+$var reg 2 )# static_region_i/system_ila_0/inst/net_slot_1_axi_rresp [1:0] $end
+$var reg 32 +# static_region_i/system_ila_0/inst/net_slot_1_axi_wdata [31:0] $end
+$var reg 4 K# static_region_i/system_ila_0/inst/net_slot_1_axi_wstrb [3:0] $end
+$var reg 1 O# static_region_i/system_ila_0/inst/net_slot_1_axi_awvalid $end
+$var reg 2 P# static_region_i/system_ila_0/inst/net_slot_1_axi_aw_ctrl [1:0] $end
+$var reg 1 R# static_region_i/system_ila_0/inst/net_slot_1_axi_awready $end
+$var reg 3 S# static_region_i/system_ila_0/inst/net_slot_1_axi_w_ctrl [2:0] $end
+$var reg 1 V# static_region_i/system_ila_0/inst/net_slot_1_axi_wvalid $end
+$var reg 1 W# static_region_i/system_ila_0/inst/net_slot_1_axi_wready $end
+$var reg 1 X# static_region_i/system_ila_0/inst/net_slot_1_axi_wlast $end
+$var reg 2 Y# static_region_i/system_ila_0/inst/net_slot_1_axi_b_ctrl [1:0] $end
+$var reg 1 [# static_region_i/system_ila_0/inst/net_slot_1_axi_bvalid $end
+$var reg 1 \# static_region_i/system_ila_0/inst/net_slot_1_axi_bready $end
+$var reg 2 ]# static_region_i/system_ila_0/inst/net_slot_1_axi_ar_ctrl [1:0] $end
+$var reg 1 _# static_region_i/system_ila_0/inst/net_slot_1_axi_arvalid $end
+$var reg 1 `# static_region_i/system_ila_0/inst/net_slot_1_axi_arready $end
+$var reg 1 a# static_region_i/system_ila_0/inst/net_slot_1_axi_rvalid $end
+$var reg 3 b# static_region_i/system_ila_0/inst/net_slot_1_axi_r_ctrl [2:0] $end
+$var reg 1 e# static_region_i/system_ila_0/inst/net_slot_1_axi_rready $end
+$var reg 1 f# static_region_i/system_ila_0/inst/net_slot_1_axi_rlast $end
+$var reg 32 g# static_region_i/system_ila_0/inst/net_slot_2_axis_tdata [31:0] $end
+$var reg 1 )$ static_region_i/system_ila_0/inst/net_slot_2_axis_tvalid $end
+$var reg 1 *$ static_region_i/system_ila_0/inst/net_slot_2_axis_tready $end
+$var reg 1 +$ static_region_i/system_ila_0/inst/net_slot_2_axis_tlast $end
+$var reg 32 ,$ static_region_i/system_ila_0/inst/net_slot_3_axis_tdata [31:0] $end
+$var reg 1 L$ static_region_i/system_ila_0/inst/net_slot_3_axis_tvalid $end
+$var reg 1 M$ static_region_i/system_ila_0/inst/net_slot_3_axis_tready $end
+$var reg 1 N$ static_region_i/system_ila_0/inst/net_slot_3_axis_tlast $end
+$var reg 32 O$ static_region_i/system_ila_0/inst/net_slot_4_axis_tdata [31:0] $end
+$var reg 1 o$ static_region_i/system_ila_0/inst/net_slot_4_axis_tvalid $end
+$var reg 1 p$ static_region_i/system_ila_0/inst/net_slot_4_axis_tready $end
+$var reg 1 q$ static_region_i/system_ila_0/inst/net_slot_4_axis_tlast $end
+$var reg 32 r$ static_region_i/system_ila_0/inst/net_slot_5_axis_tdata [31:0] $end
+$var reg 1 4% static_region_i/system_ila_0/inst/net_slot_5_axis_tvalid $end
+$var reg 1 5% static_region_i/system_ila_0/inst/net_slot_5_axis_tready $end
+$var reg 1 6% static_region_i/system_ila_0/inst/net_slot_5_axis_tlast $end
+$var reg 32 7% static_region_i/system_ila_0/inst/net_slot_6_axis_tdata [31:0] $end
+$var reg 1 W% static_region_i/system_ila_0/inst/net_slot_6_axis_tvalid $end
+$var reg 1 X% static_region_i/system_ila_0/inst/net_slot_6_axis_tready $end
+$var reg 1 Y% static_region_i/system_ila_0/inst/net_slot_6_axis_tlast $end
+$var reg 2 Z% static_region_i/system_ila_0/inst/net_slot_7_axi_ar_cnt [1:0] $end
+$var reg 32 \% static_region_i/system_ila_0/inst/net_slot_7_axi_araddr [31:0] $end
+$var reg 4 |% static_region_i/system_ila_0/inst/net_slot_7_axi_arcache [3:0] $end
+$var reg 8 "& static_region_i/system_ila_0/inst/net_slot_7_axi_arlen [7:0] $end
+$var reg 1 *& static_region_i/system_ila_0/inst/net_slot_7_axi_arlock $end
+$var reg 3 +& static_region_i/system_ila_0/inst/net_slot_7_axi_arprot [2:0] $end
+$var reg 4 .& static_region_i/system_ila_0/inst/net_slot_7_axi_arqos [3:0] $end
+$var reg 4 2& static_region_i/system_ila_0/inst/net_slot_7_axi_arregion [3:0] $end
+$var reg 3 6& static_region_i/system_ila_0/inst/net_slot_7_axi_arsize [2:0] $end
+$var reg 2 9& static_region_i/system_ila_0/inst/net_slot_7_axi_aw_cnt [1:0] $end
+$var reg 32 ;& static_region_i/system_ila_0/inst/net_slot_7_axi_awaddr [31:0] $end
+$var reg 4 [& static_region_i/system_ila_0/inst/net_slot_7_axi_awcache [3:0] $end
+$var reg 8 _& static_region_i/system_ila_0/inst/net_slot_7_axi_awlen [7:0] $end
+$var reg 1 g& static_region_i/system_ila_0/inst/net_slot_7_axi_awlock $end
+$var reg 3 h& static_region_i/system_ila_0/inst/net_slot_7_axi_awprot [2:0] $end
+$var reg 4 k& static_region_i/system_ila_0/inst/net_slot_7_axi_awqos [3:0] $end
+$var reg 4 o& static_region_i/system_ila_0/inst/net_slot_7_axi_awregion [3:0] $end
+$var reg 3 s& static_region_i/system_ila_0/inst/net_slot_7_axi_awsize [2:0] $end
+$var reg 2 v& static_region_i/system_ila_0/inst/net_slot_7_axi_b_cnt [1:0] $end
+$var reg 2 x& static_region_i/system_ila_0/inst/net_slot_7_axi_bresp [1:0] $end
+$var reg 2 z& static_region_i/system_ila_0/inst/net_slot_7_axi_r_cnt [1:0] $end
+$var reg 32 |& static_region_i/system_ila_0/inst/net_slot_7_axi_rdata [31:0] $end
+$var reg 2 >' static_region_i/system_ila_0/inst/net_slot_7_axi_rresp [1:0] $end
+$var reg 32 @' static_region_i/system_ila_0/inst/net_slot_7_axi_wdata [31:0] $end
+$var reg 4 `' static_region_i/system_ila_0/inst/net_slot_7_axi_wstrb [3:0] $end
+$var reg 2 d' static_region_i/system_ila_0/inst/net_slot_7_axi_aw_ctrl [1:0] $end
+$var reg 1 f' static_region_i/system_ila_0/inst/net_slot_7_axi_awvalid $end
+$var reg 1 g' static_region_i/system_ila_0/inst/net_slot_7_axi_awready $end
+$var reg 1 h' static_region_i/system_ila_0/inst/net_slot_7_axi_wvalid $end
+$var reg 3 i' static_region_i/system_ila_0/inst/net_slot_7_axi_w_ctrl [2:0] $end
+$var reg 1 l' static_region_i/system_ila_0/inst/net_slot_7_axi_wready $end
+$var reg 1 m' static_region_i/system_ila_0/inst/net_slot_7_axi_wlast $end
+$var reg 2 n' static_region_i/system_ila_0/inst/net_slot_7_axi_b_ctrl [1:0] $end
+$var reg 1 p' static_region_i/system_ila_0/inst/net_slot_7_axi_bvalid $end
+$var reg 1 q' static_region_i/system_ila_0/inst/net_slot_7_axi_bready $end
+$var reg 1 r' static_region_i/system_ila_0/inst/net_slot_7_axi_arvalid $end
+$var reg 2 s' static_region_i/system_ila_0/inst/net_slot_7_axi_ar_ctrl [1:0] $end
+$var reg 1 u' static_region_i/system_ila_0/inst/net_slot_7_axi_arready $end
+$var reg 3 v' static_region_i/system_ila_0/inst/net_slot_7_axi_r_ctrl [2:0] $end
+$var reg 1 y' static_region_i/system_ila_0/inst/net_slot_7_axi_rvalid $end
+$var reg 1 z' static_region_i/system_ila_0/inst/net_slot_7_axi_rready $end
+$var reg 1 {' static_region_i/system_ila_0/inst/net_slot_7_axi_rlast $end
+$var reg 2 |' static_region_i/system_ila_0/inst/net_slot_8_axi_ar_cnt [1:0] $end
+$var reg 32 ~' static_region_i/system_ila_0/inst/net_slot_8_axi_araddr [31:0] $end
+$var reg 3 @( static_region_i/system_ila_0/inst/net_slot_8_axi_arprot [2:0] $end
+$var reg 2 C( static_region_i/system_ila_0/inst/net_slot_8_axi_aw_cnt [1:0] $end
+$var reg 32 E( static_region_i/system_ila_0/inst/net_slot_8_axi_awaddr [31:0] $end
+$var reg 3 e( static_region_i/system_ila_0/inst/net_slot_8_axi_awprot [2:0] $end
+$var reg 2 h( static_region_i/system_ila_0/inst/net_slot_8_axi_b_cnt [1:0] $end
+$var reg 2 j( static_region_i/system_ila_0/inst/net_slot_8_axi_bresp [1:0] $end
+$var reg 2 l( static_region_i/system_ila_0/inst/net_slot_8_axi_r_cnt [1:0] $end
+$var reg 32 n( static_region_i/system_ila_0/inst/net_slot_8_axi_rdata [31:0] $end
+$var reg 2 0) static_region_i/system_ila_0/inst/net_slot_8_axi_rresp [1:0] $end
+$var reg 32 2) static_region_i/system_ila_0/inst/net_slot_8_axi_wdata [31:0] $end
+$var reg 4 R) static_region_i/system_ila_0/inst/net_slot_8_axi_wstrb [3:0] $end
+$var reg 1 V) static_region_i/system_ila_0/inst/net_slot_8_axi_awvalid $end
+$var reg 2 W) static_region_i/system_ila_0/inst/net_slot_8_axi_aw_ctrl [1:0] $end
+$var reg 1 Y) static_region_i/system_ila_0/inst/net_slot_8_axi_awready $end
+$var reg 2 Z) static_region_i/system_ila_0/inst/net_slot_8_axi_w_ctrl [1:0] $end
+$var reg 1 \) static_region_i/system_ila_0/inst/net_slot_8_axi_wvalid $end
+$var reg 1 ]) static_region_i/system_ila_0/inst/net_slot_8_axi_wready $end
+$var reg 2 ^) static_region_i/system_ila_0/inst/net_slot_8_axi_b_ctrl [1:0] $end
+$var reg 1 `) static_region_i/system_ila_0/inst/net_slot_8_axi_bvalid $end
+$var reg 1 a) static_region_i/system_ila_0/inst/net_slot_8_axi_bready $end
+$var reg 1 b) static_region_i/system_ila_0/inst/net_slot_8_axi_arvalid $end
+$var reg 2 c) static_region_i/system_ila_0/inst/net_slot_8_axi_ar_ctrl [1:0] $end
+$var reg 1 e) static_region_i/system_ila_0/inst/net_slot_8_axi_arready $end
+$var reg 2 f) static_region_i/system_ila_0/inst/net_slot_8_axi_r_ctrl [1:0] $end
+$var reg 1 h) static_region_i/system_ila_0/inst/net_slot_8_axi_rvalid $end
+$var reg 1 i) static_region_i/system_ila_0/inst/net_slot_8_axi_rready $end
+$var reg 2 j) static_region_i/system_ila_0/inst/net_slot_9_axi_ar_cnt [1:0] $end
+$var reg 4 l) static_region_i/system_ila_0/inst/net_slot_9_axi_araddr [3:0] $end
+$var reg 3 p) static_region_i/system_ila_0/inst/net_slot_9_axi_arprot [2:0] $end
+$var reg 2 s) static_region_i/system_ila_0/inst/net_slot_9_axi_aw_cnt [1:0] $end
+$var reg 4 u) static_region_i/system_ila_0/inst/net_slot_9_axi_awaddr [3:0] $end
+$var reg 3 y) static_region_i/system_ila_0/inst/net_slot_9_axi_awprot [2:0] $end
+$var reg 2 |) static_region_i/system_ila_0/inst/net_slot_9_axi_b_cnt [1:0] $end
+$var reg 2 ~) static_region_i/system_ila_0/inst/net_slot_9_axi_bresp [1:0] $end
+$var reg 2 "* static_region_i/system_ila_0/inst/net_slot_9_axi_r_cnt [1:0] $end
+$var reg 32 $* static_region_i/system_ila_0/inst/net_slot_9_axi_rdata [31:0] $end
+$var reg 2 D* static_region_i/system_ila_0/inst/net_slot_9_axi_rresp [1:0] $end
+$var reg 32 F* static_region_i/system_ila_0/inst/net_slot_9_axi_wdata [31:0] $end
+$var reg 3 f* static_region_i/system_ila_0/inst/net_slot_9_axi_wstrb [2:0] $end
+$var reg 2 i* static_region_i/system_ila_0/inst/net_slot_9_axi_aw_ctrl [1:0] $end
+$var reg 1 k* static_region_i/system_ila_0/inst/net_slot_9_axi_awvalid $end
+$var reg 1 l* static_region_i/system_ila_0/inst/net_slot_9_axi_awready $end
+$var reg 2 m* static_region_i/system_ila_0/inst/net_slot_9_axi_w_ctrl [1:0] $end
+$var reg 1 o* static_region_i/system_ila_0/inst/net_slot_9_axi_wvalid $end
+$var reg 1 p* static_region_i/system_ila_0/inst/net_slot_9_axi_wready $end
+$var reg 1 q* static_region_i/system_ila_0/inst/net_slot_9_axi_bvalid $end
+$var reg 2 r* static_region_i/system_ila_0/inst/net_slot_9_axi_b_ctrl [1:0] $end
+$var reg 1 t* static_region_i/system_ila_0/inst/net_slot_9_axi_bready $end
+$var reg 1 u* static_region_i/system_ila_0/inst/net_slot_9_axi_arvalid $end
+$var reg 2 v* static_region_i/system_ila_0/inst/net_slot_9_axi_ar_ctrl [1:0] $end
+$var reg 1 x* static_region_i/system_ila_0/inst/net_slot_9_axi_arready $end
+$var reg 2 y* static_region_i/system_ila_0/inst/net_slot_9_axi_r_ctrl [1:0] $end
+$var reg 1 {* static_region_i/system_ila_0/inst/net_slot_9_axi_rvalid $end
+$var reg 1 |* static_region_i/system_ila_0/inst/net_slot_9_axi_rready $end
+$var reg 3 }* AR_Channel__i1_s1___input_memory_0_m_axi_output_r_ [2:0] $end
+$var reg 3 "+ AR_Channel__i1_s7___output_memory_0_m_axi_output_stream_ [2:0] $end
+$var reg 3 %+ AR_Channel__i1_s8___xdma_0_M_AXI_LITE1_ [2:0] $end
+$var reg 3 (+ AR_Channel__i1_s9___xdma_0_axi_periph_M03_AXI_ [2:0] $end
+$var reg 3 ++ AW_Channel__i1_s1___input_memory_0_m_axi_output_r_ [2:0] $end
+$var reg 3 .+ AW_Channel__i1_s7___output_memory_0_m_axi_output_stream_ [2:0] $end
+$var reg 3 1+ AW_Channel__i1_s8___xdma_0_M_AXI_LITE1_ [2:0] $end
+$var reg 3 4+ AW_Channel__i1_s9___xdma_0_axi_periph_M03_AXI_ [2:0] $end
+$var reg 3 7+ B_Channel__i1_s1___input_memory_0_m_axi_output_r_ [2:0] $end
+$var reg 3 :+ B_Channel__i1_s7___output_memory_0_m_axi_output_stream_ [2:0] $end
+$var reg 3 =+ B_Channel__i1_s8___xdma_0_M_AXI_LITE1_ [2:0] $end
+$var reg 3 @+ B_Channel__i1_s9___xdma_0_axi_periph_M03_AXI_ [2:0] $end
+$var reg 3 C+ R_Channel__i1_s1___input_memory_0_m_axi_output_r_ [2:0] $end
+$var reg 3 F+ R_Channel__i1_s7___output_memory_0_m_axi_output_stream_ [2:0] $end
+$var reg 3 I+ R_Channel__i1_s8___xdma_0_M_AXI_LITE1_ [2:0] $end
+$var reg 3 L+ R_Channel__i1_s9___xdma_0_axi_periph_M03_AXI_ [2:0] $end
+$var reg 3 O+ T_Channel__i1_s0___input_layer_0_output_r_ [2:0] $end
+$var reg 3 R+ T_Channel__i1_s2___output_layer_0_output_stream_V_ [2:0] $end
+$var reg 3 U+ T_Channel__i1_s3___output_layer_1_output_stream_V_ [2:0] $end
+$var reg 3 X+ T_Channel__i1_s4___output_layer_2_output_stream_V_ [2:0] $end
+$var reg 3 [+ T_Channel__i1_s5___output_layer_3_output_stream_V_ [2:0] $end
+$var reg 3 ^+ T_Channel__i1_s6___output_layer_4_output_stream_V_ [2:0] $end
+$var reg 3 a+ W_Channel__i1_s1___input_memory_0_m_axi_output_r_ [2:0] $end
+$var reg 3 d+ W_Channel__i1_s7___output_memory_0_m_axi_output_stream_ [2:0] $end
+$var reg 3 g+ W_Channel__i1_s8___xdma_0_M_AXI_LITE1_ [2:0] $end
+$var reg 3 j+ W_Channel__i1_s9___xdma_0_axi_periph_M03_AXI_ [2:0] $end
+$var reg 1 m+ _TRIGGER $end
+$var reg 1 n+ _WINDOW $end
+$var reg 1 o+ _GAP $end
+$upscope $end
+$enddefinitions $end

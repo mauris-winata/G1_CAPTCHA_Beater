@@ -8,10 +8,10 @@ open_project dense_layer_five.prj
 set_top dense_layer_five
 add_files ../dense/dense_layer_five.cpp -cflags "-std=c++0x"
 add_files ../util/fixed_point.cpp -cflags "-std=c++0x"
-add_files -tb ../dense_test/dense_test.cpp -cflags "-Wno-unknown-pragmas"
-add_files -tb ../util/fixed_point.cpp -cflags "-Wno-unknown-pragmas"
-add_files -tb ../layer_test.cpp -cflags "-Wno-unknown-pragmas"
-add_files -tb ../util/shared.cpp -cflags "-Wno-unknown-pragmas"
+#add_files -tb ../dense_test/dense_test.cpp -cflags "-Wno-unknown-pragmas"
+#add_files -tb ../util/fixed_point.cpp -cflags "-Wno-unknown-pragmas"
+#add_files -tb ../layer_test.cpp -cflags "-Wno-unknown-pragmas"
+#add_files -tb ../util/shared.cpp -cflags "-Wno-unknown-pragmas"
 open_solution "solution1"
 set_part {xcvu095-ffvc1517-2-e} -tool vivado
 create_clock -period 4 -name default

@@ -8,10 +8,10 @@ open_project max_pool_dense_layer_two.prj
 set_top max_pool_dense_layer_two
 add_files ../util/fixed_point.cpp -cflags "-std=c++0x"
 add_files ../dense/max_pool_dense_layer_two.cpp -cflags "-std=c++0x"
-add_files -tb ../util/fixed_point.cpp -cflags "-std=c++0x -Wno-unknown-pragmas"
-add_files -tb ../layer_test.cpp -cflags "-std=c++0x -Wno-unknown-pragmas"
-add_files -tb ../dense_test/max_pool_dense_test.cpp -cflags "-std=c++0x -Wno-unknown-pragmas"
-add_files -tb ../util/shared.cpp -cflags "-std=c++0x -Wno-unknown-pragmas"
+#add_files -tb ../util/fixed_point.cpp -cflags "-std=c++0x -Wno-unknown-pragmas"
+#add_files -tb ../layer_test.cpp -cflags "-std=c++0x -Wno-unknown-pragmas"
+#add_files -tb ../dense_test/max_pool_dense_test.cpp -cflags "-std=c++0x -Wno-unknown-pragmas"
+#add_files -tb ../util/shared.cpp -cflags "-std=c++0x -Wno-unknown-pragmas"
 open_solution "solution1"
 set_part {xcvu095-ffvc1517-2-e} -tool vivado
 create_clock -period 2.5 -name default

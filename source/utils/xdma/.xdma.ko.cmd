@@ -1,1 +1,0 @@
-cmd_/home/rewingchow/dma_ip_drivers-master/XDMA/linux-kernel/xdma/xdma.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/rewingchow/dma_ip_drivers-master/XDMA/linux-kernel/xdma/xdma.ko /home/rewingchow/dma_ip_drivers-master/XDMA/linux-kernel/xdma/xdma.o /home/rewingchow/dma_ip_drivers-master/XDMA/linux-kernel/xdma/xdma.mod.o

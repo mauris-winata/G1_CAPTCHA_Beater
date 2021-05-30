@@ -1,11 +1,11 @@
 #include <float.h>
-#include "../batch_norm_layer.h"
+#include "batch_norm_layer.h"
 //#include <math.h>
 #include <float.h>
 #include <assert.h>
 #include <stdint.h>
 #include <stdio.h>
-#include "../../util/fixed_point.h"
+#include "../util/fixed_point.h"
 #include "hls_stream.h"
 #include "ap_int.h"
 #include "ap_utils.h"
