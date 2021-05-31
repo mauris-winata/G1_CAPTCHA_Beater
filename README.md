@@ -12,6 +12,8 @@ https://user-images.githubusercontent.com/71918289/120048088-32c2ad80-bfe4-11eb-
 
 *To Build the Project:*
 -
+**Note: The following build procedure was verified on Ubuntu 16.04.7 LTS operating system**
+
 ### Building Hardware Kernel ###
 1. Change directory into source ('cd ./source')
 2. The makefile contains commands to build individual IPs of every block within the hardware kernel
@@ -29,7 +31,7 @@ https://user-images.githubusercontent.com/71918289/120048088-32c2ad80-bfe4-11eb-
 4. Restart the machine and change back into the source directory, then run 'make load_driver' to load the xdma driver.
 5. THe driver should be loaded now
 
-### Building Kernel Driver Accompanying Software###
+### Building Kernel Driver Accompanying Software ###
 1. Change drirectory into the source directory
 2. Please run 'make captcha_beater_software', this will create a program which handles data transfer between the python program
    and the kernel driver communication software
