@@ -22,13 +22,13 @@ https://user-images.githubusercontent.com/71918289/120048088-32c2ad80-bfe4-11eb-
    then an archived vivado project found within the vivado folder will be opened in gui mode
 5. Within the vivado GUI please go to the Tcl console and execute 'source ../bitstream_generation.tcl'. This will
    generate the bitstream for the project called 'captcha_beater.bit' and the file can be found within
-   the vivado folder.
+   the vivado folder
 
 ### Building Kernel Driver ###
 1. Change directory into the source directory
 2. Run 'make xdma'. This will build and install the xdma kernel module
 3. To build the software that communicates with the kernel driver, run 'make xdma_tools'
-4. Restart the machine and change back into the source directory, then run 'make load_driver' to load the xdma driver.
+4. Restart the machine and change back into the source directory, then run 'make load_driver' to load the xdma driver
 5. THe driver should be loaded now
 
 ### Building Kernel Driver Accompanying Software ###
