@@ -29,7 +29,7 @@ https://user-images.githubusercontent.com/71918289/120048088-32c2ad80-bfe4-11eb-
 2. Run 'make xdma'. This will build and install the xdma kernel module
 3. To build the software that communicates with the kernel driver, run 'make xdma_tools'
 4. Restart the machine and change back into the source directory, then run 'make load_driver' to load the xdma driver
-5. THe driver should be loaded now
+5. The driver should be loaded now
 
 ### Building Kernel Driver Accompanying Software ###
 1. Change directory into the source directory
