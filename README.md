@@ -20,8 +20,8 @@ https://user-images.githubusercontent.com/71918289/120048088-32c2ad80-bfe4-11eb-
 3. To build the entire hardware kernel, run 'make generate_captcha_beater'
 4. The previous command will build all the individual IPs within the hls_proj folder and 
    then an archived vivado project found within the vivado folder will be opened in gui mode
-5. Within the GUI, please go to the Tcl console and execute 'source ../bitstream_generation.tcl'. This will
-   generate the bitstream for the project called 'captcha_beater.bit' and the file will be found within
+5. Within the vivado GUI please go to the Tcl console and execute 'source ../bitstream_generation.tcl'. This will
+   generate the bitstream for the project called 'captcha_beater.bit' and the file can be found within
    the vivado folder.
 
 ### Building Kernel Driver ###
@@ -32,7 +32,7 @@ https://user-images.githubusercontent.com/71918289/120048088-32c2ad80-bfe4-11eb-
 5. THe driver should be loaded now
 
 ### Building Kernel Driver Accompanying Software ###
-1. Change drirectory into the source directory
+1. Change directory into the source directory
 2. Please run 'make captcha_beater_software', this will create a program which handles data transfer between the python program
    and the kernel driver communication software
 
