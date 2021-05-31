@@ -10,6 +10,36 @@ A method to solve text-based CAPTCHAs using FPGAs is designed as a term project 
 
 https://user-images.githubusercontent.com/71918289/120048088-32c2ad80-bfe4-11eb-9f94-d65f9957cb87.mov
 
+*Contents:*
+-
+* presentations
+	* contains all the presentations done throughout the semester
+* report
+	* contains the final report for the project
+* source
+	* batch_norm
+		* contains design files for the batch normalization layer hardware kernel
+	* conv
+		* contains design files for the convolution layer hardware kernel
+	* dense
+		* contains design files for the max pool dense layer and dense layer hardware kernel
+	* golden_bitstream
+		* contains a working bitstream to validate the final project
+	* hls_proj
+		* contains all the hls project creation scripts and all the created hls projects
+	* input
+		* contains design files for the input layer hardware kernel
+	* output
+		* contains the design files for the output layer hardware kernel
+	* output_mem
+		* contains the design files for the output memory layer hardware kernel
+	* test_captchas
+		* contains test images that can be used as inputs to validate project
+	* util
+		* contains utility design files, kernel driver files, the python program and other related software files
+	* vivado
+		* contains scritps to generate bitstream, the archived vivado project and the generated project when the bitsream is being created
+
 *To Build the Project:*
 -
 **Note: The following build procedure was verified on Ubuntu 16.04.7 LTS operating system**
